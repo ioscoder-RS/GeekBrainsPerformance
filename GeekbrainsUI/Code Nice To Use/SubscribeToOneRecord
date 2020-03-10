@@ -1,0 +1,23 @@
+
+//в переменные класса добавить опционал
+    var currentGroup: VKGroupRealm?
+    
+//в ViewDidload добавить вызов
+     subscribeGroup()
+
+
+func subscribeGroup(){
+    let realm = try! Realm()
+    currentGroup = realm.object(ofType: VKGroupRealm.self, forPrimaryKey:17032179)
+    tokenUser = currentGroup?.observe{ change in
+        switch change {
+        case .change (let changes):
+            for change in changes {
+                if change.name == "groupName" {
+                    print("Cтарое значение = \(change.oldValue). Новое значение = \(change.newValue)")
+                }//if change.name == "groupName"
+            }// for
+            default: break
+            }//switch
+        }//observe
+}//func subscribeGroup()

@@ -1,0 +1,68 @@
+/************* Если менялась структура Realm между запусками
+//добавить в AppDelegate *********************/
+
+let config = Realm.Configuration(
+      // Set the new schema version. This must be greater than the previously used
+      // version (if you've never set a schema version before, the version is 0).
+      schemaVersion: 1,
+      // Set the block which will be called automatically when opening a Realm with
+      // a schema version lower than the one set above
+      migrationBlock: { migration, oldSchemaVersion in
+          // We haven’t migrated anything yet, so oldSchemaVersion == 0
+          if (oldSchemaVersion < 1) {
+              // Nothing to do!
+              // Realm will automatically detect new properties and removed properties
+              // And will update the schema on disk automatically
+          }
+  })
+
+  // Tell Realm to use this new configuration object for the default Realm
+  Realm.Configuration.defaultConfiguration = config
+
+/********* конец добавления в AppDelegate ********************/
+
+  let realmRepository = VKWorkWithDBRealm()
+  realmRepository.addPhoto(id: 1, albumID: 0, ownerID: 0, sizes: ["маленькое","среднее","большое"], text: "", date: 0)
+  
+  realmRepository.addPhoto(id: 2, albumID: 0, ownerID: 0, sizes: ["маленькое","большое"], text: "", date: 0)
+  
+      let photos = realmRepository.getPhotos()
+         print(photos)
+  
+  let groups = realmRepository.getGroups()
+                print(groups)
+
+let realmRepository = VKWorkWithDBRealm()
+        realmRepository.addUser(id: 2, lastName: "lastName2", firstName: "FirstName2", avatarPath: "AvatarPath2", isOnline: 0)
+//        let userNew = realmRepository.getUser(id: 1, lastName: nil, avatarPath: nil)
+//        print(userNew)
+//        let userNew2 = realmRepository.getUser(id: 0, lastName: nil, avatarPath: "AvatarPath2")
+//        print(userNew2)
+//
+        let users = realmRepository.getUsers()
+        print (users)
+        
+//        realmRepository.addGroup(id: 1, groupName: "group1", avatarPath: "AvatarPath1")
+//          realmRepository.addGroup(id: 2, groupName: "group2", avatarPath: "AvatarPath2")
+//          realmRepository.addGroup(id: 3, groupName: "group3", avatarPath: "AvatarPath3")
+//        let groups = realmRepository.getGroups()
+//        print(groups)
+//
+//        let user1 = realmRepository.getGroup(id: 1, groupName: nil, avatarPath: nil)
+//        print (user1)
+//
+//        let user2 = realmRepository.getGroup(id: nil, groupName: "group2", avatarPath: nil)
+//        print (user2)
+//
+//        let user3 = realmRepository.getGroup(id: nil, groupName: nil, avatarPath: "AvatarPath3")
+//        print (user3)
+//
+//        realmRepository.deleteUsers()
+//         let users = realmRepository.getUsers()
+//         print (users)
+//                let groups = realmRepository.getGroups()
+//                print(groups)
+       print("удаляем юзеров")
+        realmRepository.deleteVKObject(object: VKObjects.VKUser)
+         print(users)
+

@@ -1,0 +1,148 @@
+
+//
+//  VKApi.swift
+//  GeekbrainsUI
+//
+//  Created by raskin-sa on 15/01/2020.
+//  Copyright © 2020 raskin-sa. All rights reserved.
+//
+
+import WebKit
+import Alamofire
+
+enum RequestError: Error {
+    case failedRequest(message: String)
+    case decodableError
+}
+
+
+
+class VKAPi {
+    private let vkURL = "https://api.vk.com/method/"
+    //https://jsonplaceholder.typicode.com/users
+    
+    func requestServer<T: Decodable>(requestURL: String,
+                                     params: Parameters,
+                                     completion: @escaping (Swift.Result<T, Error>) -> Void){
+        Alamofire.request(requestURL,
+                          method: .post,
+                          parameters: params)
+            .responseData {(response) in
+                
+                switch response.result {
+                case .failure(let error):
+                    completion(.failure(RequestError.failedRequest(message: error.localizedDescription)))
+                case .success(let data):
+                    do{
+                        let response = try JSONDecoder().decode(T.self, from: data)
+                        completion(.success(response))
+                    }catch let error {
+                        completion(.failure(RequestError.decodableError))
+                    }
+                }
+        }//switch
+    }//func requestServer
+        
+        //Получение списка друзей
+        func getFriendList(token: String, result: @escaping (Swift.Result<[VKUser], Error>) -> Void)  {
+        
+        let requestURL = vkURL + "friends.get"
+        let params = ["v": "5.103",
+        "access_token":token,
+        "order":"name",
+            "fields":"online,city,domain,photo_50"] as [String:Any]
+        
+        requestServer(requestURL: requestURL, params: params) {(users:Swift.Result<UserResponse,Error>) in
+        switch users {
+        case .failure(let error):
+        result(.failure(error))
+            case .success(let friends):
+                result(.success(friends.response.items))
+        }//switch
+        }
+        }//func getFriendList
+        
+        //Получение фотографий человека
+        func getPhotosList(token: String, userId: Int, completed: @escaping () ->()) {
+        let requestURL = vkURL + "photos.get"
+        let params = ["v": "5.103",
+        "access_token":token,
+        "owner_id":String(userId),
+        "album_id":"wall"
+        ]
+        
+        
+        Alamofire.request(requestURL,
+        method: .post,
+        parameters: params).responseData(completionHandler: { (response) in
+        
+        guard let data = response.value else {
+        return
+        }
+        do{
+        let response = try JSONDecoder().decode(PhotosResponse.self, from: data)
+        print ("Получение фотографий текущего пользователя")
+        
+        myPhotos = response.response.items
+        print(myPhotos)
+        
+        } catch{
+        print (error)
+        }
+        completed()
+        })
+        
+        }//func getPhotosList
+        
+        //Получение групп текущего пользователя
+        func getGroupsList(token: String, userId: String, completed: @escaping () ->()){
+        let requestURL = vkURL + "groups.get"
+        let params = ["v": "5.103",
+        "access_token":token,
+        "user_id":userId,
+        "extended":"1"
+        ]
+        
+        
+        Alamofire.request(requestURL,
+        method: .post,
+        parameters: params).responseData { (response) in
+        
+        guard let data = response.value else{
+        return
+        }
+        
+        do{
+        let response = try JSONDecoder().decode(GroupResponse.self, from: data)
+        print ("Получение групп текущего пользователя")
+        myGroup = response.response.items
+        print(myGroup)
+        } catch{
+        print (error)
+        }
+        completed()
+        
+        }
+        }//func getGroupsList
+        
+        //Получение групп по поисковому запросу;
+        func searchGroups (token: String, query: String, completion: () -> ()){
+        let requestURL = vkURL + "groups.search"
+        let params = ["v": "5.103",
+        "access_token":token,
+        "q":query,
+        "type":"group",
+        "count":"3",
+        "country_id":"1" //Россия
+        ]
+        
+        
+        Alamofire.request(requestURL,
+        method: .post,
+        parameters: params).responseJSON(completionHandler: { (response) in
+        (print("\nПолучение групп по поисковому запросу \(query)"),print(response.value!))
+        })
+        }//func searchGroups
+        
+}//class VKAPi
+
