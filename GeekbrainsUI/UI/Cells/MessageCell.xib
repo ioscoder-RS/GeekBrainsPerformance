@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="711" height="563"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mAK-DS-S6T">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mAK-DS-S6T" customClass="NewsPhotoCollectionView" customModule="GeekbrainsUI" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="306" width="711" height="0.0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewLayout key="collectionViewLayout" id="vgD-Vq-F4O" customClass="NewsCellLayout" customModule="GeekbrainsUI" customModuleProvider="target"/>
@@ -126,7 +126,7 @@
                 <outlet property="commentButton" destination="u2U-ax-WA2" id="MWM-LH-fMe"/>
                 <outlet property="likeButton" destination="FOK-O8-tsT" id="ytX-ee-sSf"/>
                 <outlet property="message" destination="SUW-Dg-gyr" id="Ava-Z5-Nbk"/>
-                <outlet property="newsPhoto" destination="mAK-DS-S6T" id="CzG-Kv-JK9"/>
+                <outlet property="newsPhoto" destination="mAK-DS-S6T" id="xPh-tB-FZx"/>
                 <outlet property="shareButton" destination="PyV-Fo-dL0" id="dWt-aw-rxX"/>
                 <outlet property="time" destination="dxK-Oo-xew" id="hRs-28-Kj0"/>
                 <outlet property="username" destination="bt5-aY-Rsw" id="7eu-x2-4b4"/>

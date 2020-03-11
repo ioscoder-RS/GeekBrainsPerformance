@@ -29,7 +29,7 @@ class VKLoginController: UIViewController {
             result in
             switch result {
              case .success(let loadResult):
-                print("Success in doWebConnect()")
+ //               print("Success in doWebConnect()")
                 
                 self.saveUserDefaults()
                 

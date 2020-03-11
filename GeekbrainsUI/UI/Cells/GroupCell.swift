@@ -13,7 +13,8 @@ class GroupCell: UITableViewCell {
     @IBOutlet weak var localConstraint: NSLayoutConstraint!
     @IBOutlet weak var groupname:UILabel!
     @IBOutlet weak var groupimage: UIImageView!
-   
+    @IBOutlet weak var groupImageUIView: CircleShadowImage!
+    
     
     func setAnimation() {
     UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 12, options: [], animations: {

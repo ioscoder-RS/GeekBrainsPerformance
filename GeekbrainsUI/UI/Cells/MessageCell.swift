@@ -19,7 +19,8 @@ class MessageCell: UITableViewCell , UICollectionViewDelegate, UICollectionViewD
     @IBOutlet weak var commentButton: CustomCommentButton!
     @IBOutlet weak var shareButton: CustomShareButton!
     @IBOutlet weak var viewedButton: CustomViewButton!
-    @IBOutlet weak var newsPhoto: UICollectionView!
+    @IBOutlet weak var newsPhoto: NewsPhotoCollectionView!
+    //  @IBOutlet weak var newsPhoto: UICollectionView!
     
     @IBAction func likeButtonPressed(_ sender: Any) {
         (sender as! LikeButton).like()
@@ -86,18 +87,15 @@ class MessageCell: UITableViewCell , UICollectionViewDelegate, UICollectionViewD
         viewedButton.setViewedCount(viewedCount: newsRecord.newsViews.count, userViewed: 0)
         shareButton.setShareCount(shareCount: newsRecord.newsReposts.count, userShared: newsRecord.newsReposts.userReposted)
         
-        if newsRecord.newsImages.count > 0
-        {
-            self.newsPhotocount = newsRecord.newsImages.count
-            self.newsPhotoArray = newsRecord.newsImages
-        }
-        else
-        {
-            self.newsPhotocount = 0
-            self.newsPhotoArray = []
-        }
+        //наполняем вложенный CollectionView
+        self.newsPhotocount = newsRecord.newsImages.count
+        self.newsPhotoArray = newsRecord.newsImages
         
-//        print("В messagecell.rendercell распознали: username = \(newsRecord.userName) кол-во фото: \(newsRecord.newsImages.count)")
+        //пытаемся установить высоту CollectionView в высоту контента, т.е. в ноль
+        newsPhoto.invalidateIntrinsicContentSize()
+        
+        
+        //        print("В messagecell.rendercell распознали: username = \(newsRecord.userName) кол-во фото: \(newsRecord.newsImages.count)")
         
         //реализация загрузки изображения с использованием KingFisher
         //        if let url = URL(string: newsRecord.avatarPath){   

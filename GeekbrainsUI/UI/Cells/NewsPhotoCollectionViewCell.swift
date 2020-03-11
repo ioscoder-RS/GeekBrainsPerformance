@@ -11,8 +11,7 @@ import UIKit
 class NewsPhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var newsPhotoImage: UIImageView!
-    
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // в тестовых целях покрасили ячейку! чтобы видно было

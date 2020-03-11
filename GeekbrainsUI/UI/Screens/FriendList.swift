@@ -28,6 +28,7 @@ class FriendList: UITableViewController, UINavigationControllerDelegate {
     var presenter: FriendsPresenter?
     var configurator: FriendsConfigurator?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,6 +53,8 @@ class FriendList: UITableViewController, UINavigationControllerDelegate {
             else{
                 return UITableViewCell()
         }
+        
+
         //настраиваем ячейку, фотографией и ФИО
         cell.renderCell(model: vkUserRealm)
         

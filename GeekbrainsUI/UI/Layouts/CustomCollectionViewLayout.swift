@@ -19,17 +19,6 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
     var cellHeight = 200
     var containerHeight: CGFloat = 0 //высота контента
     
-    init (numberColumns: Int, cellHeight: Int) {
-        super.init()
-        
-        self.columns = numberColumns
-        self.cellHeight = cellHeight
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func prepare() {
         guard let collection = collectionView else{
             return
