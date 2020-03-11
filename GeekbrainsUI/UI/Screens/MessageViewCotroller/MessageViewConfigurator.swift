@@ -14,6 +14,6 @@ protocol MessageViewConfigurator {
 
 class MessageViewConfiguratorImplementation: MessageViewConfigurator{
     func configure( view: MessageViewController) {
-       view.presenter = MessageViewPresenterImplementation (newsDB: NewsRepository(), view: view)
+        view.presenter = MessageViewPresenterImplementation (newsDB: NewsRepository(), view: view)
     }
 }

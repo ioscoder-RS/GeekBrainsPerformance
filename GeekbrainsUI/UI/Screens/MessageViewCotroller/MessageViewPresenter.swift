@@ -29,38 +29,38 @@ class MessageViewPresenterImplementation: MessageViewPresenter {
         vkAPI = VKAPi()
     }
     
-
+    
     
     func viewDidLoad(){
         getNewsFromApiAndDB()
     }
     
     func getNewsFromDatabase(){
-            self.newsResult = newsDB.getAllNews()
-            self.view?.updateTable()
+        self.newsResult = newsDB.getAllNews()
+        self.view?.updateTable()
     }//func getGroupsFromDatabase()
     
     func  getNewsFromApiAndDB(from: String? = nil){
         if webMode{
-        //Получаем пользователей из Web
+            //Получаем пользователей из Web
             vkAPI.getNewsList(token: Session.shared.token, userId: Session.shared.userId, from: nil, version: Session.shared.version){  result in
-            switch result {
-            case .success(let webNews): //массив VKNews из Web
-                do{
-                  try self.newsDB.createNewsForView(sourceNews: webNews)
-                    //выгружаем из БД строго после Web-запроса и после добавления в БД
-                    self.getNewsFromDatabase()
-                }catch {
-                    print("we got error in newsDB.createNewsForView(): \(error)")
-                }
-            case .failure(let error):
-                print("we got error in getNewsfeed(): \(error)")
-            }//switch
-        }//completion
+                switch result {
+                case .success(let webNews): //массив VKNews из Web
+                    do{
+                        try self.newsDB.createNewsForView(sourceNews: webNews)
+                        //выгружаем из БД строго после Web-запроса и после добавления в БД
+                        self.getNewsFromDatabase()
+                    }catch {
+                        print("we got error in newsDB.createNewsForView(): \(error)")
+                    }
+                case .failure(let error):
+                    print("we got error in getNewsfeed(): \(error)")
+                }//switch
+            }//completion
         }// if webMode{
         else
         {
-        self.getNewsFromDatabase()
+            self.getNewsFromDatabase()
         }
     }//func  getGroupsFromApiAndDB()
     
@@ -72,7 +72,7 @@ extension MessageViewPresenterImplementation {
     }
     func getCurrentNewsAtIndex(indexPath: IndexPath) -> NewsForViewController? {
         return newsResult![indexPath.row]
-      }
+    }
 }
 
 

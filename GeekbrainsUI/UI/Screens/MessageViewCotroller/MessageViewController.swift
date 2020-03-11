@@ -22,7 +22,7 @@ protocol MessageView: class {
 }
 
 class MessageViewController: UITableViewController{
-        
+    
     var presenter: MessageViewPresenter?
     var configurator: MessageViewConfigurator?
     
@@ -33,9 +33,9 @@ class MessageViewController: UITableViewController{
         tableView.rowHeight = UITableView.automaticDimension
         
         self.configurator = MessageViewConfiguratorImplementation()
-              configurator?.configure(view: self)
-              
-              presenter?.viewDidLoad()
+        configurator?.configure(view: self)
+        
+        presenter?.viewDidLoad()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,9 +59,9 @@ class MessageViewController: UITableViewController{
         return 350
     }
     
-//    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 400
-//    }
+    //    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        return 400
+    //    }
     
 }// class MessageViewController
 

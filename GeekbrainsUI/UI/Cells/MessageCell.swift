@@ -23,12 +23,12 @@ class MessageCell: UITableViewCell , UICollectionViewDelegate, UICollectionViewD
     
     @IBAction func likeButtonPressed(_ sender: Any) {
         (sender as! LikeButton).like()
-
+        
     }
     
     @IBAction func commentButtonPressed(_ sender: Any) {
         (sender as! CustomCommentButton).comment()
-
+        
     }
     
     @IBAction func shareButtonPressed(_ sender: Any) {
@@ -36,12 +36,12 @@ class MessageCell: UITableViewCell , UICollectionViewDelegate, UICollectionViewD
     }
     
     @IBAction func viewedButtonPressed(_ sender: Any) {
-       (sender as! CustomViewButton).setLook()
+        (sender as! CustomViewButton).setLook()
     }
     
     var newsPhotocount: Int?
     var newsPhotoArray: [String]?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCell()
@@ -54,9 +54,9 @@ class MessageCell: UITableViewCell , UICollectionViewDelegate, UICollectionViewD
         
         //этот набор команд переопределяет FlowLayout.
         //если эти команды раскоментированы, то кастомный layout из storyBoard = NewsCellLayout не выполняется
-//           let flowLayout = UICollectionViewFlowLayout()
-//           flowLayout.scrollDirection = .horizontal
-//           self.newsPhoto.collectionViewLayout = flowLayout
+        //           let flowLayout = UICollectionViewFlowLayout()
+        //           flowLayout.scrollDirection = .horizontal
+        //           self.newsPhoto.collectionViewLayout = flowLayout
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -64,19 +64,19 @@ class MessageCell: UITableViewCell , UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsPhotoCell", for: indexPath) as? NewsPhotoCollectionViewCell else {
-             return UICollectionViewCell()
-         }
-       
-        if let image = newsPhotoArray?[indexPath.row] {
-        cell.renderCell(imagePath:  image)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsPhotoCell", for: indexPath) as? NewsPhotoCollectionViewCell else {
+            return UICollectionViewCell()
         }
-   
+        
+        if let image = newsPhotoArray?[indexPath.row] {
+            cell.renderCell(imagePath:  image)
+        }
+        
         return cell
     }
     
     func renderCell(newsRecord: NewsForViewController, tableView: UITableViewController, row: Int, photoCashFunctions: PhotoCashFunctions){
-    
+        
         username.text = newsRecord.userName
         
         time.text = convertUnixTime(unixTime: newsRecord.newsDate)
@@ -88,28 +88,28 @@ class MessageCell: UITableViewCell , UICollectionViewDelegate, UICollectionViewD
         
         if newsRecord.newsImages.count > 0
         {
-        self.newsPhotocount = newsRecord.newsImages.count
-        self.newsPhotoArray = newsRecord.newsImages
+            self.newsPhotocount = newsRecord.newsImages.count
+            self.newsPhotoArray = newsRecord.newsImages
         }
         else
         {
             self.newsPhotocount = 0
             self.newsPhotoArray = []
         }
-       
-        print("В messagecell.rendercell распознали: username = \(newsRecord.userName) кол-во фото: \(newsRecord.newsImages.count)")
         
-      //реализация загрузки изображения с использованием KingFisher
-//        if let url = URL(string: newsRecord.avatarPath){   
-//                     avatar.kf.setImage(with: url)
-//        }
+//        print("В messagecell.rendercell распознали: username = \(newsRecord.userName) кол-во фото: \(newsRecord.newsImages.count)")
+        
+        //реализация загрузки изображения с использованием KingFisher
+        //        if let url = URL(string: newsRecord.avatarPath){   
+        //                     avatar.kf.setImage(with: url)
+        //        }
         
         //В качестве ДЗ использование "ручного" кэш c Promise
         photoCashFunctions.photo(urlString: newsRecord.avatarPath)
-                       .done {[weak self] image in self?.avatar.image = image }
-                       .catch { print($0)}
-                
-      newsPhoto.reloadData()
+            .done {[weak self] image in self?.avatar.image = image }
+            .catch { print($0)}
+        
+        newsPhoto.reloadData()
     }
     
 }// class MessageCell

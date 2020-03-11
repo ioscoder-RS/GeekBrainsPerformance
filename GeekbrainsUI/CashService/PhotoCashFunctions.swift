@@ -69,9 +69,9 @@ class PhotoCashFunctions {
     
     /// Loads image from the Internet and converts it lo Promise wrapper
     /// - Parameter urlString: image url
-
+    
     private func loadImage(urlString: String) -> Promise<UIImage> {
-  
+        
         let promise = Promise<Data>(resolver: { resolver -> Void in
             Alamofire.request(urlString).responseData(queue: .global()) { response in
                 switch response.result {
@@ -81,8 +81,8 @@ class PhotoCashFunctions {
                     resolver.reject(error)
                 }
             }
-            })
-
+        })
+        
         return promise
             .map { guard let image = UIImage(data: $0) else { throw PMKError.badInput }; return image }
             .get(on: isolationQueue) { PhotoCashFunctions.memoryCache[urlString] = $0 }

@@ -34,13 +34,13 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
         guard let collection = collectionView else{
             return
         }
-       let itemsCount = collection.numberOfItems(inSection: 0) //суммарное кол-во ячеек в коллекции
+        let itemsCount = collection.numberOfItems(inSection: 0) //суммарное кол-во ячеек в коллекции
         guard itemsCount > 0 else {return}
         
         let commonWidth = collection.frame.width // ширина широкой ячейки
         let smallWidth = collection.frame.width / CGFloat(columns) //ширина узкой ячейки
         
-     
+        
         
         var x: CGFloat = 0
         var y: CGFloat = 0
@@ -57,7 +57,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
                                                  y: y,
                                                  width: commonWidth,
                                                  height: CGFloat(cellHeight))
-                   y += CGFloat(cellHeight) //если широкая ячейка - добавляем Y => следующая ячейка будет ниже
+                y += CGFloat(cellHeight) //если широкая ячейка - добавляем Y => следующая ячейка будет ниже
                 
             case .small:
                 attributeForIndex.frame = CGRect(x: x,
@@ -74,7 +74,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
                 }
                 
             }
-         
+            
             cacheAttributes[indexPath] = attributeForIndex
         }//for
         
@@ -83,18 +83,18 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
     }// func prepare()
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-    return cacheAttributes[indexPath]
+        return cacheAttributes[indexPath]
         
     }
-
+    
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-            return cacheAttributes.values.filter{
-                rect.intersects($0.frame)
+        return cacheAttributes.values.filter{
+            rect.intersects($0.frame)
         }
     }
-
+    
     override var collectionViewContentSize: CGSize{
         return CGSize(width: collectionView?.frame.width ?? 0, height: containerHeight)
     }
- 
+    
 }//class CustomCollectionViewLayout
