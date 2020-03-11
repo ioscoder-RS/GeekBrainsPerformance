@@ -17,6 +17,7 @@ class NewsCellLayout: UICollectionViewLayout {
     
     var maxColumns = 50
     var cellHeight: CGFloat = 200
+    var cellWidth: CGFloat = 0
     var containerHeight: CGFloat = 0
     private var totalCellsHeight: CGFloat = 0
     
@@ -30,26 +31,19 @@ class NewsCellLayout: UICollectionViewLayout {
         let photoCounter = collectionView.numberOfItems(inSection: 0)
         guard photoCounter > 0 else { return }
         
-        // Необходимое количество строк при известном максимальном значении колонок
-        let numOfRows = ceil(CGFloat(photoCounter) / CGFloat(maxColumns))
-        cellHeight = collectionView.frame.height / numOfRows
+        // Необходимое количество строк в нашем случае всегда = 1
+        let numOfRows = 1
+        cellHeight = collectionView.frame.height
+        cellWidth = collectionView.frame.width / CGFloat(photoCounter)
         
         var lastX: CGFloat = 0
         var lastY: CGFloat = 0
         
         // Запускаем цикл прохода по всем фотографиям
         for i in 0..<photoCounter {
-            var cellWidth: CGFloat = 0
+           
             let indexPath = IndexPath(item: i, section: 0)
             let attributeForIndex = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-            
-            // Если строка не последняя, делим на количество столбцов
-            // Если последняя, то делим на оставшиеся количество фотографий
-            if ceil(CGFloat(i + 1) / CGFloat(maxColumns)) < numOfRows || photoCounter % maxColumns == 0 {
-                cellWidth = collectionView.frame.width / CGFloat(maxColumns)
-            } else {
-                cellWidth = collectionView.frame.width / CGFloat(photoCounter % maxColumns)
-            }
             
             attributeForIndex.frame = CGRect(
                 x: lastX,

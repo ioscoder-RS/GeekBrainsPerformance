@@ -60,8 +60,8 @@
 		919465A023AFA16400FB9D6B /* OtherAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194659F23AFA16400FB9D6B /* OtherAnimations.swift */; };
 		919465A623AFA7A500FB9D6B /* TransitionAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919465A523AFA7A500FB9D6B /* TransitionAnimations.swift */; };
 		919465A823AFAC0200FB9D6B /* CustomNavigationControllerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919465A723AFAC0200FB9D6B /* CustomNavigationControllerAnimation.swift */; };
+		9196F7972418BAFE00767B36 /* NewsPhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9196F7962418BAFE00767B36 /* NewsPhotoCollectionView.swift */; };
 		91A97D772396A07900015775 /* GroupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A97D762396A07900015775 /* GroupList.swift */; };
-		91A97D7B2396A62700015775 /* NewGroupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A97D7A2396A62700015775 /* NewGroupList.swift */; };
 		91ADF80C23D4942500C35F7D /* VKUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ADF80B23D4942500C35F7D /* VKUser.swift */; };
 		91ADF80E23D4957100C35F7D /* VKGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ADF80D23D4957100C35F7D /* VKGroup.swift */; };
 		91ADF81023D4999700C35F7D /* VKGroupJSONSerialistion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ADF80F23D4999700C35F7D /* VKGroupJSONSerialistion.swift */; };
@@ -102,7 +102,6 @@
 		91E769FC23F2CD640028BEE4 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E769F623F2CD640028BEE4 /* PhotoCell.swift */; };
 		91E769FD23F2CD640028BEE4 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E769F723F2CD640028BEE4 /* MessageCell.swift */; };
 		91F2178E23D501FA003FD677 /* VKPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2178D23D501FA003FD677 /* VKPhotos.swift */; };
-		91F2179023D6E222003FD677 /* VKGroupWithNestedContainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2178F23D6E222003FD677 /* VKGroupWithNestedContainers.swift */; };
 		91F2179223D6F145003FD677 /* FileCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2179123D6F145003FD677 /* FileCacher.swift */; };
 		91F217AE23D71D25003FD677 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F217AD23D71D25003FD677 /* CoreDataStack.swift */; };
 		91F217B523D82EAC003FD677 /* VKUserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F217B423D82EAC003FD677 /* VKUserRealm.swift */; };
@@ -172,8 +171,8 @@
 		9194659F23AFA16400FB9D6B /* OtherAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherAnimations.swift; sourceTree = "<group>"; };
 		919465A523AFA7A500FB9D6B /* TransitionAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimations.swift; sourceTree = "<group>"; };
 		919465A723AFAC0200FB9D6B /* CustomNavigationControllerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationControllerAnimation.swift; sourceTree = "<group>"; };
+		9196F7962418BAFE00767B36 /* NewsPhotoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPhotoCollectionView.swift; sourceTree = "<group>"; };
 		91A97D762396A07900015775 /* GroupList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupList.swift; sourceTree = "<group>"; };
-		91A97D7A2396A62700015775 /* NewGroupList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupList.swift; sourceTree = "<group>"; };
 		91ADF80B23D4942500C35F7D /* VKUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKUser.swift; sourceTree = "<group>"; };
 		91ADF80D23D4957100C35F7D /* VKGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroup.swift; sourceTree = "<group>"; };
 		91ADF80F23D4999700C35F7D /* VKGroupJSONSerialistion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroupJSONSerialistion.swift; sourceTree = "<group>"; };
@@ -214,7 +213,6 @@
 		91E769F623F2CD640028BEE4 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		91E769F723F2CD640028BEE4 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		91F2178D23D501FA003FD677 /* VKPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKPhotos.swift; sourceTree = "<group>"; };
-		91F2178F23D6E222003FD677 /* VKGroupWithNestedContainers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroupWithNestedContainers.swift; sourceTree = "<group>"; };
 		91F2179123D6F145003FD677 /* FileCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacher.swift; sourceTree = "<group>"; };
 		91F217AD23D71D25003FD677 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		91F217B423D82EAC003FD677 /* VKUserRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VKUserRealm.swift; path = ../../../Model/Realm/VKUserRealm.swift; sourceTree = "<group>"; };
@@ -294,7 +292,6 @@
 				91E752C523E1C64F0028BEE4 /* GroupList */,
 				914E7F4623E176BB0022BE72 /* FriendList */,
 				915B9DAA2389B93800944194 /* LoginViewController.swift */,
-				91A97D7A2396A62700015775 /* NewGroupList.swift */,
 				9132FDB923B61F5D00D0689A /* FriendsPhotoViewController.swift */,
 			);
 			path = Screens;
@@ -395,6 +392,7 @@
 				91BEE24A23FD595A007291E3 /* FriendCell.swift */,
 				91FBCCDA24176848001DE4C2 /* NewsPhotoCollectionViewCell.swift */,
 				91FBCCDB24176848001DE4C2 /* NewsPhotoCollectionViewCell.xib */,
+				9196F7962418BAFE00767B36 /* NewsPhotoCollectionView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -413,8 +411,6 @@
 				91ADF80D23D4957100C35F7D /* VKGroup.swift */,
 				91ADF80F23D4999700C35F7D /* VKGroupJSONSerialistion.swift */,
 				91F2178D23D501FA003FD677 /* VKPhotos.swift */,
-				91F2178F23D6E222003FD677 /* VKGroupWithNestedContainers.swift */,
-				91F2179123D6F145003FD677 /* FileCacher.swift */,
 				91E752F423EC25E70028BEE4 /* VKWall.swift */,
 				9137E11A240C178400432018 /* VKNews.swift */,
 				9137E122240C3C3600432018 /* VKNews-Addons.swift */,
@@ -600,6 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				91FBCCD824175C76001DE4C2 /* PhotoCashFunctions.swift */,
+				91F2179123D6F145003FD677 /* FileCacher.swift */,
 			);
 			path = CashService;
 			sourceTree = "<group>";
@@ -749,7 +746,6 @@
 				915B9DAB2389B93800944194 /* LoginViewController.swift in Sources */,
 				91E752C423E1C2BA0028BEE4 /* GroupRepository.swift in Sources */,
 				9190B5A723A79950009F054F /* ShareButton.swift in Sources */,
-				91A97D7B2396A62700015775 /* NewGroupList.swift in Sources */,
 				91BEE25423FE69E9007291E3 /* ProfileController.swift in Sources */,
 				91BEE24D23FD59A3007291E3 /* FriendList.swift in Sources */,
 				911E5A6E239A9F73008CD4D6 /* CustomView.swift in Sources */,
@@ -757,6 +753,7 @@
 				91E752C223E1C1180028BEE4 /* CommonRepository.swift in Sources */,
 				9137E11D240C1D5400432018 /* Animator.swift in Sources */,
 				91E769FB23F2CD640028BEE4 /* FriendCellwithXIB.swift in Sources */,
+				9196F7972418BAFE00767B36 /* NewsPhotoCollectionView.swift in Sources */,
 				91E752C723E1C6750028BEE4 /* GroupsPresenter.swift in Sources */,
 				91BEE24023FD1AD9007291E3 /* LoginConfigurator.swift in Sources */,
 				917FCC6523DB23560024C01D /* FriendRepository.swift in Sources */,
@@ -804,7 +801,6 @@
 				91E752F523EC25E70028BEE4 /* VKWall.swift in Sources */,
 				9164FD352393E33E0089EE2F /* PhotoController.swift in Sources */,
 				9137E121240C233400432018 /* MessageRepository.swift in Sources */,
-				91F2179023D6E222003FD677 /* VKGroupWithNestedContainers.swift in Sources */,
 				9194659923AE72B800FB9D6B /* TransitionTestVC.swift in Sources */,
 				91FBCCD924175C76001DE4C2 /* PhotoCashFunctions.swift in Sources */,
 				91E752D623E9C7FD0028BEE4 /* PhotosConfigurator.swift in Sources */,

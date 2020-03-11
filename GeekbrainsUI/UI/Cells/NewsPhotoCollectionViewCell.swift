@@ -9,21 +9,20 @@
 import UIKit
 
 class NewsPhotoCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var newsPhotoImage: UIImageView!
- 
         
     override func awakeFromNib() {
         super.awakeFromNib()
         // в тестовых целях покрасили ячейку! чтобы видно было
-   //     self.backgroundColor = UIColor.red
+        //     self.backgroundColor = UIColor.red
         self.newsPhotoImage.image = UIImage(named: "news1" )
-  
+        
     }
-
+    
     func renderCell(imagePath: String) {
         if let url = URL(string: imagePath){
-                newsPhotoImage.kf.setImage(with: url)
-            }
+            newsPhotoImage.kf.setImage(with: url)
+        }
     }
 }

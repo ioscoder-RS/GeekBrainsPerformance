@@ -33,7 +33,7 @@ class NewsRepository: NewsSource {
             if  tmpSourceId > 0 {
                 //значит извлекаем из массива пользователей
                 let tempArray = sourceNews.profiles.filter({(FriendsItems) in return Bool(FriendsItems.id == tmpSourceId )})
-
+                
                 parsedUsername = tempArray[0].firstName + " " + tempArray[0].lastName
                 parsedPhoto = tempArray[0].photo100            }
             else {
@@ -53,9 +53,9 @@ class NewsRepository: NewsSource {
                     }
                 }
             }
-             
+            
             if photoArray.count > 0 {
-                print("у нас есть photoArray! username = \(parsedUsername) кол-во фото: \(photoArray.count)")
+    //            print("у нас есть photoArray! username = \(parsedUsername) кол-во фото: \(photoArray.count)")
             }
             
             newsViewArray.append(NewsForViewController(
@@ -71,7 +71,7 @@ class NewsRepository: NewsSource {
                 
             ))
             
-                    //    print(newsViewArray)
+            //    print(newsViewArray)
         }
     }
 }

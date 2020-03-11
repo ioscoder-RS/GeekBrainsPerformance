@@ -11,7 +11,6 @@ import UIKit
 
 let debugMode = 0 //1 - debug on, 0 - debug off
 
-
 enum DatabaseType {
     case Realm
     case CoreData
