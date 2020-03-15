@@ -50,6 +50,7 @@ class MessageCell: UITableViewCell , UICollectionViewDelegate, UICollectionViewD
         self.newsPhoto.dataSource = self
     }
     
+    
     func registerCell() {
         newsPhoto.register(UINib(nibName: "NewsPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "newsPhotoCell")
         

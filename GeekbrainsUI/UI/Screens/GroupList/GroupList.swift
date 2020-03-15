@@ -81,19 +81,20 @@ class GroupList: UITableViewController, CellImageTapDelegate/*, ImageViewPresent
         let l_count: Int = presenter?.numberOfRows() ?? 0
         array_append(name: "NewGroup\(l_count)", id: l_count)
     }
-    
-    @IBAction func toGroupDetailButtonPressed(_ sender: Any) {
-        let animationDuration = 9.0
-        //     animationLoad(duration: animationDuration)
-        
-        self.perform(#selector(navigateToViewController), with: nil, afterDelay: animationDuration)
-    }
-    
-    @objc func navigateToViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(identifier: "MessageViewController") as! MessageViewController
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
+   
+    //MARK: в будущем можно вызывать новости для конкретной группы
+//    @IBAction func toGroupDetailButtonPressed(_ sender: Any) {
+//        let animationDuration = 0.1
+//        //     animationLoad(duration: animationDuration)
+//
+//        self.perform(#selector(navigateToViewController), with: nil, afterDelay: animationDuration)
+//    }
+//
+//    @objc func navigateToViewController() {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let viewController = storyboard.instantiateViewController(identifier: "SolidNewsViewController") as! SolidNewsViewController
+//        self.navigationController?.pushViewController(viewController, animated: true)
+//    }
     
     func array_append ( name: String, id: Int){
         //        groups.append(Group(groupName: name, avatarPath: "no", id: id))

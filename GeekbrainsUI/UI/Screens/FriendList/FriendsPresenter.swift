@@ -28,9 +28,9 @@ protocol FriendsPresenter{
     func getVKPhotoLikesAtIndex(indexPath: IndexPath) -> PhotoLikesRealm?
 }
 
-struct SectionRealm<T: RealmCollectionValue>{
+struct Section<T>{
     var title: String
-    var items: Results<T>
+    var items: [T]
 }
 
 class FriendsPresenterImplementation : FriendsPresenter {
@@ -64,6 +64,7 @@ class FriendsPresenterImplementation : FriendsPresenter {
         do {
             self.friendsResult = try userDB.getAllUsers()
             self.makeSortedSections()
+//            print(sortedFriendsResults)
             self.view?.updateTable()
         }catch { print(error)}
     }//func getFriendsFromDatabase()

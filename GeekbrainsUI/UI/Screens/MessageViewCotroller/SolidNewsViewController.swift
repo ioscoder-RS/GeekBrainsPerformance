@@ -6,7 +6,6 @@
 //  Copyright © 2019 raskin-sa. All rights reserved.
 //
 
-//3. Создать экран новостей. Добавить туда таблицу и сделать ячейку для новости. Ячейка должна содержать то же самое, что и в оригинальном приложении ВКонтакте: надпись, фотографии, кнопки «Мне нравится», «Комментировать», «Поделиться» и индикатор количества просмотров. Сделать поддержку только одной фотографии, которая должна быть квадратной формы и растягиваться на всю ширину ячейки. Высота ячейки должна вычисляться автоматически.
 
 import UIKit
 
@@ -21,7 +20,7 @@ protocol MessageView: class {
     func updateTable()
 }
 
-class MessageViewController: UITableViewController{
+class SolidNewsViewController: UITableViewController{
     
     var presenter: MessageViewPresenter?
     var configurator: MessageViewConfigurator?
@@ -54,9 +53,10 @@ class MessageViewController: UITableViewController{
         return cell
     }
     
+
     //Заглушка, задающая высоту ячейки, чтобы туда помещалась встроенная CollectionView
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 350
+        return 250
     }
     
     //    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,7 +65,7 @@ class MessageViewController: UITableViewController{
     
 }// class MessageViewController
 
-extension MessageViewController: MessageView{
+extension SolidNewsViewController: MessageView{
     func updateTable() {
         tableView.reloadData()
     }

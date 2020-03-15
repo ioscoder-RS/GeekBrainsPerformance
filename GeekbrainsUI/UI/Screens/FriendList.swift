@@ -9,10 +9,7 @@
 import UIKit
 import Kingfisher
 
-struct Section<T>{
-    var title: String
-    var items: [T]
-}
+
 
 protocol FriendsListView: class{
     func updateTable()

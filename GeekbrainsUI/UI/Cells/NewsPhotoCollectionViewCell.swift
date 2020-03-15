@@ -15,8 +15,8 @@ class NewsPhotoCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // в тестовых целях покрасили ячейку! чтобы видно было
-        //     self.backgroundColor = UIColor.red
-        self.newsPhotoImage.image = UIImage(named: "news1" )
+        //self.backgroundColor = UIColor.red
+        //self.newsPhotoImage.image = UIImage(named: "news1" )
         
     }
     

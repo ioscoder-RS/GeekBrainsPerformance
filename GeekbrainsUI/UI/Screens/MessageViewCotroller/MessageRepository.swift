@@ -66,7 +66,7 @@ class NewsRepository: NewsSource {
                 newsImages: photoArray,
                 newsLikes: sourceNews.items[a].likes,
                 newsReposts: sourceNews.items[a].reposts,
-                newsViews: sourceNews.items[a].views!,
+                newsViews: sourceNews.items[a].views,
                 newsComments: sourceNews.items[a].comments
                 
             ))
