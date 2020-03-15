@@ -30,7 +30,7 @@ class MessageViewPresenterImplementation: MessageViewPresenter {
     private var vkAPI: VKAPi
     private weak var view: MessageView?  //класс TableView, где все отображается
     var newsRepository = NewsRepository() // массив новостей, полученный из БД
-    var newsResult: [NewsForViewController]? //запрос, считанный с сервера ВК (единая структура)
+    var newsResult = [NewsForViewController]() //запрос, считанный с сервера ВК (единая структура)
 
     private var NewsWithSectionsAnyArray = [NewsWithSectionsAny]() //новость, разбитая внутри класса на секции
    private var sortedNewsResults = [Section<NewsWithSectionsAny>]() //массив с секциями, отображаемый в TableView
@@ -67,6 +67,7 @@ class MessageViewPresenterImplementation: MessageViewPresenter {
             //Получаем значение nextFrom
             self.nextFrom = getNextFrom()
             
+             isFetchingMoreNews = true
             //Получаем пользователей из Web
             vkAPI.getNewsList(token: Session.shared.token, userId: Session.shared.userId, nextFrom: self.nextFrom, version: Session.shared.version){  result in
                 switch result {
@@ -83,6 +84,7 @@ class MessageViewPresenterImplementation: MessageViewPresenter {
                 case .failure(let error):
                     print("we got error in getNewsfeed(): \(error)")
                 }//switch
+                self.isFetchingMoreNews = false
             }//completion
         }// if webMode{
         else
@@ -146,7 +148,8 @@ class MessageViewPresenterImplementation: MessageViewPresenter {
     
     func makeSections(){
         
-        guard let localNewsResult = newsResult else {return}
+  //*      guard let localNewsResult = newsResult else {return}
+        let localNewsResult = newsResult
         
         let newsResultcount = localNewsResult.count
         if newsResultcount > 0{
@@ -170,10 +173,12 @@ class MessageViewPresenterImplementation: MessageViewPresenter {
 extension MessageViewPresenterImplementation {
     //MARK: функции для TableViewController без секций
     func numberOfRows() -> Int {
-        return newsResult?.count ?? 0
+ //*       return newsResult?.count ?? 0
+        return newsResult.count
     }
     func getCurrentNewsAtIndex(indexPath: IndexPath) -> NewsForViewController? {
-       return newsResult?[indexPath.row]
+ //*      return newsResult?[indexPath.row]
+        return newsResult[indexPath.row]
      //   return newsSections[indexPath.section].newsArray
     }
     
@@ -258,12 +263,14 @@ extension MessageViewPresenterImplementation {
        }//func getTableviewCell
   
     func fetchMoreNews(tableView: UITableView, indexPaths: [IndexPath]) {
-    guard !isFetchingMoreNews,
-         let maxRow = indexPaths.map({ $0.row }).max(),
+        print("prefetchRowsAt \(indexPaths)")
+        let maxRow = indexPaths.map({ $0.section }).max()
+        print("newsResult.count = \(newsResult.count)")
         
-        //MARK: newsResult ли?
-        newsResult?.count ?? 0 <= maxRow + 3  else { return }
-     
+    guard !isFetchingMoreNews,
+        maxRow != nil,
+        newsResult.count  <= maxRow! + 3  else { return }
+
      isFetchingMoreNews = true
        vkAPI.getNewsList(token: Session.shared.token, userId: Session.shared.userId, nextFrom: nextFrom, version: Session.shared.version) { [weak self] result in
          guard let self = self else { return }
@@ -277,13 +284,17 @@ extension MessageViewPresenterImplementation {
             self.makeSections()
             //сохраняем nextFrom
             self.nextFrom = posts.nextFrom
+            self.isFetchingMoreNews = false
              self.view?.updateTable()
          case .failure(let error):
              print(error)
          }
-         self.isFetchingMoreNews = false
+
+
      }
-    }//func fetchMoreNews()
+    
+   }//func fetchMoreNews()
+        
 }// extension
 
 

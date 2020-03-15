@@ -177,8 +177,7 @@ class VKAPi {
                            "user_id": userId,
                            "source_ids": "friends,groups,pages,following",
                            "filters": "post, note",
-                           "count": "5",
-                 //          "fields": "first_name,last_name,name,photo_100,online",
+                           "count": "10",
                            "start_from": nextFrom ?? "",
                            "v": version]
              

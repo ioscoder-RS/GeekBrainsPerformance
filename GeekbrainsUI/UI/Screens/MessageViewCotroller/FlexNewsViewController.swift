@@ -24,6 +24,7 @@ class FlexNewsViewController: UITableViewController{
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.prefetchDataSource = self
         
         self.configurator = NewMessageViewConfiguratorImplementation()
         configurator?.configure(view: self)

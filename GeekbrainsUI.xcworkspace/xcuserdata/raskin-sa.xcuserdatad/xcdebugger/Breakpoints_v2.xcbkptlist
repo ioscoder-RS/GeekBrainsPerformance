@@ -62,40 +62,55 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "getNewsFromApiAndDB(from:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "510CD601-42F4-4C31-BC21-C73029016EB7 - 2ae598d9214db5fc"
+                  uuid = "510CD601-42F4-4C31-BC21-C73029016EB7 - dbbb8978722d9c9"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "GeekbrainsUI.MessageViewPresenterImplementation.getNewsFromApiAndDB() -&gt; ()"
+                  symbolName = "closure #1 (Swift.Result&lt;GeekbrainsUI.ResponseNews, Swift.Error&gt;) -&gt; () in GeekbrainsUI.MessageViewPresenterImplementation.getNewsFromApiAndDB(from: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
                   moduleName = "GeekbrainsUI"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/raskin-sa/GeekBrainsUIRepository/cl-serv10/GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
+                  urlString = "file:///Users/raskin-sa/GeekBrainsPerformance/GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "120">
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "134">
                </Location>
                <Location
-                  uuid = "510CD601-42F4-4C31-BC21-C73029016EB7 - 4280e7379bedbd2f"
+                  uuid = "510CD601-42F4-4C31-BC21-C73029016EB7 - dbbb8978722d9c9"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;GeekbrainsUI.VKNews, Swift.Error&gt;) -&gt; () in GeekbrainsUI.MessageViewPresenterImplementation.getNewsFromApiAndDB() -&gt; ()"
+                  symbolName = "closure #1 (Swift.Result&lt;GeekbrainsUI.ResponseNews, Swift.Error&gt;) -&gt; () in GeekbrainsUI.MessageViewPresenterImplementation.getNewsFromApiAndDB(from: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
                   moduleName = "GeekbrainsUI"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/raskin-sa/GeekBrainsUIRepository/cl-serv10/GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
+                  urlString = "file:///Users/raskin-sa/GeekBrainsPerformance/GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "134">
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "163">
+               </Location>
+               <Location
+                  uuid = "510CD601-42F4-4C31-BC21-C73029016EB7 - dbbb8978722d9c9"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;GeekbrainsUI.ResponseNews, Swift.Error&gt;) -&gt; () in GeekbrainsUI.MessageViewPresenterImplementation.getNewsFromApiAndDB(from: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "GeekbrainsUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/raskin-sa/GeekBrainsPerformance/GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "493">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -110,8 +125,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "createNewsForView(sourceNews:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +141,8 @@
             filePath = "GeekbrainsUI/Model/VKApi.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208">
+            startingLineNumber = "207"
+            endingLineNumber = "207">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -140,8 +155,8 @@
             filePath = "GeekbrainsUI/Model/VKApi.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208">
+            startingLineNumber = "207"
+            endingLineNumber = "207">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,8 +169,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "getNewsFromApiAndDB(from:)"
             landmarkType = "7">
             <Locations>
@@ -217,8 +232,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "createNewsForView(sourceNews:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -233,8 +248,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "createNewsForView(sourceNews:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -265,8 +280,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "createNewsForView(sourceNews:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -281,8 +296,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "createNewsForView(sourceNews:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,8 +425,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "createNewsForView(sourceNews:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,8 +441,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "createNewsForView(sourceNews:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -540,8 +555,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "FlexNewsViewController"
-            landmarkType = "3">
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -556,8 +571,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
             endingLineNumber = "59"
-            landmarkName = "getNewsFromDatabase()"
-            landmarkType = "7">
+            landmarkName = "MessageViewPresenterImplementation"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -570,10 +585,10 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "MessageViewPresenterImplementation"
-            landmarkType = "21">
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "numberOfRows()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -602,57 +617,10 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "getNewsFromApiAndDB(from:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "4C84ABB4-37A1-4C51-91A3-1B1F3537D84D - dbbb8978722d9c9"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;GeekbrainsUI.ResponseNews, Swift.Error&gt;) -&gt; () in GeekbrainsUI.MessageViewPresenterImplementation.getNewsFromApiAndDB(from: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "GeekbrainsUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/raskin-sa/GeekBrainsPerformance/GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "134">
-               </Location>
-               <Location
-                  uuid = "4C84ABB4-37A1-4C51-91A3-1B1F3537D84D - dbbb8978722d9c9"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;GeekbrainsUI.ResponseNews, Swift.Error&gt;) -&gt; () in GeekbrainsUI.MessageViewPresenterImplementation.getNewsFromApiAndDB(from: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "GeekbrainsUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/raskin-sa/GeekBrainsPerformance/GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "163">
-               </Location>
-               <Location
-                  uuid = "4C84ABB4-37A1-4C51-91A3-1B1F3537D84D - dbbb8978722d9c9"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;GeekbrainsUI.ResponseNews, Swift.Error&gt;) -&gt; () in GeekbrainsUI.MessageViewPresenterImplementation.getNewsFromApiAndDB(from: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "GeekbrainsUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/raskin-sa/GeekBrainsPerformance/GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "431">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -745,8 +713,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "makeSections()"
             landmarkType = "7">
          </BreakpointContent>
@@ -761,8 +729,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "numberOfRows()"
             landmarkType = "7">
          </BreakpointContent>
@@ -777,8 +745,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "numberOfRows()"
             landmarkType = "7">
          </BreakpointContent>
@@ -825,8 +793,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "numberOfSections()"
             landmarkType = "7">
          </BreakpointContent>
@@ -841,8 +809,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "makeSections()"
             landmarkType = "7">
          </BreakpointContent>
@@ -857,8 +825,8 @@
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "getTableviewCell(tableView:indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -873,8 +841,8 @@
             filePath = "GeekbrainsUI/Model/VKApi.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "getNewsList(token:userId:nextFrom:version:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -883,15 +851,15 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "D3D32C7A-53BB-4576-ADA8-1AF698E8DD62"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
-            landmarkName = "fetchMoreNews(tableView:prefetchRowsAt:)"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "fetchMoreNews(tableView:indexPaths:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -899,7 +867,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4E2DD9F4-69AE-46F1-9527-AC034FADE09E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/FlexNewsViewController.swift"
@@ -915,7 +883,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "8C519033-6C1E-4389-BDA6-BCDD79660DD6"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/FlexNewsViewController.swift"
@@ -925,6 +893,54 @@
             endingLineNumber = "83"
             landmarkName = "tableView(_:prefetchRowsAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "793C7EC4-ECC8-49B0-A545-8D054A89E8C3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "fetchMoreNews(tableView:indexPaths:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "10541238-0675-499E-94AD-3E612D0A75C9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/MessageViewPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "fetchMoreNews(tableView:indexPaths:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4AA5CE81-0B92-40EC-8CFA-5E48787DCABF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeekbrainsUI/UI/Screens/MessageViewCotroller/tableView.prefetchDataSource = self.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

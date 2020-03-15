@@ -24,6 +24,9 @@ class NewsRepository: NewsSource {
         var parsedUsername: String = ""
         var photoArray = [String]()
         
+        //обнуляем массив, т.к. он может быть не пустым
+        //например: при инициирующей загрузке его заполнили, а потом в prefetchRowsAt начали подкачивать
+        newsViewArray = [NewsForViewController]()
         
         for a in 0 ... sourceNews.items.count - 1 {
             
