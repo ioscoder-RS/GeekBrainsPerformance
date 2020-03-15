@@ -169,7 +169,7 @@ class VKAPi {
     
 
     
-    func getNewsList(token: String, userId:String, nextFrom: String?, version: String, completion: @escaping (Out<(ResponseNews), Error>) -> Void ) {
+    func getNewsList(token: String, userId:String, nextFrom: String?, startTime: String?, version: String, completion: @escaping (Out<(ResponseNews), Error>) -> Void ) {
          let requestURL = vkURL + "newsfeed.get"
          var params: [String : String]
     
@@ -179,6 +179,7 @@ class VKAPi {
                            "filters": "post, note",
                            "count": "10",
                            "start_from": nextFrom ?? "",
+                           "start_time": startTime ?? "",
                            "v": version]
              
  

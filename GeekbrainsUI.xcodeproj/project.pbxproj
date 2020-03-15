@@ -31,11 +31,11 @@
 		9132FDBA23B61F5D00D0689A /* FriendsPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132FDB923B61F5D00D0689A /* FriendsPhotoViewController.swift */; };
 		9132FDBD23B6323600D0689A /* CustomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132FDBC23B6323600D0689A /* CustomAnimator.swift */; };
 		9132FDBF23B632CE00D0689A /* CustomInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132FDBE23B632CE00D0689A /* CustomInteractor.swift */; };
-		9137E119240C160F00432018 /* MessageViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9137E118240C160F00432018 /* MessageViewPresenter.swift */; };
+		9137E119240C160F00432018 /* NewsViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9137E118240C160F00432018 /* NewsViewPresenter.swift */; };
 		9137E11B240C178400432018 /* VKNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9137E11A240C178400432018 /* VKNews.swift */; };
 		9137E11D240C1D5400432018 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9137E11C240C1D5400432018 /* Animator.swift */; };
-		9137E11F240C20AD00432018 /* MessageViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9137E11E240C20AD00432018 /* MessageViewConfigurator.swift */; };
-		9137E121240C233400432018 /* MessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9137E120240C233400432018 /* MessageRepository.swift */; };
+		9137E11F240C20AD00432018 /* NewsViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9137E11E240C20AD00432018 /* NewsViewConfigurator.swift */; };
+		9137E121240C233400432018 /* NewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9137E120240C233400432018 /* NewsRepository.swift */; };
 		9137E123240C3C3600432018 /* VKNews-Addons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9137E122240C3C3600432018 /* VKNews-Addons.swift */; };
 		914E7F4823E176EB0022BE72 /* FriendsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E7F4723E176EB0022BE72 /* FriendsPresenter.swift */; };
 		914E7F4A23E176FD0022BE72 /* FriendsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E7F4923E176FD0022BE72 /* FriendsConfigurator.swift */; };
@@ -149,11 +149,11 @@
 		9132FDB923B61F5D00D0689A /* FriendsPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotoViewController.swift; sourceTree = "<group>"; };
 		9132FDBC23B6323600D0689A /* CustomAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimator.swift; sourceTree = "<group>"; };
 		9132FDBE23B632CE00D0689A /* CustomInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractor.swift; sourceTree = "<group>"; };
-		9137E118240C160F00432018 /* MessageViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewPresenter.swift; sourceTree = "<group>"; };
+		9137E118240C160F00432018 /* NewsViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewPresenter.swift; sourceTree = "<group>"; };
 		9137E11A240C178400432018 /* VKNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNews.swift; sourceTree = "<group>"; };
 		9137E11C240C1D5400432018 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
-		9137E11E240C20AD00432018 /* MessageViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewConfigurator.swift; sourceTree = "<group>"; };
-		9137E120240C233400432018 /* MessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRepository.swift; sourceTree = "<group>"; };
+		9137E11E240C20AD00432018 /* NewsViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewConfigurator.swift; sourceTree = "<group>"; };
+		9137E120240C233400432018 /* NewsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRepository.swift; sourceTree = "<group>"; };
 		9137E122240C3C3600432018 /* VKNews-Addons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VKNews-Addons.swift"; sourceTree = "<group>"; };
 		914E7F4723E176EB0022BE72 /* FriendsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPresenter.swift; sourceTree = "<group>"; };
 		914E7F4923E176FD0022BE72 /* FriendsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsConfigurator.swift; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 		911E5A75239D1581008CD4D6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				9137E117240C159C00432018 /* MessageViewCotroller */,
+				9137E117240C159C00432018 /* NewsViewCotroller */,
 				91BEE25523FE7382007291E3 /* FirstScreen */,
 				91BEE25223FE683B007291E3 /* ProfileController */,
 				91BEE23E23FD192C007291E3 /* LoginController */,
@@ -326,6 +326,9 @@
 				9122F042241A748600EE86C7 /* LikesRepostsComments.xib */,
 				9122F045241A797C00EE86C7 /* PhotoCollectionTableViewCell.swift */,
 				9122F046241A797C00EE86C7 /* PhotoCollectionTableViewCell.xib */,
+				91FBCCDA24176848001DE4C2 /* NewsPhotoCollectionViewCell.swift */,
+				91FBCCDB24176848001DE4C2 /* NewsPhotoCollectionViewCell.xib */,
+				9196F7962418BAFE00767B36 /* NewsPhotoCollectionView.swift */,
 			);
 			path = MessageCellParts;
 			sourceTree = "<group>";
@@ -349,16 +352,16 @@
 			path = MusicPlayerAnimators;
 			sourceTree = "<group>";
 		};
-		9137E117240C159C00432018 /* MessageViewCotroller */ = {
+		9137E117240C159C00432018 /* NewsViewCotroller */ = {
 			isa = PBXGroup;
 			children = (
 				9161587723A3C19300F16F42 /* SolidNewsViewController.swift */,
-				9137E118240C160F00432018 /* MessageViewPresenter.swift */,
-				9137E11E240C20AD00432018 /* MessageViewConfigurator.swift */,
-				9137E120240C233400432018 /* MessageRepository.swift */,
+				9137E118240C160F00432018 /* NewsViewPresenter.swift */,
+				9137E11E240C20AD00432018 /* NewsViewConfigurator.swift */,
+				9137E120240C233400432018 /* NewsRepository.swift */,
 				9122F049241A7D1600EE86C7 /* FlexNewsViewController.swift */,
 			);
-			path = MessageViewCotroller;
+			path = NewsViewCotroller;
 			sourceTree = "<group>";
 		};
 		914E7F4623E176BB0022BE72 /* FriendList */ = {
@@ -425,9 +428,6 @@
 				91E769F723F2CD640028BEE4 /* MessageCell.swift */,
 				91E769F623F2CD640028BEE4 /* PhotoCell.swift */,
 				91BEE24A23FD595A007291E3 /* FriendCell.swift */,
-				91FBCCDA24176848001DE4C2 /* NewsPhotoCollectionViewCell.swift */,
-				91FBCCDB24176848001DE4C2 /* NewsPhotoCollectionViewCell.xib */,
-				9196F7962418BAFE00767B36 /* NewsPhotoCollectionView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -778,7 +778,7 @@
 				9190B5BD23ACB34E009F054F /* myMenu.swift in Sources */,
 				91FBCCDC24176848001DE4C2 /* NewsPhotoCollectionViewCell.swift in Sources */,
 				9132FDA923B4876000D0689A /* PopAnimator.swift in Sources */,
-				9137E119240C160F00432018 /* MessageViewPresenter.swift in Sources */,
+				9137E119240C160F00432018 /* NewsViewPresenter.swift in Sources */,
 				911E5A74239D1377008CD4D6 /* Group.swift in Sources */,
 				916BB2D62417AFE90021C326 /* NewsCellLayout.swift in Sources */,
 				91ADF80C23D4942500C35F7D /* VKUser.swift in Sources */,
@@ -843,7 +843,7 @@
 				91E752F523EC25E70028BEE4 /* VKWall.swift in Sources */,
 				9164FD352393E33E0089EE2F /* PhotoController.swift in Sources */,
 				9122F043241A748600EE86C7 /* LikesRepostsComments.swift in Sources */,
-				9137E121240C233400432018 /* MessageRepository.swift in Sources */,
+				9137E121240C233400432018 /* NewsRepository.swift in Sources */,
 				9194659923AE72B800FB9D6B /* TransitionTestVC.swift in Sources */,
 				9122F03B241A6F4000EE86C7 /* IconUserTimeCell.swift in Sources */,
 				91FBCCD924175C76001DE4C2 /* PhotoCashFunctions.swift in Sources */,
@@ -858,7 +858,7 @@
 				91E769FD23F2CD640028BEE4 /* MessageCell.swift in Sources */,
 				91E752C923E1D8410028BEE4 /* PhotoRepository.swift in Sources */,
 				91CB234523DACC7B003C9EA8 /* AppVariables.swift in Sources */,
-				9137E11F240C20AD00432018 /* MessageViewConfigurator.swift in Sources */,
+				9137E11F240C20AD00432018 /* NewsViewConfigurator.swift in Sources */,
 				9132FDBD23B6323600D0689A /* CustomAnimator.swift in Sources */,
 				9190B5AD23A7A531009F054F /* ViewButton.swift in Sources */,
 				9132FDAD23B48D3800D0689A /* UIApplication+Controller.swift in Sources */,
