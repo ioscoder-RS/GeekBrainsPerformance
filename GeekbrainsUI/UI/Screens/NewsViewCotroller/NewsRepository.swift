@@ -57,10 +57,6 @@ class NewsRepository: NewsSource {
                 }
             }
             
-            if photoArray.count > 0 {
-    //            print("у нас есть photoArray! username = \(parsedUsername) кол-во фото: \(photoArray.count)")
-            }
-            
             newsViewArray.append(NewsForViewController(
                 avatarPath: parsedPhoto,
                 userName: parsedUsername,

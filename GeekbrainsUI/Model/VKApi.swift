@@ -197,6 +197,7 @@ class VKAPi {
                     let result = try JSONDecoder().decode(CommonResponseNews.self, from: data)
                      completion(.success(result.response))
                  } catch {
+                     print(String(decoding: data, as: UTF8.self))
                      completion(.failure(error))
                  }
          }

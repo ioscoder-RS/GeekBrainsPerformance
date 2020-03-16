@@ -35,10 +35,14 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
     private var NewsWithSectionsAnyArray = [NewsWithSectionsAny]() //новость, разбитая внутри класса на секции
     private var sortedNewsResults = [Section<NewsWithSectionsAny>]() //массив с секциями, отображаемый в TableView
     
+    var customRefreshControl = UIRefreshControl() //для дозагрузки обновлений в новости
+//    var freshestDate: String?
+    
     private var newsDB: NewsSource
     
     var isFetchingMoreNews = false  //загружаем более старые новости или нет
     var nextFrom: String? //с какой отметки загружать новости
+    var freshestDateInt = 0
     
     var imageLoadQueue = DispatchQueue(label: "GeekbrainsUI.images.posts", attributes: .concurrent)
     
@@ -49,6 +53,8 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
     }
     
     func viewDidLoad(){
+        addRefreshControl()
+        
         self.newsResult = [NewsForViewController]()
         getNewsFromApiAndDB()
     }
@@ -56,6 +62,7 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
     func getNewsFromDatabase(){
         self.newsResult = newsDB.getAllNews()
         self.makeSections()
+        self.sortForTableView()
         self.view?.updateTable()
     }//func getGroupsFromDatabase()
     
@@ -103,6 +110,12 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
         
         let newsUniqID = String(newsToSlice.newsDate) + "-" + newsToSlice.userName
         
+        
+        if newsToSlice.newsDate > self.freshestDateInt {
+            self.freshestDateInt = newsToSlice.newsDate
+        }
+        
+        
         for ii in 0 ... cellType.count - 1{ //цикл по кол-ву типов ячеек
             switch cellType[ii]{
             case "IconUserTimeCell":
@@ -146,11 +159,20 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
                             newsComments: newsToSlice.newsComments)
                     )
                 )
-            default: return
+            default:
+                print("ой")
+                return
             }
             
         }// for ii
     }// func sliceAndAppendNews()
+  
+    func sortForTableView(){
+        let groupedNews = Dictionary.init(grouping: NewsWithSectionsAnyArray){$0.newsUniqID }
+        //        let groupedNews = Dictionary.init(grouping: newsResult!){$0.newsDate }
+        sortedNewsResults = groupedNews.map { Section(title: String($0.key), items: $0.value) }
+        sortedNewsResults.sort {$0.title > $1.title}
+    }
     
     func makeSections(){
         
@@ -163,16 +185,12 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
             for i in 0 ... newsResultcount - 1 { //цикл по кол-ву новостей
                 sliceAndAppendNews(newsToSlice: localNewsResult[i])
             }// for i
-            
-            
-            let groupedNews = Dictionary.init(grouping: NewsWithSectionsAnyArray){$0.newsUniqID }
-            //        let groupedNews = Dictionary.init(grouping: newsResult!){$0.newsDate }
-            sortedNewsResults = groupedNews.map { Section(title: String($0.key), items: $0.value) }
-            sortedNewsResults.sort {$0.title > $1.title}
-            //         print("sortedNewsResults = \(sortedNewsResults)")
+    
         }//if
         //  print ("заполнили makeSections: \n \(newsSections)")
     }
+    
+
     
 }//class GroupPresenterImplementation
 
@@ -213,8 +231,7 @@ extension NewsViewPresenterImplementation {
         var currentCell = UITableViewCell()
         
         guard let currentNews = self.getCurrentNewsAtIndexSection( indexPath: indexPath) else {return currentCell}
-        //       print("наш currentnews = \n \(currentNews)")
-        //*       let rowType = currentNews.cellType
+     
         let rowType = currentNews.cellType
         
         switch rowType {
@@ -286,14 +303,17 @@ extension NewsViewPresenterImplementation {
                 self.newsResult = self.newsDB.getAllNews()
                 //разбиваем полученный результат на части, превращаем в секции
                 self.makeSections()
+                // сортируем данные и группируем по секциям
+                self.sortForTableView()
                 //сохраняем nextFrom
                 self.nextFrom = posts.nextFrom
-                self.isFetchingMoreNews = false
+                
                 self.view?.updateTable()
             case .failure(let error):
                 print(error)
             }
         }
+          self.isFetchingMoreNews = false
     }//func fetchMoreNews()
     
     func getRowHeight(tableView: UITableView, indexPath: IndexPath) -> CGFloat {
@@ -315,6 +335,46 @@ extension NewsViewPresenterImplementation {
         }
     }//func getRowHeight
     
+    func addRefreshControl(){
+        customRefreshControl.attributedTitle = NSAttributedString(string:"refreshing...")
+        customRefreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        self.view?.addSubView(view: customRefreshControl)
+    }
+    
+    @objc func refreshTable(){
+        
+  
+            self.isFetchingMoreNews = true
+            self.vkAPI.getNewsList(token: Session.shared.token, userId: Session.shared.userId, nextFrom: nil, startTime: String(self.freshestDateInt + 1), version: Session.shared.version) { [weak self] result in
+                   guard let self = self else { return }
+                   switch result {
+                   case .success(let posts):
+                      
+                      if posts.items.count > 0 {
+                       //приводим результат с сервера к виду, с которым будем работать в этом классе
+                       self.newsDB.createNewsForView(sourceNews: posts)
+
+                       //сохраняем массив новополученных новостей в переменную
+                       self.newsResult = self.newsDB.getAllNews()
+
+                       //разбиваем полученный результат на части, превращаем в секции
+                       self.makeSections()
+
+                        // сортируем данные и группируем по секциям
+                        self.sortForTableView()
+
+                       self.view?.updateTable()
+                      }//if posts.items.count > 0
+                      
+                  
+                   case .failure(let error):
+                       print(error)
+                   }
+               }
+             self.isFetchingMoreNews = false
+            self.customRefreshControl.endRefreshing()
+
+    } //@objc func refreshTable(){
 }// extension
 
 

@@ -36,12 +36,10 @@ class TransitionVC: UIViewController, UINavigationControllerDelegate {
         navigationController?.popViewController(animated: true)
         case .changed:
             self.shouldFinish = percentComplete > 0.33
-            print(percentComplete)
             transitionInteraction?.update(percentComplete)
         case .ended:
             self.hasStarted = false
             let velocity = gesture.velocity(in: gesture.view)
-            print(percentComplete)
             if velocity.x > 0 || percentComplete > 0.5 {
                 transitionInteraction?.finish()
             }else {

@@ -11,6 +11,7 @@ import UIKit
 
 protocol MessageView: class {
     func updateTable()
+    func addSubView(view: UIView)
 }
 
 class FlexNewsViewController: UITableViewController{
@@ -64,6 +65,10 @@ class FlexNewsViewController: UITableViewController{
 extension FlexNewsViewController: MessageView{
     func updateTable() {
         tableView.reloadData()
+    }
+    
+    func addSubView(view: UIView){
+        tableView.addSubview(view)
     }
 }
 

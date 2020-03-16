@@ -18,9 +18,9 @@
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" id="9r8-80-gzJ" customClass="NewsPhotoCollectionView" customModule="GeekbrainsUI" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewLayout key="collectionViewLayout" id="9ro-VG-Fb4" customClass="NewsCellLayout" customModule="GeekbrainsUI" customModuleProvider="target"/>
+                        <collectionViewLayout key="collectionViewLayout" id="3r1-1w-GPL" customClass="NewsCellLayout" customModule="GeekbrainsUI" customModuleProvider="target"/>
                     </collectionView>
                 </subviews>
                 <constraints>
