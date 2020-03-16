@@ -13,7 +13,8 @@ class PhotoCollectionTableViewCell: UITableViewCell , UICollectionViewDelegate, 
     var newsPhotocount: Int?
        var newsPhotoArray: [String]?
     
-    @IBOutlet weak var newsPhotoCollectionView: UICollectionView!
+    @IBOutlet weak var newsPhotoCollectionView: NewsPhotoCollectionView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

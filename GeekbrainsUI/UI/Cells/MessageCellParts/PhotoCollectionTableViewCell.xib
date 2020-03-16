@@ -16,21 +16,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" id="9r8-80-gzJ" customClass="NewsPhotoCollectionView" customModule="GeekbrainsUI" customModuleProvider="target">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="n1s-7g-15p" customClass="NewsPhotoCollectionView" customModule="GeekbrainsUI" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                        <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewLayout key="collectionViewLayout" id="3r1-1w-GPL" customClass="NewsCellLayout" customModule="GeekbrainsUI" customModuleProvider="target"/>
+                        <collectionViewLayout key="collectionViewLayout" id="fgu-Om-hQz" customClass="NewsCellPicturesLayout" customModule="GeekbrainsUI" customModuleProvider="target"/>
                     </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="9r8-80-gzJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="0Dc-ly-bTq"/>
-                    <constraint firstItem="9r8-80-gzJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QbT-Jn-yCn"/>
+                    <constraint firstAttribute="trailing" secondItem="n1s-7g-15p" secondAttribute="trailing" id="Arc-wL-ml4"/>
+                    <constraint firstItem="n1s-7g-15p" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="DDY-5y-vZ8"/>
+                    <constraint firstAttribute="bottom" secondItem="n1s-7g-15p" secondAttribute="bottom" id="UZ8-AX-3rT"/>
+                    <constraint firstItem="n1s-7g-15p" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lMr-AS-Gp0"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="n1s-7g-15p" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" id="Bbo-53-yeR"/>
+                <constraint firstItem="n1s-7g-15p" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" id="T37-43-DQq"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="n1s-7g-15p" secondAttribute="trailing" id="cuJ-Sh-ApD"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="n1s-7g-15p" secondAttribute="bottom" id="zxQ-R6-LKl"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="newsPhotoCollectionView" destination="9r8-80-gzJ" id="UNn-Bk-iHD"/>
+                <outlet property="newsPhotoCollectionView" destination="n1s-7g-15p" id="ooC-Wd-2ZL"/>
             </connections>
             <point key="canvasLocation" x="273.91304347826087" y="49.553571428571423"/>
         </tableViewCell>

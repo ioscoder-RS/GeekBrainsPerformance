@@ -175,9 +175,9 @@ class VKAPi {
     
              params = ["access_token": token,
                            "user_id": userId,
-                           "source_ids": "friends,groups,pages,following",
+                           "source_ids": "friends,groups",
                            "filters": "post, note",
-                           "count": "10",
+                           "count": "5",
                            "start_from": nextFrom ?? "",
                            "start_time": startTime ?? "",
                            "v": version]

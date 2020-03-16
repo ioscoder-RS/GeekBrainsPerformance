@@ -79,9 +79,6 @@ class LoginPresenterImplementation: NSObject, LoginPresenter{
     }
     
 
-    
-
-    
     func saveLoginToDB(oneLogin: VKLogin){
         do{
              try self.loginDB.addLogin(login: oneLogin)

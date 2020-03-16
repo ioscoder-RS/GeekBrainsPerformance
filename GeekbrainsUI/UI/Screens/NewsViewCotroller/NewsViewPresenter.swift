@@ -76,9 +76,10 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
             //Получаем значение nextFrom
             self.nextFrom = getNextFrom()
             
-            isFetchingMoreNews = true
+            
             //Получаем пользователей из Web
             imageLoadQueue.async {
+                self.isFetchingMoreNews = true
                 self.vkAPI.getNewsList(token: Session.shared.token, userId: Session.shared.userId, nextFrom: self.nextFrom, startTime: nil, version: Session.shared.version){  result in
                     switch result {
                     case .success(let webNews): //массив VKNews из Web
@@ -292,8 +293,10 @@ extension NewsViewPresenterImplementation {
             maxRow != nil,
             newsResult.count  <= maxRow! + 3  else { return }
         
-        isFetchingMoreNews = true
-        vkAPI.getNewsList(token: Session.shared.token, userId: Session.shared.userId, nextFrom: nextFrom, startTime: nil, version: Session.shared.version) { [weak self] result in
+      
+        imageLoadQueue.async {
+            self.isFetchingMoreNews = true
+            self.vkAPI.getNewsList(token: Session.shared.token, userId: Session.shared.userId, nextFrom: self.nextFrom, startTime: nil, version: Session.shared.version) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let posts):
@@ -309,11 +312,14 @@ extension NewsViewPresenterImplementation {
                 self.nextFrom = posts.nextFrom
                 
                 self.view?.updateTable()
+                self.isFetchingMoreNews = false
             case .failure(let error):
+                self.isFetchingMoreNews = false
                 print(error)
-            }
-        }
-          self.isFetchingMoreNews = false
+            }//switch result
+        }// completion
+        }//imageLoadQueue.async
+   
     }//func fetchMoreNews()
     
     func getRowHeight(tableView: UITableView, indexPath: IndexPath) -> CGFloat {
@@ -323,11 +329,11 @@ extension NewsViewPresenterImplementation {
         case 2:
             let currentNews = self.getCurrentNewsAtIndexSection(indexPath: indexPath)
             let localStruct = currentNews?.newsPart as! StrPhotoCollectionCV
-            if localStruct.newsImages.count == 0 {
+            switch(localStruct.newsImages.count) {
+            case 0:
                 return 0
-            }
-            else {
-                return 100
+            default:
+                return 300
             }
             
         default:

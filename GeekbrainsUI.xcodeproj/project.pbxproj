@@ -16,6 +16,7 @@
 		911E5A70239D08B4008CD4D6 /* CircleShadowImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E5A6F239D08B4008CD4D6 /* CircleShadowImage.swift */; };
 		911E5A72239D1113008CD4D6 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E5A71239D1113008CD4D6 /* Friend.swift */; };
 		911E5A74239D1377008CD4D6 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E5A73239D1377008CD4D6 /* Group.swift */; };
+		9120EA13241FD7FE007ADDE7 /* NewCellsPicturesLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9120EA12241FD7FE007ADDE7 /* NewCellsPicturesLayout.swift */; };
 		9122F03B241A6F4000EE86C7 /* IconUserTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9122F039241A6F4000EE86C7 /* IconUserTimeCell.swift */; };
 		9122F03C241A6F4000EE86C7 /* IconUserTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9122F03A241A6F4000EE86C7 /* IconUserTimeCell.xib */; };
 		9122F03F241A72F900EE86C7 /* PostAndButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9122F03D241A72F900EE86C7 /* PostAndButton.swift */; };
@@ -134,6 +135,7 @@
 		911E5A6F239D08B4008CD4D6 /* CircleShadowImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShadowImage.swift; sourceTree = "<group>"; };
 		911E5A71239D1113008CD4D6 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		911E5A73239D1377008CD4D6 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		9120EA12241FD7FE007ADDE7 /* NewCellsPicturesLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCellsPicturesLayout.swift; sourceTree = "<group>"; };
 		9122F039241A6F4000EE86C7 /* IconUserTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconUserTimeCell.swift; sourceTree = "<group>"; };
 		9122F03A241A6F4000EE86C7 /* IconUserTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconUserTimeCell.xib; sourceTree = "<group>"; };
 		9122F03D241A72F900EE86C7 /* PostAndButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAndButton.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			children = (
 				9161587E23A4F7A700F16F42 /* CustomCollectionViewLayout.swift */,
 				916BB2D52417AFE90021C326 /* NewsCellLayout.swift */,
+				9120EA12241FD7FE007ADDE7 /* NewCellsPicturesLayout.swift */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				91BEE24623FD2CC1007291E3 /* LoginRepository.swift in Sources */,
 				911E5A70239D08B4008CD4D6 /* CircleShadowImage.swift in Sources */,
 				9190B5AF23A7AB0F009F054F /* News.swift in Sources */,
+				9120EA13241FD7FE007ADDE7 /* NewCellsPicturesLayout.swift in Sources */,
 				9137E123240C3C3600432018 /* VKNews-Addons.swift in Sources */,
 				91E752D123E9A7120028BEE4 /* FirstScreen.swift in Sources */,
 				91F217B723D8330F003FD677 /* VKGroupRealm.swift in Sources */,

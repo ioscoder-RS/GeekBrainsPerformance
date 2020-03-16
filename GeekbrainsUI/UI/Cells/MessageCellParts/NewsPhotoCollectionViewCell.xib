@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1pm-ar-1Fe">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1pm-ar-1Fe" customClass="CustomUIImageView" customModule="GeekbrainsUI" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                     </imageView>
                 </subviews>
@@ -32,7 +32,7 @@
             <connections>
                 <outlet property="newsPhotoImage" destination="1pm-ar-1Fe" id="QhW-6Y-hi6"/>
             </connections>
-            <point key="canvasLocation" x="176.08695652173915" y="106.47321428571428"/>
+            <point key="canvasLocation" x="175.36231884057972" y="106.47321428571428"/>
         </collectionViewCell>
     </objects>
 </document>

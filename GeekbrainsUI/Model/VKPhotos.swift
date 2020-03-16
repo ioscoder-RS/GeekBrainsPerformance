@@ -6,7 +6,7 @@
 //  Copyright © 2020 raskin-sa. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - Item
 struct VKPhoto: Decodable {
@@ -35,6 +35,11 @@ struct VKPhotoSizes: Decodable {
     let type: String
     let url: String
     let width, height: Int
+    
+    var aspectRatio: CGFloat? {
+        guard width != 0 else { return nil }
+        return CGFloat(height)/CGFloat(width)
+    }
     
     func toRealm() -> PhotoSizesRealm {
         let photoRealm = PhotoSizesRealm()
