@@ -70,6 +70,7 @@ extension FlexNewsViewController: MessageView{
     func addSubView(view: UIView){
         tableView.addSubview(view)
     }
+    
 }
 
 extension FlexNewsViewController: UITableViewDataSourcePrefetching {

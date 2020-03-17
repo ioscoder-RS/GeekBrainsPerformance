@@ -116,6 +116,13 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
             self.freshestDateInt = newsToSlice.newsDate
         }
         
+        //предотвращаем задвоение новостей
+        //выходим из функции если в массиве уже есть новость с таким newsUniqID)
+        if  NewsWithSectionsAnyArray.filter ({(GroupsItems) in return Bool(GroupsItems.newsUniqID == newsUniqID )}).count > 0
+        {
+            return
+        }
+       
         
         for ii in 0 ... cellType.count - 1{ //цикл по кол-ву типов ячеек
             switch cellType[ii]{
@@ -173,6 +180,7 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
         //        let groupedNews = Dictionary.init(grouping: newsResult!){$0.newsDate }
         sortedNewsResults = groupedNews.map { Section(title: String($0.key), items: $0.value) }
         sortedNewsResults.sort {$0.title > $1.title}
+        
     }
     
     func makeSections(){
@@ -181,6 +189,9 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
         let localNewsResult = newsResult
         
         let newsResultcount = localNewsResult.count
+        print("newsResultCount = \(newsResultcount)")
+        print("число сообщений \(self.numberOfSections())")
+        
         if newsResultcount > 0{
             // размножаем новость по количеству типов ячеек
             for i in 0 ... newsResultcount - 1 { //цикл по кол-ву новостей
@@ -189,6 +200,7 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
     
         }//if
         //  print ("заполнили makeSections: \n \(newsSections)")
+        
     }
     
 
@@ -209,7 +221,11 @@ extension NewsViewPresenterImplementation {
     
     //MARK: функции для TableViewController с секциями
     func numberOfRowsInSection(section: Int) -> Int {
-        return sortedNewsResults[section].items.count
+        let count = sortedNewsResults[section].items.count
+        if count > 4{
+            print("задвоилось: count = \(count)")
+        }
+        return count
     }
     
     //*  func getCurrentNewsAtIndexSection(indexPath: IndexPath) -> NewsWithSections? {
@@ -232,7 +248,7 @@ extension NewsViewPresenterImplementation {
         var currentCell = UITableViewCell()
         
         guard let currentNews = self.getCurrentNewsAtIndexSection( indexPath: indexPath) else {return currentCell}
-     
+             
         let rowType = currentNews.cellType
         
         switch rowType {
@@ -280,6 +296,7 @@ extension NewsViewPresenterImplementation {
             
             
         default:
+            print("☹️ Ой")
             return UITableViewCell()
         }//switch rowType
         
@@ -289,37 +306,45 @@ extension NewsViewPresenterImplementation {
     func fetchMoreNews(tableView: UITableView, indexPaths: [IndexPath]) {
         let maxRow = indexPaths.map({ $0.section }).max()
         
-        guard !isFetchingMoreNews,
-            maxRow != nil,
+        guard !isFetchingMoreNews else {
+            if debugPrefetchMode {  print("🙅‍♂️ Флаг не дал запустить запрос ")    }
+            return
+        }
+        guard   maxRow != nil,
             newsResult.count  <= maxRow! + 3  else { return }
         
-      
-        imageLoadQueue.async {
-            self.isFetchingMoreNews = true
+        
+        
+        self.isFetchingMoreNews = true
+        if debugPrefetchMode {  print("✅ isFetchingMoreNews = \(self.isFetchingMoreNews), дата = \(Date())")  }
+        if debugPrefetchMode {  print("запрос стартовал")   }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.vkAPI.getNewsList(token: Session.shared.token, userId: Session.shared.userId, nextFrom: self.nextFrom, startTime: nil, version: Session.shared.version) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let posts):
-                //приводим результат с сервера к виду, с которым будем работать в этом классе
-                self.newsDB.createNewsForView(sourceNews: posts)
-                //сохраняем массив новополученных новостей в переменную
-                self.newsResult = self.newsDB.getAllNews()
-                //разбиваем полученный результат на части, превращаем в секции
-                self.makeSections()
-                // сортируем данные и группируем по секциям
-                self.sortForTableView()
-                //сохраняем nextFrom
-                self.nextFrom = posts.nextFrom
-                
-                self.view?.updateTable()
-                self.isFetchingMoreNews = false
-            case .failure(let error):
-                self.isFetchingMoreNews = false
-                print(error)
-            }//switch result
-        }// completion
-        }//imageLoadQueue.async
-   
+                guard let self = self else { return }
+                switch result {
+                case .success(let posts):
+                    if debugPrefetchMode {  print("🏁 completion success: \(Date())")   }
+                    //приводим результат с сервера к виду, с которым будем работать в этом классе
+                    self.newsDB.createNewsForView(sourceNews: posts)
+                    //сохраняем массив новополученных новостей в переменную
+                    self.newsResult = self.newsDB.getAllNews()
+                    //разбиваем полученный результат на части, превращаем в секции
+                    self.makeSections()
+                    // сортируем данные и группируем по секциям
+                    self.sortForTableView()
+                    //сохраняем nextFrom
+                    self.nextFrom = posts.nextFrom
+                    
+                    self.view?.updateTable()
+                    self.isFetchingMoreNews = false
+                    if debugPrefetchMode {  print(" 🛑 isFetchingMoreNews = \(self.isFetchingMoreNews), дата = \(Date())")  }
+                case .failure(let error):
+                    self.isFetchingMoreNews = false
+                    if debugPrefetchMode {  print("  isFetchingMoreNews = \(self.isFetchingMoreNews), дата = \(Date())")    }
+                    print(error)
+                }//switch result
+            }// completion
+        }// DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
     }//func fetchMoreNews()
     
     func getRowHeight(tableView: UITableView, indexPath: IndexPath) -> CGFloat {

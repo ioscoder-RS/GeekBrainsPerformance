@@ -177,14 +177,14 @@ class VKAPi {
                            "user_id": userId,
                            "source_ids": "friends,groups",
                            "filters": "post, note",
-                           "count": "5",
+                           "count": "25",
                            "start_from": nextFrom ?? "",
                            "start_time": startTime ?? "",
                            "v": version]
              
  
          //Делаем остановку на дозагрузку, как в нативном VK-клиенте. Защита при одновременном срабатывании методов дозагрузки и обновления.
-         Alamofire.SessionManager.default.session.getAllTasks { tasks in tasks.forEach{ $0.cancel()} }
+  //       Alamofire.SessionManager.default.session.getAllTasks { tasks in tasks.forEach{ $0.cancel()} }
          
          Alamofire.request(requestURL,
                            method: .get,
