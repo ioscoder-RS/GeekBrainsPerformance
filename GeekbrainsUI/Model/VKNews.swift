@@ -170,8 +170,8 @@ struct ViewsNews: Codable {
 
 // MARK: - Preview
 struct Preview: Codable {
-    let photo: PreviewPhoto
-    let video: Video
+    let photo: PreviewPhoto?
+    let video: Video?
 }
 
 // MARK: - PreviewPhoto
