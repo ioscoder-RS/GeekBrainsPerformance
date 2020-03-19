@@ -193,9 +193,12 @@ class VKAPi {
                  guard let data = result.value else { return }
                  do {
                 // не стирать! это для отладки - посмотреть содержимое запроса
- //                   print(String(decoding: data, as: UTF8.self))
+ //                  print(String(decoding: data, as: UTF8.self))
+
                     let result = try JSONDecoder().decode(CommonResponseNews.self, from: data)
+            //        if result.response.items.filter(<#T##isIncluded: (NewsVK) throws -> Bool##(NewsVK) throws -> Bool#>)
                      completion(.success(result.response))
+                    
                  } catch {
                      print(String(decoding: data, as: UTF8.self))
                      completion(.failure(error))

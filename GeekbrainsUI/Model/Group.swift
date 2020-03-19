@@ -8,12 +8,7 @@
 
 import Foundation
 
-struct Group{
-    var id: Int
-    var groupName:String
-    var avatarPath:String
- 
-}
+
 
 //var myGroup:[Group] = [
 //Group(groupName:"Одноклассники", avatarPath:"Group2", id:1),

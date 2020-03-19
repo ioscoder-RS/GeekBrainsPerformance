@@ -6,7 +6,12 @@
 //  Copyright © 2020 raskin-sa. All rights reserved.
 //
 
-
+struct Group{
+    var id: Int
+    var groupName:String
+    var avatarPath:String
+ 
+}
 
 // MARK: - Group
 struct VKGroup: Codable {
@@ -48,19 +53,6 @@ struct GroupResponseData: Codable {
 
 var webVKGroups = [VKGroup]()
 
-//extension GroupResponse{
-//         func getGroups(groups: [VKGroup]) -> [Group]{
-//            //Функция имеет два назначения:
-//            //1. Сохранить данные пришедшие из Web в экземпляре структуры
-//            //2. Преобразовать модель данных из web-запроса в нужную нам модель для отображения, если они различаются
-//            var myGroups = [Group]()
-//
-//            for a in 0...groups.count-1 {
-//                myGroups.append(Group(id:groups[a].id, groupName:groups[a].groupName, avatarPath:groups[a].avatarPath ))
-//            }
-//            return myGroups
-//        }
-//}
          func convertGroups(groups: [VKGroup]) -> [Group]{
             //Функция имеет два назначения:
             //1. Сохранить данные пришедшие из Web в экземпляре структуры

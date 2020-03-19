@@ -6,7 +6,12 @@
 //  Copyright © 2020 raskin-sa. All rights reserved.
 //
 
-
+struct Friend {
+    var  userName: String
+    var  avatarPath: String
+    var  isOnline: Int
+    var  id: Int
+}
 
 // MARK: - Response
 struct VKUser: Codable {

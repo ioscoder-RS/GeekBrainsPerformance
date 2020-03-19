@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageIO
 
 func showYesNoMessage(view: UIViewController, title: String, messagetext: String, completion:@escaping (_ result:Bool) -> Void) {
 
@@ -41,3 +42,17 @@ func convertUnixTime(unixTime:Int)-> String {
      return (dateFormatter.string(from: date))
       
 }
+
+extension String {
+    func getHeight(constraintedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let label =  UILabel(frame: CGRect(x: 0, y: 0, width: width, height: .greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.text = self
+        label.font = font
+        label.sizeToFit()
+        
+        return ceil(label.frame.height)
+    }
+}
+
+

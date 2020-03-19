@@ -22,6 +22,7 @@ class NewsRepository: NewsSource {
     func createNewsForView (sourceNews: ResponseNews){
         var parsedPhoto: String = ""
         var parsedUsername: String = ""
+        var parsedGif: String?
         var photoArray = [String]()
         
         //обнуляем массив, т.к. он может быть не пустым
@@ -45,17 +46,27 @@ class NewsRepository: NewsSource {
                 parsedUsername = tempArray[0].name
                 parsedPhoto = tempArray[0].photo100
             }
+            //обнуляем переменную с URL-адресом GIF
+            parsedGif = nil
             
             let attachArray = sourceNews.items[a].attachments ?? []
             if attachArray.count > 0{
                 for i in 0 ... attachArray.count  - 1 {
-                    if attachArray[i].type == "photo" {
+                    switch attachArray[i].type{
+                    case "photo":
                         let localSizes = attachArray[i].photo?.sizes
                         let url = localSizes?.first(where: {$0.type == "x"})?.url
                         photoArray.append(url ?? "")
-                    }
-                }
-            }
+                    case "doc":
+                        if attachArray[i].doc?.type == 3 {
+                            parsedGif = attachArray[i].doc?.url
+                        }
+                    default:
+                        break
+                    }//switch
+                }//for
+            }//if
+            
             
             newsViewArray.append(NewsForViewController(
                 avatarPath: parsedPhoto,
@@ -65,8 +76,9 @@ class NewsRepository: NewsSource {
                 newsImages: photoArray,
                 newsLikes: sourceNews.items[a].likes,
                 newsReposts: sourceNews.items[a].reposts,
-                newsViews: sourceNews.items[a].views,
-                newsComments: sourceNews.items[a].comments
+                newsViews: sourceNews.items[a].views ?? ViewsNews(count: 0),
+                newsComments: sourceNews.items[a].comments,
+                newsGif: parsedGif ?? ""
                 
             ))
             

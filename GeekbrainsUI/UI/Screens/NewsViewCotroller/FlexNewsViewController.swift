@@ -37,12 +37,11 @@ class FlexNewsViewController: UITableViewController{
         tableView.register(UINib(nibName: "PostAndButton", bundle: nil),forCellReuseIdentifier:"postAndButton")
         tableView.register(UINib(nibName: "LikesRepostsComments", bundle: nil),forCellReuseIdentifier:"likesRepostsComments")
         tableView.register(UINib(nibName: "PhotoCollectionTableViewCell", bundle: nil),forCellReuseIdentifier:"photoCollectionTableViewCell")
+        tableView.register(UINib(nibName: "GifCell", bundle: nil),forCellReuseIdentifier:"gifCell")
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        //должно возвращаться количество постов из презентер
         return presenter?.numberOfSections() ?? 0
-    //    return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,12 +53,9 @@ class FlexNewsViewController: UITableViewController{
     }
     
     
-    //Заглушка, задающая высоту ячейки, чтобы туда помещалась встроенная CollectionView
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return presenter?.getRowHeight(tableView: tableView, indexPath: indexPath) ?? CGFloat(0)
     }
-    
-    
 }// class MessageViewController
 
 extension FlexNewsViewController: MessageView{

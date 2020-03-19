@@ -18,6 +18,7 @@ struct NewsForViewController {
     var newsReposts: RepostsNews
     var newsViews: ViewsNews
     var newsComments: CommentsNews
+    var newsGif: String
 }
 
 var newsViewArray = [NewsForViewController]()
@@ -27,6 +28,8 @@ let cellType:[String] =
         "IconUserTimeCell",
         "PostAndButton",
         "PhotoCollectionCV",
+        "Gif",
+  //      "Link",
         "LikesRepostsComments"
 ]
 
@@ -61,6 +64,10 @@ struct StrPostAndButton {
 
 struct StrPhotoCollectionCV{
     var newsImages:     [String]
+}
+
+struct StrGif{
+    var newsGif: String
 }
 
 struct StrLikesRepostsComments {
