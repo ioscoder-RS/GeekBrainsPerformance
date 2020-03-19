@@ -366,7 +366,7 @@
         <!--Main Tab-->
         <scene sceneID="QAh-JH-RMY">
             <objects>
-                <tabBarController storyboardIdentifier="MainTab" id="a6G-Sr-VLN" customClass="MainTab" customModule="GeekbrainsUI" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTab" modalTransitionStyle="partialCurl" id="a6G-Sr-VLN" customClass="MainTab" customModule="GeekbrainsUI" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="erw-bY-Q31"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="H8e-Oc-qAc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -678,24 +678,15 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Rbv-74-jS5">
                         <barButtonItem key="backBarButtonItem" title="На экран &quot;Друзья&quot;" id="q26-39-HtI"/>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="MJW-tN-jfu">
-                                <connections>
-                                    <action selector="AddButtonPressed:" destination="Zap-hg-3B7" id="vMx-zK-HJM"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Выйти" id="yht-x6-gob">
-                                <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="logoutPressed:" destination="Zap-hg-3B7" id="U6U-hY-ntk"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MJW-tN-jfu">
+                            <connections>
+                                <action selector="AddButtonPressed:" destination="Zap-hg-3B7" id="vMx-zK-HJM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="logout" destination="yht-x6-gob" id="MmK-gy-Gfg"/>
                         <outlet property="searchBar" destination="RDh-7H-Yny" id="jTb-Tx-lib"/>
                     </connections>
                 </tableViewController>
@@ -768,7 +759,7 @@
             </objects>
             <point key="canvasLocation" x="6112" y="-701"/>
         </scene>
-        <!--New Новости-->
+        <!--Новости-->
         <scene sceneID="i6I-JW-vpr">
             <objects>
                 <tableViewController storyboardIdentifier="FlexNewsViewController" id="Kfl-Ju-oq4" customClass="FlexNewsViewController" customModule="GeekbrainsUI" customModuleProvider="target" sceneMemberID="viewController">
@@ -815,7 +806,7 @@
                             <outlet property="delegate" destination="Kfl-Ju-oq4" id="6aZ-fP-NFn"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="New Новости" image="folder.badge.plus" catalog="system" selectedImage="folder.badge.plus" id="Hwz-Uc-Ktx"/>
+                    <tabBarItem key="tabBarItem" title="Новости" image="folder.badge.plus" catalog="system" selectedImage="folder.badge.plus" id="Hwz-Uc-Ktx"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qio-Jw-9PG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

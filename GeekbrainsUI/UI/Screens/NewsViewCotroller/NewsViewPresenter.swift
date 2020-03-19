@@ -22,7 +22,7 @@ protocol NewsViewPresenter {
     func getRowHeight(tableView: UITableView, indexPath: IndexPath) -> CGFloat
 }
 
-/// <#Description#>
+/// реализация кода для TableView, который задается протоколом NewsViewPresenter
 class NewsViewPresenterImplementation: NewsViewPresenter {
     private var vkAPI: VKAPi
     private weak var view: MessageView?  //класс TableView, где все отображается
@@ -68,6 +68,10 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
         return nil
     }
     
+    
+    /// функция первичной загрузки данных из Web
+    /// в настоящее время сохранение в БД не реализовано, но заглушки расставлены
+    /// - Parameter from: пока не используется, заглушка для возможности вызова из различных мест
     func  getNewsFromApiAndDB(from: String? = nil){
         if webMode{
             //Получаем значение nextFrom
@@ -103,6 +107,9 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
         }
     }//func  getGroupsFromApiAndDB()
     
+    
+    /// Функция разбивает большую запись о новости на части и заполняет структуры данными для ячеек
+    /// - Parameter newsToSlice: новость, в формате из Web,  но приведенная в одну структуру
     func sliceAndAppendNews(newsToSlice:NewsForViewController){
         
         let newsUniqID = String(newsToSlice.newsDate) + "-" + newsToSlice.userName
@@ -176,6 +183,8 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
         }// for ii
     }// func sliceAndAppendNews()
   
+    
+    /// функция сортирует массив по секциям и строкам
     func sortForTableView(){
         let groupedNews = Dictionary.init(grouping: NewsWithSectionsAnyArray){$0.newsUniqID }
         sortedNewsResults = groupedNews.map { Section(title: String($0.key), items: $0.value) }
@@ -275,7 +284,7 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
               if localStruct.newsGif == "" {return 0} else { return 200}
               
           case "IconUserTimeCell":
-              return 65
+              return Constants.iconUserTimeHeight
           //коллекшн с фото
           case "PhotoCollectionCV":
               let currentNews = self.getCurrentNewsAtIndexSection(indexPath: indexPath)
@@ -284,7 +293,7 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
               case 0:
                   return 0
               default:
-                  return 300
+                return Constants.collectionViewInTableViewHeight
               }
               
           default:
@@ -292,6 +301,8 @@ class NewsViewPresenterImplementation: NewsViewPresenter {
           }
       }//func getRowHeight
       
+    
+    /// функция запускает колесико refresh при дозагрузке свежих данных из Web
       func addRefreshControl(){
           customRefreshControl.attributedTitle = NSAttributedString(string:"refreshing...")
           customRefreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
@@ -329,7 +340,7 @@ extension NewsViewPresenterImplementation {
     //MARK: функции для TableViewController с секциями
     func numberOfRowsInSection(section: Int) -> Int {
         let count = sortedNewsResults[section].items.count
-        if count > 5{
+        if count > cellType.count{
             print("задвоилось: count = \(count)")
         }
         return count
@@ -350,6 +361,10 @@ extension NewsViewPresenterImplementation {
     
     
     
+    /// Функция заполняет ячейку содержимым, в зависимости от типа ячейки
+    /// - Parameters:
+    ///   - tableView: таблица из TableViewController
+    ///   - indexPath:  строка indexPath
     func getTableviewCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         
         var currentCell = UITableViewCell()
@@ -366,7 +381,7 @@ extension NewsViewPresenterImplementation {
             cell.renderCell(
                 iconURL: localStruct.avatarPath,
                 newsAuthor:localStruct.userName,
-                newsTime: convertUnixTime(unixTime: localStruct.newsDate)
+                newsTime: viewableUnixTime(unixTime: localStruct.newsDate)
             )
             currentCell = cell
             

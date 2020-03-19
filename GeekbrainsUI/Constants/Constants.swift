@@ -11,4 +11,6 @@ import UIKit
 /// General sizing constants for the application.
 public enum Constants {
     static let textRowHeight: CGFloat = 100
+    static let collectionViewInTableViewHeight: CGFloat = 300
+    static let iconUserTimeHeight: CGFloat = 65
 }

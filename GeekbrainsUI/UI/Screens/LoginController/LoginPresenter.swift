@@ -17,7 +17,7 @@ protocol LoginPresenter{
 class LoginPresenterImplementation: NSObject, LoginPresenter{
      private weak var view: VKLoginController? // экран логина в VK
    
-    private var mainTab = MainTab()
+//    private var mainTab = MainTab()
     
     private var loginDB: LoginSource
     private let vkSecret = "7281379"
@@ -35,7 +35,7 @@ class LoginPresenterImplementation: NSObject, LoginPresenter{
     func transitionToTabBar() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "MainTab")
-        vc.modalPresentationStyle = .custom
+        vc.modalPresentationStyle = .overFullScreen
         self.view?.navigationController?.pushViewController(vc, animated: true)
     }// func transitionToTabBar()
     
@@ -54,7 +54,7 @@ class LoginPresenterImplementation: NSObject, LoginPresenter{
             self.saveLoginToDB(oneLogin: vkLogin)
                 
             //сохраняем логин в MainTab
-            self.mainTab.vkLogin = vkLogin
+//            self.mainTab.vkLogin = vkLogin
             
           case .failure(_):
             return
