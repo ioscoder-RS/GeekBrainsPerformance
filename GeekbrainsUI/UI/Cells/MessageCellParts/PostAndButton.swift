@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MoreButtonProtocol{
+    func buttonClicked ()
+}
+
 class PostAndButton: UITableViewCell {
     @IBOutlet weak var newsText: UILabel!
     @IBOutlet weak var moreButton: UIButton!
@@ -15,6 +19,9 @@ class PostAndButton: UITableViewCell {
     @IBOutlet weak var newsTextHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var newsTextBottomConstraint: NSLayoutConstraint!
     
+    var buttonDelegate: MoreButtonProtocol?
+    
+    /// функция нажатия кнопки "показать полностью"
     @IBAction func moreButtonPressed(_ sender: Any) {
         
         guard let text = newsText.text else {return}
@@ -43,8 +50,12 @@ class PostAndButton: UITableViewCell {
               moreButton.setTitle("Показать полностью", for: .normal)
         }
         contentView.layoutIfNeeded()
-        self.view?.updateTable()
-    }
+  //      self.view?.updateTable()
+        
+//передаем контроллеру событие, что кнопка нажата, чтобы он перерисовался
+        buttonDelegate?.buttonClicked()
+        
+    } //@IBAction func moreButtonPressed(_ sender: Any)
     
     var moreText: Bool = false
     private weak var view: MessageView?
@@ -60,9 +71,7 @@ class PostAndButton: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func renderCell(view: MessageView, newstext: String){
-        //передаем в ячейку указатель на таблицу, которая будет перерисовываться
-        self.view = view
+    func renderCell (newstext: String){
         
         //заполняем текстовое поле
         newsText.text = newstext

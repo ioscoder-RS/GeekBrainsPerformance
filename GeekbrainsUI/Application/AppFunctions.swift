@@ -29,6 +29,11 @@ func showYesNoMessage(view: UIViewController, title: String, messagetext: String
     
 }// func showYesNoMessage
 
+
+
+
+/// калькулятор форматов: https://nsdateformatter.com
+
 func convertUnixTime(unixTime:Int)-> String {
     //функция конвертации UNIX-даты
       let unixTimestamp = unixTime

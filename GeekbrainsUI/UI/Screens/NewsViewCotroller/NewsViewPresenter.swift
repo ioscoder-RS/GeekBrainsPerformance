@@ -23,7 +23,8 @@ protocol NewsViewPresenter {
 }
 
 /// реализация кода для TableView, который задается протоколом NewsViewPresenter
-class NewsViewPresenterImplementation: NewsViewPresenter {
+class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
+        
     private var vkAPI: VKAPi
     private weak var view: MessageView?  //класс TableView, где все отображается
     var newsRepository = NewsRepository() // массив новостей, полученный из БД
@@ -359,7 +360,11 @@ extension NewsViewPresenterImplementation {
         return sortedNewsResults.map{$0.title}
     }
     
-    
+    //функция реализует вызов перерисовки таблицы
+    //по нажатию кнопки "показать полностью" в ячейке 
+    func buttonClicked() {
+        view?.updateTable()
+    }
     
     /// Функция заполняет ячейку содержимым, в зависимости от типа ячейки
     /// - Parameters:
@@ -390,9 +395,11 @@ extension NewsViewPresenterImplementation {
             let cell = tableView.dequeueReusableCell(withIdentifier: "postAndButton", for: indexPath) as! PostAndButton
             let localStruct = currentNews.newsPart as! StrPostAndButton
             cell.renderCell(
-                view: self.view!,
                 newstext: localStruct.newsText
             )
+            cell.buttonDelegate = self
+            
+            
             currentCell = cell
             
         //коллекшн с фото
