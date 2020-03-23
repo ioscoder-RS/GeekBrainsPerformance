@@ -17,9 +17,10 @@ extension FriendCD {
     }
 
     @NSManaged public var id: Int64
-    @NSManaged public var firstName: String?
-    @NSManaged public var lastName: String?
-    @NSManaged public var avatarPath: String?
+    @NSManaged public var firstName: String
+    @NSManaged public var lastName: String
+    @NSManaged public var avatarPath: String
+    @NSManaged public var photo100: String
     @NSManaged public var deactivated: String?
     @NSManaged public var isOnline: Int16
 
@@ -27,6 +28,7 @@ extension FriendCD {
 
 extension FriendCD {
     func toCommonItem() -> VKUser {
-        return VKUser(lastName: self.lastName ?? "", firstName: self.firstName ?? "", avatarPath: self.avatarPath ?? "", isOnline: Int(self.isOnline), id: Int(self.id))
-    }
+        return VKUser(lastName: lastName, firstName: firstName, avatarPath: avatarPath, photo100: photo100, isOnline: Int(isOnline), id: Int(id), isClosed: nil, canAccessClosed: nil, deactivated: deactivated)
+        }
+    
 }

@@ -14,7 +14,7 @@ class VKUserRealm: Object {
     @objc dynamic var firstName = ""
     @objc dynamic var userName = ""
     @objc dynamic var avatarPath = ""
-    @objc dynamic var photo = ""
+    @objc dynamic var photo100 = ""
     @objc dynamic var deactivated: String?
     @objc dynamic var isOnline = 0
     
@@ -30,7 +30,7 @@ class VKUserRealm: Object {
     var VKUserList = List<VKUserRealm>()
     
     func toModel() -> VKUser {
-        return VKUser(lastName: lastName, firstName: firstName, avatarPath: avatarPath, isOnline: isOnline, id: id)
+        return VKUser(lastName: lastName, firstName: firstName, avatarPath: avatarPath, photo100: photo100, isOnline: isOnline, id: id, isClosed: nil, canAccessClosed: nil, deactivated: deactivated)
     }
 }//class VKUserRealm
 

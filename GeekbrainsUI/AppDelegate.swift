@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        setRealmConfig(version: 7)
+        setRealmConfig(version: 9)
  
         FirebaseApp.configure()
         

@@ -42,9 +42,13 @@ class GroupCell: UITableViewCell {
     }
     
     func renderCell(model: VKGroupRealm){
-     
-            let groupName = model.groupName
-      
+        
+        var groupName = model.name
+        
+        if model.name == "" {
+            groupName = model.groupName
+        }
+  
             groupname.text = groupName
             
         if let url = URL(string: model.avatarPath){

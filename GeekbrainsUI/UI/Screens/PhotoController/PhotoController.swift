@@ -15,7 +15,7 @@ class PhotoController: UICollectionViewController, PhotoListView,  UICollectionV
     var configurator: PhotosConfigurator?
     
     var tmpVKUserRealm: VKUserRealm? //текущий элемент Друг типа структура, на котором стоим
-    var tmpFriend: Friend?
+//    var tmpFriend: Friend?
     //   var viewClicked: ((UIView)->())? = nil
     //   var photoArray: [VKPhoto]?
     
@@ -30,7 +30,7 @@ class PhotoController: UICollectionViewController, PhotoListView,  UICollectionV
             print ("error. tmpFriend is not initialised!")
             return
         }
-        self.tmpFriend = convertFriend(user: tmpVKUserRealm.toModel())
+ //       self.tmpFriend = convertFriend(user: tmpVKUserRealm.toModel())
         //       configurator?.configure(view: self, VKUserRealm: tmpVKUserRealm )
         
         self.navigationController?.delegate = self
@@ -44,7 +44,7 @@ class PhotoController: UICollectionViewController, PhotoListView,  UICollectionV
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
-        let defaultUsername = tmpFriend!.userName
+        guard let defaultUsername = tmpVKUserRealm?.userName else {return cell}
         
         guard let model = presenter?.getVKPhotoAtIndex(indexPath: indexPath) else {return cell}
         
@@ -72,7 +72,7 @@ class PhotoController: UICollectionViewController, PhotoListView,  UICollectionV
         //передаем в след. ViewController ссылку на большую картинку
         //которая хранится в массиве sizes с типом X
         let urlToBe = localSizes.filter("type == %@","x")[0].url
-        viewController.friend = tmpFriend
+        viewController.tmpVKUserRealm = tmpVKUserRealm
         viewController.imageURL = urlToBe
         viewController.likeCount = localLikes?.count
         viewController.userLiked = localLikes?.userLikes

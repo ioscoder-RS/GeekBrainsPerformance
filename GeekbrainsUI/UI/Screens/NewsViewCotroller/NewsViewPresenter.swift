@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol NewsViewPresenter {
     func viewDidLoad()
  
@@ -20,9 +19,12 @@ protocol NewsViewPresenter {
     func getTableviewCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell
     func fetchMoreNews(tableView: UITableView, indexPaths: [IndexPath])
     func getRowHeight(tableView: UITableView, indexPath: IndexPath) -> CGFloat
+    //MARK: Для реализации через ASDK
+    func workWithNewsWebQuery(responseNews: ResponseNews)
 }
 
 /// реализация кода для TableView, который задается протоколом NewsViewPresenter
+/// протокол MoreButtonProtocol связывает класс с ячейкой PostAndButton чтобы отреагировать на нажатую в ней кнопку
 class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
         
     private var vkAPI: VKAPi
@@ -34,8 +36,7 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
     private var sortedNewsResults = [Section<NewsWithSectionsAny>]() //массив с секциями, отображаемый в TableView
     
     var customRefreshControl = UIRefreshControl() //для дозагрузки обновлений в новости
-//    var freshestDate: String?
-    
+
     private var newsDB: NewsSource
     
     var isFetchingMoreNews = false  //загружаем более старые новости или нет
@@ -52,16 +53,19 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
     
     func viewDidLoad(){
         addRefreshControl()
-        
-        self.newsResult = [NewsForViewController]()
         getNewsFromApiAndDB()
     }
     
+    
+    /// Заглушка будущей реализации, когда работаем без интернета, но новости храним в БД и забираем из БД
+    //MARK: Не используется
     func getNewsFromDatabase(){
-        self.newsResult = newsDB.getAllNews()
+        //сохраняем массив новополученных новостей в переменную
+        self.newsResult = self.newsDB.getAllNews()
+        //разбиваем полученный результат на части, превращаем в секции
         self.makeSections()
+        // сортируем данные и группируем по секциям
         self.sortForTableView()
-        self.view?.updateTable()
     }//func getGroupsFromDatabase()
     
     func getNextFrom()-> String?{
@@ -84,17 +88,7 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
                 self.vkAPI.getNewsList(token: Session.shared.token, userId: Session.shared.userId, nextFrom: self.nextFrom, startTime: nil, version: Session.shared.version){  result in
                     switch result {
                     case .success(let webNews): //массив VKNews из Web
-                        do{
-                            self.nextFrom = webNews.nextFrom
-                            try
-                                DispatchQueue.main.async {
-                                    self.newsDB.createNewsForView(sourceNews: webNews)
-                                    //выгружаем из БД строго после Web-запроса и после добавления в БД
-                                    self.getNewsFromDatabase()
-                                }//DispatchQueue.main.async
-                        }catch {
-                            print("we got error in newsDB.createNewsForView(): \(error)")
-                        }
+                     self.workWithNewsWebQuery(responseNews: webNews)
                     case .failure(let error):
                         print("we got error in getNewsfeed(): \(error)")
                     }//switch
@@ -103,6 +97,7 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
             }//imageLoadQueue.async
         }// if webMode{
         else
+            //MARK: не используется. Не тестировалось
         {
             self.getNewsFromDatabase()
         }
@@ -184,14 +179,6 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
         }// for ii
     }// func sliceAndAppendNews()
   
-    
-    /// функция сортирует массив по секциям и строкам
-    func sortForTableView(){
-        let groupedNews = Dictionary.init(grouping: NewsWithSectionsAnyArray){$0.newsUniqID }
-        sortedNewsResults = groupedNews.map { Section(title: String($0.key), items: $0.value) }
-        sortedNewsResults.sort {$0.title > $1.title}
-    }
-    
     func makeSections(){
         
         let localNewsResult = newsResult
@@ -207,12 +194,15 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
             for i in 0 ... newsResultcount - 1 { //цикл по кол-ву новостей
                 sliceAndAppendNews(newsToSlice: localNewsResult[i])
             }// for i
-    
         }//if
-        //  print ("заполнили makeSections: \n \(newsSections)")
-        
     }//func makeSections(){
-
+    
+    /// функция сортирует массив по секциям и строкам
+    func sortForTableView(){
+        let groupedNews = Dictionary.init(grouping: NewsWithSectionsAnyArray){$0.newsUniqID }
+        sortedNewsResults = groupedNews.map { Section(title: String($0.key), items: $0.value) }
+        sortedNewsResults.sort {$0.title > $1.title}
+    }
     
     /// Функциия берет распарсенную новость из Web, преобразовывает и отображает
     /// - Parameter responseNews: распарсенный запрос новости из VKApi.getNewsFeed
@@ -228,7 +218,7 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
           self.sortForTableView()
           //сохраняем nextFrom
           self.nextFrom = responseNews.nextFrom
-          
+          //перерисовка контроллера
           self.view?.updateTable()
       }
 
@@ -271,7 +261,7 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
           }// imageLoadQueue.async {
       }//func fetchMoreNews()
       
-    
+
     /// Функция определяет высоту строки tableView в зависимости от типа ячейки
     /// - Parameters:
     ///   - tableView: таблица из TableViewController
@@ -319,13 +309,10 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
                      guard let self = self else { return }
                      switch result {
                      case .success(let posts):
-                        
                         if posts.items.count > 0 {
                           //сохраняем запрос, приводим к формату, разбиваем на секции, добавляем к текущему массиву и отображаем в TableView
                           self.workWithNewsWebQuery(responseNews: posts)
                         }//if posts.items.count > 0
-                        
-                    
                      case .failure(let error):
                          print(error)
                      }
@@ -347,7 +334,6 @@ extension NewsViewPresenterImplementation {
         return count
     }
     
-    //*  func getCurrentNewsAtIndexSection(indexPath: IndexPath) -> NewsWithSections? {
     func getCurrentNewsAtIndexSection(indexPath: IndexPath) -> NewsWithSectionsAny? {
         return sortedNewsResults[indexPath.section].items[indexPath.row]
     }

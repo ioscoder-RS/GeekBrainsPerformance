@@ -973,8 +973,8 @@
             filePath = "GeekbrainsUI/UI/Screens/NewsViewCotroller/NewsViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "NewsViewPresenterImplementation"
             landmarkType = "3">
          </BreakpointContent>
@@ -989,8 +989,8 @@
             filePath = "GeekbrainsUI/UI/Screens/NewsViewCotroller/NewsViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "getNewsFromDatabase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1070,8 +1070,8 @@
             filePath = "GeekbrainsUI/UI/Screens/NewsViewCotroller/NewsViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "refreshTable()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1086,8 +1086,8 @@
             filePath = "GeekbrainsUI/UI/Screens/NewsViewCotroller/NewsViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
             landmarkName = "refreshTable()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1118,8 +1118,8 @@
             filePath = "GeekbrainsUI/UI/Screens/NewsViewCotroller/NewsViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "getNewsFromApiAndDB(from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1198,8 +1198,8 @@
             filePath = "GeekbrainsUI/UI/Screens/NewsViewCotroller/NewsViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "sliceAndAppendNews(newsToSlice:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1362,6 +1362,38 @@
             endingLineNumber = "56"
             landmarkName = "webView(_:decidePolicyFor:decisionHandler:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0E82E563-020E-4EDC-82EA-E3726D80B973"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeekbrainsUI/UI/Screens/NewsViewCotroller/NewsViewPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "getNewsFromApiAndDB(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "47C82E8A-7ACF-4D99-90A3-1A782C9304EC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeekbrainsUI/UI/Screens/NewsViewCotroller/NewsViewPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "NewsViewPresenterImplementation"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

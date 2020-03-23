@@ -6,29 +6,31 @@
 //  Copyright © 2020 raskin-sa. All rights reserved.
 //
 
-struct Friend {
-    var  userName: String
-    var  avatarPath: String
-    var  isOnline: Int
-    var  id: Int
-}
+
 
 // MARK: - Response
 struct VKUser: Codable {
     var lastName:String
     var firstName:String
+    var fullname: String { return firstName + " " + lastName }
     var avatarPath:String
+    let photo100: String
     var isOnline:Int
     var id:Int
+    let isClosed, canAccessClosed: Bool?
+    let deactivated: String?
     
     
     enum CodingKeys: String, CodingKey {
         case lastName = "last_name"
         case firstName = "first_name"
         case avatarPath = "photo_50"
+        case photo100 = "photo_100"
         case isOnline = "online"
         case id
-        
+        case isClosed = "is_closed"
+        case canAccessClosed = "can_access_closed"
+        case deactivated
     }
 }
 
@@ -44,25 +46,7 @@ struct UserResponseData: Codable {
 
 var webVKUsers = [VKUser]()
 
-         func convertFriends(users: [VKUser]) -> [Friend]{
-            //Функция имеет два назначения:
-                  //1. Сохранить данные пришедшие из Web в экземпляре структуры
-                  //2. Преобразовать модель данных из web-запроса в нужную нам модель для отображения
-            var myFriends = [Friend]()
-     
-            if users.count == 0 {return myFriends}
-            for a in 0...users.count-1 {
-                myFriends.append(Friend(userName: users[a].firstName + " " + users[a].lastName, avatarPath: users[a].avatarPath, isOnline: users[a].isOnline, id: users[a].id))
-            }
-            return myFriends
-        }
 
-    func convertFriend(user: VKUser) -> Friend{
-       //Функция имеет два назначения:
-             //1. Сохранить данные пришедшие из Web в экземпляре структуры
-             //2. Преобразовать модель данных из web-запроса в нужную нам модель для отображения
-  
-       return Friend(userName: user.firstName + " " + user.lastName, avatarPath: user.avatarPath, isOnline: user.isOnline, id: user.id)
-   }
+
 
 

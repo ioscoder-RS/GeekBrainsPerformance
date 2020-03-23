@@ -58,6 +58,7 @@ class UserRepository: FriendsSource {
                     userRealm.lastName = user.lastName
                     userRealm.userName = String(user.firstName + " " + user.lastName)
                     userRealm.avatarPath = user.avatarPath
+                    userRealm.photo100 = user.photo100
                     usersToAdd.append(userRealm)
                 }
                 realm.add(usersToAdd, update: .modified)

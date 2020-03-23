@@ -15,8 +15,8 @@ struct CommonResponseNews: Codable {
 
 struct ResponseNews: Codable {
     let items: [NewsVK]
-    let profiles: [UserVK]
-    let groups: [GroupVK]
+    let profiles: [VKUser]
+    let groups: [VKGroup]
     let nextFrom: String?
     
     enum CodingKeys: String, CodingKey {
@@ -71,12 +71,12 @@ struct Attachment: Codable {
 struct Doc: Codable {
     let id, ownerID: Int
     let title: String
-    let size: Int
-    let ext: String
-    let url: String
-    let date, type: Int
-    let preview: Preview
-    let accessKey: String
+    let size: Int?
+    let ext: String?
+    let url: String?
+    let date, type: Int?
+    let preview: Preview?
+    let accessKey: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -91,9 +91,9 @@ struct Link: Codable {
     let url: String
     let title: String
     let caption: String?
-    let linkDescription: String
+    let linkDescription: String?
     let photo: LinkPhoto?
-    let isFavorite: Bool
+    let isFavorite: Bool?
 
     enum CodingKeys: String, CodingKey {
         case url, title, caption
@@ -107,8 +107,8 @@ struct Link: Codable {
 struct LinkPhoto: Codable {
     let id, albumID, ownerID: Int
     let sizes: [Video]
-    let text: String
-    let date: Int
+    let text: String?
+    let date: Int?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -122,10 +122,10 @@ struct LinkPhoto: Codable {
 struct AttachmentPhoto: Codable {
     let id, albumID, ownerID, userID: Int
     let sizes: [Video]
-    let text: String
-    let date: Int
+    let text: String?
+    let date: Int?
     let postID: Int?
-    let accessKey: String
+    let accessKey: String?
 
     enum CodingKeys: String, CodingKey {
         case id

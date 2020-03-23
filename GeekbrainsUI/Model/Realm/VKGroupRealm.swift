@@ -11,7 +11,10 @@ import RealmSwift
 class VKGroupRealm: Object {
     @objc dynamic var id = 0
     @objc dynamic var groupName = ""
+    @objc dynamic var name = ""
     @objc dynamic var avatarPath = ""
+    @objc dynamic var isClosed = 0
+    @objc dynamic var type = ""
     
     override class func primaryKey() -> String? {
         return "id"
@@ -22,6 +25,6 @@ class VKGroupRealm: Object {
         return["groupName"]
     }
     func toModel()->VKGroup{
-        return VKGroup(id: id, groupName: groupName, avatarPath: avatarPath)
+        return VKGroup(id: id, name: name, screenName: groupName, isClosed: isClosed, type: type, isAdmin: nil, isMember: nil, isAdvertiser: nil, activity: nil, membersCount: nil, photo100: avatarPath, adminLevel: nil)
     }
 }

@@ -37,8 +37,11 @@ class GroupRepository: GroupsSource {
                     group in
                     let groupRealm = VKGroupRealm()
                     groupRealm.id = group.id
-                    groupRealm.groupName = group.groupName
-                    groupRealm.avatarPath = group.avatarPath
+                    groupRealm.name = group.name
+                    groupRealm.groupName = group.screenName
+                    groupRealm.avatarPath = group.photo100
+                    groupRealm.isClosed = group.isClosed
+                    groupRealm.type = group.type
                     groupsToAdd.append(groupRealm)
                 }//groups.forEach
                 realm.add(groupsToAdd, update: .modified)

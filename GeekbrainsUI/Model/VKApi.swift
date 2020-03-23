@@ -104,7 +104,7 @@ class VKAPi {
         let params = ["v": "5.103",
                       "access_token":token,
                       "order":"name",
-                      "fields":"online,city,domain,photo_50"]
+                      "fields":"online,city,domain,photo_50, photo_100, id, deactivated"]
 
         sendRequest(url: requestURL, params: params, webRequestEntity: WebRequestEntities.VKUser ) {completion($0)}
                             

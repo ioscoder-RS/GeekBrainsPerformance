@@ -34,7 +34,7 @@ struct Section<T>{
 }
 
 class FriendsPresenterImplementation : FriendsPresenter {
-    var friends = [Friend]()
+ //   var friends = [Friend]()
     
     private var vkAPI: VKAPi
     private var userDB: FriendsSource
@@ -149,10 +149,8 @@ class FriendsPresenterImplementation : FriendsPresenter {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
          let viewController = storyboard.instantiateViewController(identifier: "PhotoController") as! PhotoController
         
-        viewController.tmpFriend = convertFriend(user:userRealm.toModel())
+     
           viewController.tmpVKUserRealm = userRealm
-          //           viewController.photoArray = photos
-          //viewController.configurator = config
           viewController.presenter = self
           view.navigationController?.pushViewController(viewController, animated: true)
     }
