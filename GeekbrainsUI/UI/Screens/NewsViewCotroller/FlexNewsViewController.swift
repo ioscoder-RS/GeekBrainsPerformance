@@ -38,6 +38,7 @@ class FlexNewsViewController: UITableViewController{
         tableView.register(UINib(nibName: "LikesRepostsComments", bundle: nil),forCellReuseIdentifier:"likesRepostsComments")
         tableView.register(UINib(nibName: "PhotoCollectionTableViewCell", bundle: nil),forCellReuseIdentifier:"photoCollectionTableViewCell")
         tableView.register(UINib(nibName: "GifCell", bundle: nil),forCellReuseIdentifier:"gifCell")
+          tableView.register(UINib(nibName: "LinkCell", bundle: nil),forCellReuseIdentifier:"linkCell")
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -24,6 +24,12 @@ class NewsRepository: NewsSource {
         var parsedUsername: String = ""
         var parsedGif: String?
         var photoArray = [String]()
+        var parsedLinkUrl : String?
+        var parsedLinkTitle : String?
+        var parsedLinkCaption : String?
+        var parsedLinkDescription : String?
+        var parsedLinkPhotoUrl: String?
+        var parsedLinkIsFavorite : Bool?
         
         //обнуляем массив, т.к. он может быть не пустым
         //например: при инициирующей загрузке его заполнили, а потом в prefetchRowsAt начали подкачивать
@@ -46,8 +52,16 @@ class NewsRepository: NewsSource {
                 parsedUsername = tempArray[0].name
                 parsedPhoto = tempArray[0].photo100
             }
-            //обнуляем переменную с URL-адресом GIF
-            parsedGif = nil
+          //обнуляем переменную с URL-адресом GIF
+                   parsedGif = nil
+ 
+            //обнуляем переменные link
+             parsedLinkUrl =  ""
+             parsedLinkTitle = ""
+             parsedLinkCaption =  ""
+             parsedLinkDescription = ""
+             parsedLinkPhotoUrl = ""
+             parsedLinkIsFavorite = false
             
             let attachArray = sourceNews.items[a].attachments ?? []
             if attachArray.count > 0{
@@ -61,6 +75,28 @@ class NewsRepository: NewsSource {
                         if attachArray[i].doc?.type == 3 {
                             parsedGif = attachArray[i].doc?.url
                         }
+                    case "link":
+                        //обнуляем переменные link
+                         parsedLinkUrl =  ""
+                         parsedLinkTitle = ""
+                         parsedLinkCaption =  ""
+                         parsedLinkDescription = ""
+                         parsedLinkPhotoUrl = ""
+                         parsedLinkIsFavorite = false
+                         
+                         //парсим значения
+                        parsedLinkUrl = attachArray[i].link?.url ?? ""
+                        parsedLinkTitle = attachArray[i].link?.title ?? ""
+                        parsedLinkCaption = attachArray[i].link?.caption ?? ""
+                        parsedLinkDescription = attachArray[i].link?.linkDescription ?? ""
+                        
+                        let localSizes = attachArray[i].link?.photo?.sizes
+                        let url = localSizes?.first(where: {$0.type == "l"})?.url
+                        
+                        parsedLinkPhotoUrl = url
+                        
+                        parsedLinkIsFavorite = attachArray[i].link?.isFavorite
+                        
                     default:
                         break
                     }//switch
@@ -78,7 +114,15 @@ class NewsRepository: NewsSource {
                 newsReposts: sourceNews.items[a].reposts,
                 newsViews: sourceNews.items[a].views ?? ViewsNews(count: 0),
                 newsComments: sourceNews.items[a].comments,
-                newsGif: parsedGif ?? ""
+                newsGif: parsedGif ?? "",
+                newsLinkUrl: parsedLinkUrl ?? "",
+                newsLinkTitle: parsedLinkTitle ?? "",
+                newsLinkCaption: parsedLinkCaption ?? "",
+                newsLinkDescription: parsedLinkDescription ?? "",
+     //           newsLinkPhoto: LinkPhoto ?? "",
+                newsLinkPhotoUrl: parsedLinkPhotoUrl ?? "",
+                newsLinkIsFavorite: parsedLinkIsFavorite ?? false
+               
                 
             ))
             

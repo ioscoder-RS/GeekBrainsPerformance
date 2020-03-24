@@ -25,10 +25,7 @@ class GifCell: UITableViewCell {
     
     func renderCell(iconURL:String){
         let imageLoadQueue = DispatchQueue(label: "GeekbrainsUI.gif.renderCell", attributes: .concurrent)
-        
-  
-   
-        
+    
      imageLoadQueue.async {
             if iconURL != ""{
                 let photoCashFunctions = PhotoCashFunctions()

@@ -101,6 +101,7 @@ struct Link: Codable {
         case photo
         case isFavorite = "is_favorite"
     }
+            
 }
 
 // MARK: - LinkPhoto

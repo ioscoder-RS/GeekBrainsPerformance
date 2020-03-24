@@ -172,6 +172,20 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
                               newsPart: StrGif(newsGif: newsToSlice.newsGif)
                           )
                       )
+                
+                case "Link":
+                          NewsWithSectionsAnyArray.append(
+                              NewsWithSectionsAny(
+                                  newsUniqID: newsUniqID,
+                                  cellType: cellType[ii],
+                                  newsPart: StrLink(url: newsToSlice.newsLinkUrl,
+                                                    title: newsToSlice.newsLinkTitle,
+                                                    caption: newsToSlice.newsLinkCaption,
+                                                    linkDescription: newsToSlice.newsLinkDescription,
+                                                    photo: newsToSlice.newsLinkPhotoUrl)
+                              )
+                          )
+                
             default:
                 print("неизвестный тип ячеек")
             }
@@ -266,24 +280,27 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol {
     /// - Parameters:
     ///   - tableView: таблица из TableViewController
     ///   - indexPath:  строка indexPath
-      func getRowHeight(tableView: UITableView, indexPath: IndexPath) -> CGFloat {
-          let rowType = indexPath.row
-          switch cellType[rowType] {
-          case "Gif":
-              let currentNews = self.getCurrentNewsAtIndexSection(indexPath: indexPath)
-              let localStruct = currentNews?.newsPart as! StrGif
-              if localStruct.newsGif == "" {return 0} else { return 200}
-              
-          case "IconUserTimeCell":
-              return Constants.iconUserTimeHeight
-          //коллекшн с фото
-          case "PhotoCollectionCV":
-              let currentNews = self.getCurrentNewsAtIndexSection(indexPath: indexPath)
-              let localStruct = currentNews?.newsPart as! StrPhotoCollectionCV
-              switch(localStruct.newsImages.count) {
-              case 0:
-                  return 0
-              default:
+    func getRowHeight(tableView: UITableView, indexPath: IndexPath) -> CGFloat {
+        let rowType = indexPath.row
+        switch cellType[rowType] {
+        case "Gif":
+            let currentNews = self.getCurrentNewsAtIndexSection(indexPath: indexPath)
+            let localStruct = currentNews?.newsPart as! StrGif
+            if localStruct.newsGif == "" {return 0} else { return 200}
+        case "Link":
+            let currentNews = self.getCurrentNewsAtIndexSection(indexPath: indexPath)
+            let localStruct = currentNews?.newsPart as! StrLink
+            if localStruct.url == "" {return 0} else { return UITableView.automaticDimension}
+        case "IconUserTimeCell":
+            return Constants.iconUserTimeHeight
+        //коллекшн с фото
+        case "PhotoCollectionCV":
+            let currentNews = self.getCurrentNewsAtIndexSection(indexPath: indexPath)
+            let localStruct = currentNews?.newsPart as! StrPhotoCollectionCV
+            switch(localStruct.newsImages.count) {
+            case 0:
+                return 0
+            default:
                 return Constants.collectionViewInTableViewHeight
               }
               
@@ -371,7 +388,7 @@ extension NewsViewPresenterImplementation {
             let localStruct = currentNews.newsPart as! StrIconUserTimeCell
             cell.renderCell(
                 iconURL: localStruct.avatarPath,
-                newsAuthor:localStruct.userName,
+                newsAuthor:localStruct.userName + currentNews.newsUniqID,
                 newsTime: viewableUnixTime(unixTime: localStruct.newsDate)
             )
             currentCell = cell
@@ -410,12 +427,23 @@ extension NewsViewPresenterImplementation {
                             commentsNews: localStruct.newsComments)
             currentCell = cell
             
-         //GIF-ки
+        //GIF-ки
         case "Gif":
             let cell = tableView.dequeueReusableCell(withIdentifier: "gifCell", for: indexPath) as! GifCell
             let localStruct = currentNews.newsPart as! StrGif
             if localStruct.newsGif != ""{ cell.renderCell(iconURL: localStruct.newsGif) }
             currentCell = cell
+            
+        //Link
+        case "Link":
+            let cell = tableView.dequeueReusableCell(withIdentifier: "linkCell", for: indexPath) as! LinkCell
+            let localStruct = currentNews.newsPart as! StrLink
+
+            if localStruct.url != ""{
+                cell.renderCell (strLink: localStruct)
+            }
+            currentCell = cell
+            
         default:
             print("☹️ Ой")
             return UITableViewCell()
