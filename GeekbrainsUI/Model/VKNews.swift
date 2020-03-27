@@ -187,7 +187,12 @@ struct Video: Codable {
     let type: String?
     let fileSize: Int?
     let url: String?
-
+    
+    var aspectRatio: CGFloat? {
+          guard width != 0 else { return nil }
+          return CGFloat(height)/CGFloat(width)
+      }
+    
     enum CodingKeys: String, CodingKey {
         case src, width, height, type
         case fileSize = "file_size"

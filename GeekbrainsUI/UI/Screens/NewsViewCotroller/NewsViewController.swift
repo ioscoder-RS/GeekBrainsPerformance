@@ -14,7 +14,7 @@ protocol MessageView: class {
     func addSubView(view: UIView)
 }
 
-class FlexNewsViewController: UITableViewController{
+class NewsViewController: UITableViewController{
     
     var presenter: NewsViewPresenter?
     var configurator: NewMessageViewConfigurator?
@@ -59,7 +59,7 @@ class FlexNewsViewController: UITableViewController{
     }
 }// class MessageViewController
 
-extension FlexNewsViewController: MessageView{
+extension NewsViewController: MessageView{
     func updateTable() {
         tableView.reloadData()
     }
@@ -70,7 +70,7 @@ extension FlexNewsViewController: MessageView{
     
 }
 
-extension FlexNewsViewController: UITableViewDataSourcePrefetching {
+extension NewsViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
 
         presenter?.fetchMoreNews(tableView: tableView, indexPaths: indexPaths)

@@ -1,10 +1,11 @@
 //
-//  Gradient.swift
+//  CustomGradient.swift
 //  GeekbrainsUI
 //
-//  Created by raskin-sa on 09/12/2019.
-//  Copyright © 2019 raskin-sa. All rights reserved.
+//  Created by raskin-sa on 27/03/2020.
+//  Copyright © 2020 raskin-sa. All rights reserved.
 //
+
 
 import UIKit
 
@@ -33,15 +34,4 @@ class CustomGradient: UIView{
          layer.addSublayer(gradientLayer)
         
     }
-    /*
-    func addImage(){
-         testView = UIView(frame: frame)
-         addSubview(testView)
-     }
-    */
-  /*  override func layoutSubviews() {
-
-        
-
-    }*/
 }

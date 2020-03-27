@@ -34,12 +34,17 @@ class LinkCell: UITableViewCell {
         //заголовок новости и ссылка
         linkCaption.isEditable = false
         
-        var localLinkCaption = strLink.caption
+        var localLinkCaption: String
         //заглушка для link с пустым caption и заполненным URL
-        if localLinkCaption == "" {
+        if strLink.caption == "" {
             localLinkCaption = strLink.title
             linkTitle.isHidden = true //чтобы две одинаковые строки не выводить
+        }else
+        {
+            localLinkCaption = strLink.caption
+            linkTitle.isHidden = false
         }
+
         guard localLinkCaption != ""  else {return}
         
         //устанавливаем заголовок и адрес гиперссылки

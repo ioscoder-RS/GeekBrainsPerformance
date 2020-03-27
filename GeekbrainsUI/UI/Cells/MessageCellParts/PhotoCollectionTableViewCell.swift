@@ -8,24 +8,32 @@
 
 import UIKit
 
+protocol ImageHeightDefined {
+    func imageHeightDefined()
+}
+
+
 class PhotoCollectionTableViewCell: UITableViewCell , UICollectionViewDelegate, UICollectionViewDataSource  {
     
+    var layout: UICollectionViewLayout?
+    
     var newsPhotocount: Int?
-       var newsPhotoArray: [String]?
+    var newsPhotoArray: [String]?
     
     @IBOutlet weak var newsPhotoCollectionView: NewsPhotoCollectionView!
-    
+
+    var imageHeightDelegate: ImageHeightDefined?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.newsPhotoCollectionView.register(UINib(nibName: "NewsPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "newsPhotoCell")
-        
-        self.newsPhotoCollectionView.delegate = self
-        self.newsPhotoCollectionView.dataSource = self
-        self.newsPhotocount = 0
-        self.newsPhotoArray = [String]()
         // Initialization code
+        self.newsPhotoCollectionView.register(UINib(nibName: "NewsPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "newsPhotoCell")
+         
+         self.newsPhotoCollectionView.delegate = self
+         self.newsPhotoCollectionView.dataSource = self
+         self.newsPhotocount = 0
+         self.newsPhotoArray = [String]()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -44,7 +52,6 @@ class PhotoCollectionTableViewCell: UITableViewCell , UICollectionViewDelegate, 
             return UICollectionViewCell()
         }
         
-   
         if let image = newsPhotoArray?[indexPath.row] {
             cell.renderCell(imagePath:  image)
         }
@@ -52,8 +59,38 @@ class PhotoCollectionTableViewCell: UITableViewCell , UICollectionViewDelegate, 
         return cell
     }
     
-    func renderCell ( imagesArray: [String]){
-        self.newsPhotocount = imagesArray.count
-             self.newsPhotoArray = imagesArray
+    func renderCollection ( imagesArray: [Video], imageCount: Int){
+        self.newsPhotocount = imageCount
+        self.newsPhotoArray = imagesArray.map{($0.url ?? "")}
+        
+        //если в массиве больше трех фото, то задаем CompositionalLayout
+         if imageCount > 3
+         {
+              self.newsPhotoCollectionView.collectionViewLayout = createLayout()
+         }
+         else{
+             self.newsPhotoCollectionView.collectionViewLayout = NewsCellLayout()
+         }
+        
+//        contentView.layoutIfNeeded()
+        //передаем контроллеру событие, что размер изображений определен, чтобы он перерисовался
+//        self.imageHeightDelegate?.imageHeightDefined()
+    }
+    
+    func createLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+ //       item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalHeight(1.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                         subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
 }

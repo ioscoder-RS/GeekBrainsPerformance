@@ -19,6 +19,7 @@ class FriendsPhotoViewController : UIViewController {
     public var imageURL: String?
     public var likeCount: Int?
     public var userLiked:Int?
+      var imageLoadQueue = DispatchQueue(label: "GeekbrainsUI.images.posts", attributes: .concurrent)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,9 @@ class FriendsPhotoViewController : UIViewController {
     
         if let tmpVKUserRealm = self.tmpVKUserRealm {
             guard let url = URL(string: imageURL ) else {return}
-
-            friendPhoto.kf.setImage(with: url)
+            imageLoadQueue.async{
+                self.friendPhoto.kf.setImage(with: url)
+            }
             username.text = tmpVKUserRealm.userName
             friendPhotolikeButton.setLikeCount(likeCount: self.likeCount ?? 0, userLiked: self.userLiked ?? 0)
             

@@ -16,10 +16,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="n1s-7g-15p" customClass="NewsPhotoCollectionView" customModule="GeekbrainsUI" customModuleProvider="target">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="n1s-7g-15p" customClass="NewsPhotoCollectionView" customModule="GeekbrainsUI" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewLayout key="collectionViewLayout" id="fgu-Om-hQz" customClass="NewsCellPicturesLayout" customModule="GeekbrainsUI" customModuleProvider="target"/>
+                        <collectionViewLayout key="collectionViewLayout" id="1RL-pe-C0E" customClass="NewsCellPicturesLayout" customModule="GeekbrainsUI" customModuleProvider="target"/>
                     </collectionView>
                 </subviews>
                 <constraints>

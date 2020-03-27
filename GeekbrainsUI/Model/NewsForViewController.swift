@@ -12,7 +12,9 @@ struct NewsForViewController {
     var userName:       String
     var newsDate:       Int
     var newsText:       String
-    var newsImages:     [String]
+ //   var newsImages:     [String]
+    var newsImages:     [Video]
+    
   //  var newsLikes: VKPhotoLikes
     var newsLikes: LikesNews
     var newsReposts: RepostsNews
@@ -70,7 +72,8 @@ struct StrPostAndButton {
 }
 
 struct StrPhotoCollectionCV{
-    var newsImages:     [String]
+//    var newsImages:     [String]
+    var newsImages:[Video]
 }
 
 struct StrGif{

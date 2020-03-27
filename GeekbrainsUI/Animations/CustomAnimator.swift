@@ -13,16 +13,16 @@ class CustomAnimator : NSObject, UIViewControllerAnimatedTransitioning {
     var duration : TimeInterval
     var isPresenting : Bool
     var originFrame : CGRect
-    var image : UIImage
+    var imageURL : String
     
     
     public let CustomAnimatorTag = 99
     
-    init(duration : TimeInterval, isPresenting : Bool, originFrame : CGRect, image : UIImage) {
+    init(duration : TimeInterval, isPresenting : Bool, originFrame : CGRect, imageURL : String) {
         self.duration = duration
         self.isPresenting = isPresenting
         self.originFrame = originFrame
-        self.image = image
+        self.imageURL = imageURL
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -49,12 +49,14 @@ class CustomAnimator : NSObject, UIViewControllerAnimatedTransitioning {
         
         guard let artwork = detailView.viewWithTag(CustomAnimatorTag) as? UIImageView else { return }
         
-        artwork.image = image
+        guard let url = URL(string: imageURL ) else {return}
+        
+        artwork.kf.setImage(with: url)
         artwork.alpha = 0
         
         
         let transitionImageView = UIImageView(frame: isPresenting ? originFrame : artwork.frame)
-        transitionImageView.image = image
+        transitionImageView.kf.setImage(with: url)
         
         container.addSubview(transitionImageView)
         

@@ -23,7 +23,8 @@ class NewsRepository: NewsSource {
         var parsedPhoto: String = ""
         var parsedUsername: String = ""
         var parsedGif: String?
-        var photoArray = [String]()
+ //       var photoArray = [String]()
+        var photoArray = [Video]()
         var parsedLinkUrl : String?
         var parsedLinkTitle : String?
         var parsedLinkCaption : String?
@@ -37,7 +38,7 @@ class NewsRepository: NewsSource {
         
         for a in 0 ... sourceNews.items.count - 1 {
             
-            photoArray = [String]()
+            photoArray = [Video]()
             let tmpSourceId = sourceNews.items[a].sourceId!
             //извлекаем фото
             if  tmpSourceId > 0 {
@@ -69,8 +70,10 @@ class NewsRepository: NewsSource {
                     switch attachArray[i].type{
                     case "photo":
                         let localSizes = attachArray[i].photo?.sizes
-                        let url = localSizes?.first(where: {$0.type == "x"})?.url
-                        photoArray.append(url ?? "")
+   //                     let url = localSizes?.first(where: {$0.type == "x"})?.url
+                        guard let sizes = localSizes?.first(where: {$0.type == "x"}) else { return  }
+   //                     photoArray.append(url ?? "")
+                        photoArray.append(sizes)
                     case "doc":
                         if attachArray[i].doc?.type == 3 {
                             parsedGif = attachArray[i].doc?.url

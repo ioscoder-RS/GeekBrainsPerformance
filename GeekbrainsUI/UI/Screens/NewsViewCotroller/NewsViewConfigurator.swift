@@ -21,11 +21,11 @@ import UIKit
 
 //MARK: для нового контроллера новостей, с разделенными ячейками для новости
 protocol NewMessageViewConfigurator {
-    func configure( view: FlexNewsViewController)
+    func configure( view: NewsViewController)
 }
 
 class NewMessageViewConfiguratorImplementation: NewMessageViewConfigurator{
-    func configure( view: FlexNewsViewController) {
+    func configure( view: NewsViewController) {
         view.presenter = NewsViewPresenterImplementation (newsDB: NewsRepository(), view: view)
     }
 }
