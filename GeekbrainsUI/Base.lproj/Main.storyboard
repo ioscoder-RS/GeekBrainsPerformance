@@ -287,10 +287,10 @@
             </objects>
             <point key="canvasLocation" x="5928" y="228"/>
         </scene>
-        <!--Друзья пользователя (Collection View)-->
+        <!--Фотографии пользователя (Collection View)-->
         <scene sceneID="sx0-Q8-Mti">
             <objects>
-                <collectionViewController storyboardIdentifier="PhotoController" title="Друзья пользователя (Collection View)" id="8Mc-q1-Bew" customClass="PhotoController" customModule="GeekbrainsUI" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="PhotoController" title="Фотографии пользователя (Collection View)" id="8Mc-q1-Bew" userLabel="Фотографии пользователя (Collection View)" customClass="PhotoController" customModule="GeekbrainsUI" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="hnk-wb-dYM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -305,22 +305,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="imageView:aAC-nv-pag:image" translatesAutoresizingMaskIntoConstraints="NO" id="aAC-nv-pag">
-                                            <rect key="frame" x="-4" y="11" width="150" height="59"/>
+                                            <rect key="frame" x="0.0" y="5" width="150" height="116"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="150" id="bKk-5L-2F9"/>
-                                                <constraint firstAttribute="width" secondItem="aAC-nv-pag" secondAttribute="height" multiplier="1:1" id="qEj-wh-LtZ"/>
-                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="cellUsername" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXz-4v-znl">
-                                            <rect key="frame" x="20" y="98" width="75" height="33.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="75" id="tR9-Wa-yDj"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xo2-vC-0vC" customClass="LikeButton" customModule="GeekbrainsUI" customModuleProvider="target">
                                             <rect key="frame" x="20" y="135" width="26" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -333,18 +320,17 @@
                                 </view>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="xo2-vC-0vC" firstAttribute="leading" secondItem="cqf-xc-BL4" secondAttribute="leading" constant="69" id="S3I-lF-uMJ"/>
-                                    <constraint firstItem="HXz-4v-znl" firstAttribute="centerX" secondItem="aAC-nv-pag" secondAttribute="centerX" id="SfX-oZ-50I"/>
-                                    <constraint firstItem="xo2-vC-0vC" firstAttribute="centerX" secondItem="HXz-4v-znl" secondAttribute="centerX" id="aoR-y5-UOd"/>
-                                    <constraint firstItem="HXz-4v-znl" firstAttribute="top" secondItem="aAC-nv-pag" secondAttribute="bottom" constant="10" id="dyQ-yj-1MS"/>
-                                    <constraint firstItem="aAC-nv-pag" firstAttribute="centerX" secondItem="cqf-xc-BL4" secondAttribute="centerX" id="gVh-9P-bHX"/>
-                                    <constraint firstItem="aAC-nv-pag" firstAttribute="top" secondItem="cqf-xc-BL4" secondAttribute="top" constant="10" id="mTP-Gm-w5R"/>
-                                    <constraint firstItem="aAC-nv-pag" firstAttribute="centerY" secondItem="cqf-xc-BL4" secondAttribute="centerY" id="omb-Yf-9XF"/>
-                                    <constraint firstItem="xo2-vC-0vC" firstAttribute="top" secondItem="HXz-4v-znl" secondAttribute="bottom" constant="5" id="pq9-Hj-OxM"/>
+                                    <constraint firstItem="xo2-vC-0vC" firstAttribute="centerX" secondItem="cqf-xc-BL4" secondAttribute="centerX" id="7mh-Ud-Fah"/>
+                                    <constraint firstAttribute="bottom" secondItem="aAC-nv-pag" secondAttribute="bottom" constant="30" id="EMc-aW-KrQ"/>
+                                    <constraint firstItem="aAC-nv-pag" firstAttribute="leading" secondItem="cqf-xc-BL4" secondAttribute="leading" id="WRo-P4-7cu"/>
+                                    <constraint firstAttribute="bottom" secondItem="xo2-vC-0vC" secondAttribute="bottom" constant="5" id="XCp-S4-tib"/>
+                                    <constraint firstAttribute="trailing" secondItem="aAC-nv-pag" secondAttribute="trailing" id="eJt-MI-tbF"/>
+                                    <constraint firstItem="aAC-nv-pag" firstAttribute="top" secondItem="cqf-xc-BL4" secondAttribute="top" id="mTP-Gm-w5R"/>
+                                    <constraint firstItem="xo2-vC-0vC" firstAttribute="top" secondItem="aAC-nv-pag" secondAttribute="bottom" constant="10" id="rfs-k8-Wbp"/>
                                 </constraints>
                                 <size key="customSize" width="146" height="163"/>
                                 <connections>
-                                    <outlet property="cellUsername" destination="HXz-4v-znl" id="C1W-TF-sn8"/>
+                                    <outlet property="likeButton" destination="xo2-vC-0vC" id="iOB-y1-6zi"/>
                                     <outlet property="photo" destination="aAC-nv-pag" id="Q8n-Ay-Sru"/>
                                 </connections>
                             </collectionViewCell>
@@ -354,14 +340,14 @@
                             <outlet property="delegate" destination="8Mc-q1-Bew" id="3Sk-81-Qxc"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Поиск друзей" id="hhx-dU-cAO">
+                    <navigationItem key="navigationItem" title="Фотографии пользователя" largeTitleDisplayMode="never" id="hhx-dU-cAO">
                         <barButtonItem key="backBarButtonItem" title="Назад к экрану &quot;Друзья&quot;" id="v2V-qQ-MIa"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9v-Gy-egl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5196" y="-701"/>
+            <point key="canvasLocation" x="5195.652173913044" y="-701.11607142857144"/>
         </scene>
         <!--Main Tab-->
         <scene sceneID="QAh-JH-RMY">
@@ -703,48 +689,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" tag="99" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hZh-ym-68q">
-                                <rect key="frame" x="0.0" y="88" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="253" width="414" height="400"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="4HL-rm-Auo"/>
-                                    <constraint firstAttribute="width" secondItem="hZh-ym-68q" secondAttribute="height" multiplier="1:1" id="tzM-pn-b0X"/>
+                                    <constraint firstAttribute="height" constant="400" id="fLX-MR-maI"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3op-FH-1i8">
-                                <rect key="frame" x="0.0" y="497" width="414" height="317"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGC-zh-Ii0">
-                                        <rect key="frame" x="186" y="15" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQe-Jf-Zef" customClass="LikeButton" customModule="GeekbrainsUI" customModuleProvider="target">
-                                        <rect key="frame" x="170" y="46" width="189" height="22"/>
-                                        <state key="normal" title="Button" image="suit.heart" catalog="system">
-                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="likeButtonPressed:" destination="NVv-2R-UQX" eventType="touchUpInside" id="wa4-64-q2i"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="uQe-Jf-Zef" firstAttribute="top" secondItem="QGC-zh-Ii0" secondAttribute="bottom" constant="10" id="rLr-tO-8CI"/>
-                                    <constraint firstItem="uQe-Jf-Zef" firstAttribute="centerX" secondItem="3op-FH-1i8" secondAttribute="centerX" id="yKs-Vf-KBC"/>
-                                </constraints>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQe-Jf-Zef" customClass="LikeButton" customModule="GeekbrainsUI" customModuleProvider="target">
+                                <rect key="frame" x="170" y="663" width="74.5" height="22"/>
+                                <state key="normal" title="Button" image="suit.heart" catalog="system">
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="likeButtonPressed:" destination="NVv-2R-UQX" eventType="touchUpInside" id="wa4-64-q2i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="QGC-zh-Ii0" firstAttribute="centerX" secondItem="e4B-Gx-N3P" secondAttribute="centerX" id="16e-U5-ETj"/>
-                            <constraint firstItem="e4B-Gx-N3P" firstAttribute="bottom" secondItem="3op-FH-1i8" secondAttribute="bottom" constant="48" id="2ks-Om-2ju"/>
-                            <constraint firstItem="hZh-ym-68q" firstAttribute="top" secondItem="e4B-Gx-N3P" secondAttribute="top" constant="44" id="Dnq-fF-qs3"/>
-                            <constraint firstItem="e4B-Gx-N3P" firstAttribute="trailing" secondItem="3op-FH-1i8" secondAttribute="trailing" id="OKR-he-SXD"/>
-                            <constraint firstItem="3op-FH-1i8" firstAttribute="leading" secondItem="e4B-Gx-N3P" secondAttribute="leading" id="T0r-uE-CS6"/>
-                            <constraint firstItem="3op-FH-1i8" firstAttribute="top" secondItem="hZh-ym-68q" secondAttribute="bottom" constant="-5" id="dJu-9B-kN3"/>
-                            <constraint firstItem="hZh-ym-68q" firstAttribute="centerX" secondItem="e4B-Gx-N3P" secondAttribute="centerX" id="qNK-OL-c63"/>
-                            <constraint firstItem="QGC-zh-Ii0" firstAttribute="top" secondItem="hZh-ym-68q" secondAttribute="bottom" constant="10" id="xcc-Nq-rhY"/>
+                            <constraint firstItem="e4B-Gx-N3P" firstAttribute="trailing" secondItem="hZh-ym-68q" secondAttribute="trailing" id="Hsn-TZ-cZ4"/>
+                            <constraint firstItem="uQe-Jf-Zef" firstAttribute="top" secondItem="hZh-ym-68q" secondAttribute="bottom" constant="10" id="NvV-6t-8af"/>
+                            <constraint firstItem="hZh-ym-68q" firstAttribute="centerY" secondItem="e4B-Gx-N3P" secondAttribute="centerY" id="aoO-gj-vlN"/>
+                            <constraint firstItem="uQe-Jf-Zef" firstAttribute="centerX" secondItem="e4B-Gx-N3P" secondAttribute="centerX" id="oUd-by-Ngp"/>
+                            <constraint firstItem="hZh-ym-68q" firstAttribute="leading" secondItem="e4B-Gx-N3P" secondAttribute="leading" id="pvq-Ia-6L0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e4B-Gx-N3P"/>
                     </view>
@@ -752,12 +718,11 @@
                     <connections>
                         <outlet property="friendPhoto" destination="hZh-ym-68q" id="dWV-se-fYs"/>
                         <outlet property="friendPhotolikeButton" destination="uQe-Jf-Zef" id="mMF-3Q-nkm"/>
-                        <outlet property="username" destination="QGC-zh-Ii0" id="moC-Li-6Ta"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVS-jG-Kjl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6112" y="-701"/>
+            <point key="canvasLocation" x="6111.594202898551" y="-701.11607142857144"/>
         </scene>
         <!--Новости-->
         <scene sceneID="i6I-JW-vpr">

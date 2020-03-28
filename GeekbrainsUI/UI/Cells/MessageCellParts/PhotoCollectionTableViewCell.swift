@@ -19,6 +19,7 @@ class PhotoCollectionTableViewCell: UITableViewCell , UICollectionViewDelegate, 
     
     var newsPhotocount: Int?
     var newsPhotoArray: [String]?
+    var myCompositionalLayout = MyCompositionalLayout()
     
     @IBOutlet weak var newsPhotoCollectionView: NewsPhotoCollectionView!
 
@@ -64,33 +65,15 @@ class PhotoCollectionTableViewCell: UITableViewCell , UICollectionViewDelegate, 
         self.newsPhotoArray = imagesArray.map{($0.url ?? "")}
         
         //если в массиве больше трех фото, то задаем CompositionalLayout
-         if imageCount > 3
-         {
-              self.newsPhotoCollectionView.collectionViewLayout = createLayout()
-         }
-         else{
-             self.newsPhotoCollectionView.collectionViewLayout = NewsCellLayout()
-         }
         
-//        contentView.layoutIfNeeded()
-        //передаем контроллеру событие, что размер изображений определен, чтобы он перерисовался
-//        self.imageHeightDelegate?.imageHeightDefined()
-    }
+        if (imageCount > 3)&&(Session.shared.appVersion > 13.0){
+            self.newsPhotoCollectionView.collectionViewLayout = myCompositionalLayout.createCarouselLayout()
+        }
+        else{
+            self.newsPhotoCollectionView.collectionViewLayout = NewsCellLayout()
+        }
+    }//if (imageCount > 3)
     
-    func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
-                                              heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
- //       item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .fractionalHeight(1.0))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                         subitems: [item])
+    
 
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
-
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
 }

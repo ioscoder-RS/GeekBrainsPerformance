@@ -12,7 +12,6 @@ import Kingfisher
 class FriendsPhotoViewController : UIViewController {
     
     @IBOutlet weak var friendPhotolikeButton: LikeButton!
-    @IBOutlet weak var username: UILabel!
     @IBOutlet weak var friendPhoto: UIImageView!
     
     public var tmpVKUserRealm: VKUserRealm?
@@ -26,16 +25,15 @@ class FriendsPhotoViewController : UIViewController {
         
         guard let imageURL = self.imageURL else {return}
     
-        if let tmpVKUserRealm = self.tmpVKUserRealm {
+        if self.tmpVKUserRealm != nil {
             guard let url = URL(string: imageURL ) else {return}
             imageLoadQueue.async{
                 self.friendPhoto.kf.setImage(with: url)
             }
-            username.text = tmpVKUserRealm.userName
+    
             friendPhotolikeButton.setLikeCount(likeCount: self.likeCount ?? 0, userLiked: self.userLiked ?? 0)
             
             }
-        
     }
     
     @IBAction func likeButtonPressed(_ sender: Any) {

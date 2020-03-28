@@ -31,12 +31,23 @@ class PhotoController: UICollectionViewController, PhotoListView,  UICollectionV
         }
         
         self.navigationController?.delegate = self
-                
+        
+        let myCompositionalLayout = MyCompositionalLayout()
+        
+        //устанавливаем layout
+        if ((presenter?.getPhotoControllerCount() ?? 1 ) > 6) &&
+            (Session.shared.appVersion > 13.0) {
+            collectionView.collectionViewLayout = myCompositionalLayout.createBigLeftAllOtherRoundLayout()
+         } else
+         {
+            collectionView.collectionViewLayout = CustomCollectionViewLayout()
+        }
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.getPhotoControllerCount() ?? 1
+        let count =  (presenter?.getPhotoControllerCount() ?? 1 )
+        return count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

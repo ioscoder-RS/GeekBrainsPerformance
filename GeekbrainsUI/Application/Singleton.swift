@@ -16,4 +16,5 @@ class Session {
     var userId = "0"
     var webView = WKWebView()
     var version = ""
+    var appVersion = 0.0
 }

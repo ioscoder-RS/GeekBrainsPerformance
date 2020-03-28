@@ -32,3 +32,4 @@ extension Date {
     }
 }
 
+let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String

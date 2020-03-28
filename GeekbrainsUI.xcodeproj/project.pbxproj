@@ -402,7 +402,6 @@
 				9137E120240C233400432018 /* NewsRepository.swift */,
 				9111C69E2412B47400735F19 /* NewsForViewController.swift */,
 				9188BF8523CFB36C0094B95A /* VKApi.swift */,
-				9188BF8723CFB3FC0094B95A /* Singleton.swift */,
 				91ADF80B23D4942500C35F7D /* VKUser.swift */,
 				91BEE24323FD1DF3007291E3 /* VKLogin.swift */,
 				91ADF80D23D4957100C35F7D /* VKGroup.swift */,
@@ -467,6 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				91CB234423DACC7B003C9EA8 /* AppVariables.swift */,
+				9188BF8723CFB3FC0094B95A /* Singleton.swift */,
 				91BF237E241261EF0030B423 /* AppFunctions.swift */,
 				910281892423E34A00112F54 /* VKService.swift */,
 			);

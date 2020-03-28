@@ -74,7 +74,10 @@ extension VKLoginController: WKNavigationDelegate {
         Session.shared.userId = params["user_id"] ?? "0"
         Session.shared.version = "5.103"
         
-        //получаем запись о пользователе с сервера
+        //заполнение версии ПО пользовательского клиента
+        let appVersion = UIDevice.current.systemVersion
+        let nsAppVersion = NSString(string: appVersion)
+        Session.shared.appVersion = nsAppVersion.doubleValue
         
         //реализация UserDefaults
         UserDefaults.standard.set(params["access_token"], forKey: "access_token")

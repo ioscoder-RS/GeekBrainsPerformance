@@ -11,15 +11,16 @@ import UIKit
 class PhotoCell: UICollectionViewCell {
     
     @IBOutlet weak var photo: UIImageView!
-    @IBOutlet weak var cellUsername: UILabel!
+
+    @IBOutlet weak var likeButton: LikeButton!
     
     func renderCell(model: VKPhotosRealm, username: String ) {
-        cellUsername.text = username
+        likeButton.setLikeCount(likeCount: model.likes?.count ?? 0, userLiked: model.likes?.userLikes ?? 0)
         
         let sizesRealm = model.sizes.filter("type == %@","x")
         let urlToBe = sizesRealm[0].url
         let url = URL(string: urlToBe)
-        
+
         photo.kf.setImage(with: url)
     }
 }

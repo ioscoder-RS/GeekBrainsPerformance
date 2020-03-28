@@ -113,3 +113,10 @@ extension NSMutableAttributedString {
         return false
     }
 }
+
+
+extension String {
+    func toDouble() -> Double {
+      return (self as NSString).doubleValue
+    }
+}
