@@ -21,7 +21,6 @@ class VKLoginController: UIViewController {
         webView.load(vkService.request!)
     }//override func viewDidLoad()
     
-    
 }// class VKLoginController: UIViewController
 
 

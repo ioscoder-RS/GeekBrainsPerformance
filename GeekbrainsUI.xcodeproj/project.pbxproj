@@ -78,6 +78,8 @@
 		91CB234223D9D97F003C9EA8 /* LoadIndicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB234023D9D97F003C9EA8 /* LoadIndicators.swift */; };
 		91CB234323D9D97F003C9EA8 /* EmitterSnow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB234123D9D97F003C9EA8 /* EmitterSnow.swift */; };
 		91CB234523DACC7B003C9EA8 /* AppVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB234423DACC7B003C9EA8 /* AppVariables.swift */; };
+		91DDCABD2430C6E3002248DE /* SelfProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DDCABB2430C6E3002248DE /* SelfProfile.swift */; };
+		91DDCABE2430C6E3002248DE /* SelfProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91DDCABC2430C6E3002248DE /* SelfProfile.xib */; };
 		91E752C223E1C1180028BEE4 /* CommonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E752C123E1C1180028BEE4 /* CommonRepository.swift */; };
 		91E752C423E1C2BA0028BEE4 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E752C323E1C2BA0028BEE4 /* GroupRepository.swift */; };
 		91E752C723E1C6750028BEE4 /* GroupsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E752C623E1C6750028BEE4 /* GroupsPresenter.swift */; };
@@ -183,6 +185,8 @@
 		91CB234023D9D97F003C9EA8 /* LoadIndicators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadIndicators.swift; sourceTree = "<group>"; };
 		91CB234123D9D97F003C9EA8 /* EmitterSnow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmitterSnow.swift; sourceTree = "<group>"; };
 		91CB234423DACC7B003C9EA8 /* AppVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVariables.swift; sourceTree = "<group>"; };
+		91DDCABB2430C6E3002248DE /* SelfProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfProfile.swift; sourceTree = "<group>"; };
+		91DDCABC2430C6E3002248DE /* SelfProfile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfProfile.xib; sourceTree = "<group>"; };
 		91E752C123E1C1180028BEE4 /* CommonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRepository.swift; sourceTree = "<group>"; };
 		91E752C323E1C2BA0028BEE4 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
 		91E752C623E1C6750028BEE4 /* GroupsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsPresenter.swift; sourceTree = "<group>"; };
@@ -308,6 +312,8 @@
 				9102817F24227C3E00112F54 /* GifCell.xib */,
 				91EC337724293F5F00253485 /* LinkCell.swift */,
 				91EC337824293F5F00253485 /* LinkCell.xib */,
+				91DDCABB2430C6E3002248DE /* SelfProfile.swift */,
+				91DDCABC2430C6E3002248DE /* SelfProfile.xib */,
 			);
 			path = MessageCellParts;
 			sourceTree = "<group>";
@@ -401,7 +407,6 @@
 			children = (
 				9137E120240C233400432018 /* NewsRepository.swift */,
 				9111C69E2412B47400735F19 /* NewsForViewController.swift */,
-				9188BF8523CFB36C0094B95A /* VKApi.swift */,
 				91ADF80B23D4942500C35F7D /* VKUser.swift */,
 				91BEE24323FD1DF3007291E3 /* VKLogin.swift */,
 				91ADF80D23D4957100C35F7D /* VKGroup.swift */,
@@ -468,6 +473,7 @@
 				91CB234423DACC7B003C9EA8 /* AppVariables.swift */,
 				9188BF8723CFB3FC0094B95A /* Singleton.swift */,
 				91BF237E241261EF0030B423 /* AppFunctions.swift */,
+				9188BF8523CFB36C0094B95A /* VKApi.swift */,
 				910281892423E34A00112F54 /* VKService.swift */,
 			);
 			path = Application;
@@ -626,6 +632,7 @@
 				9122F048241A797C00EE86C7 /* PhotoCollectionTableViewCell.xib in Resources */,
 				91E752CD23E951640028BEE4 /* GoogleService-Info.plist in Resources */,
 				9122F044241A748600EE86C7 /* LikesRepostsComments.xib in Resources */,
+				91DDCABE2430C6E3002248DE /* SelfProfile.xib in Resources */,
 				9122F03C241A6F4000EE86C7 /* IconUserTimeCell.xib in Resources */,
 				915B9DB32389B93C00944194 /* LaunchScreen.storyboard in Resources */,
 				91EC337A24293F5F00253485 /* LinkCell.xib in Resources */,
@@ -765,6 +772,7 @@
 				9137E11F240C20AD00432018 /* NewsViewConfigurator.swift in Sources */,
 				9132FDBD23B6323600D0689A /* CustomAnimator.swift in Sources */,
 				9190B5AD23A7A531009F054F /* ViewButton.swift in Sources */,
+				91DDCABD2430C6E3002248DE /* SelfProfile.swift in Sources */,
 				91F2178E23D501FA003FD677 /* VKPhotos.swift in Sources */,
 				9117976923E015480038D4CF /* UserRepository.swift in Sources */,
 				9161587F23A4F7A700F16F42 /* CustomCollectionViewLayout.swift in Sources */,

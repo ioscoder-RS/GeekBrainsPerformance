@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol MessageView: class {
     func updateTable()
     func addSubView(view: UIView)
@@ -18,7 +17,7 @@ class NewsViewController: UITableViewController{
     
     var presenter: NewsViewPresenter?
     var configurator: NewMessageViewConfigurator?
-
+    
     override func viewDidLoad() {
         registerCells()
         
@@ -38,7 +37,8 @@ class NewsViewController: UITableViewController{
         tableView.register(UINib(nibName: "LikesRepostsComments", bundle: nil),forCellReuseIdentifier:"likesRepostsComments")
         tableView.register(UINib(nibName: "PhotoCollectionTableViewCell", bundle: nil),forCellReuseIdentifier:"photoCollectionTableViewCell")
         tableView.register(UINib(nibName: "GifCell", bundle: nil),forCellReuseIdentifier:"gifCell")
-          tableView.register(UINib(nibName: "LinkCell", bundle: nil),forCellReuseIdentifier:"linkCell")
+        tableView.register(UINib(nibName: "LinkCell", bundle: nil),forCellReuseIdentifier:"linkCell")
+        tableView.register(UINib(nibName: "SelfProfile", bundle: nil),forCellReuseIdentifier:"selfProfile")
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,7 +72,6 @@ extension NewsViewController: MessageView{
 
 extension NewsViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-
         presenter?.fetchMoreNews(tableView: tableView, indexPaths: indexPaths)
     }
 }

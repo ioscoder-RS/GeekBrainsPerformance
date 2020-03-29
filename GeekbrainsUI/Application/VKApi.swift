@@ -31,30 +31,18 @@ struct CommonResponseArray<T: Decodable>: Decodable{
     var items: [T]
 }
 
-struct CommonResponseNoCount<T: Decodable>: Decodable {
-    var response: CommonResponseArrayNoCount<T>
-}
-struct CommonResponseArrayNoCount<T: Decodable>: Decodable{
-    var items: [T]
-}
-
-
 class VKAPi {
     let vkURL = "https://api.vk.com/method/"
     //https://jsonplaceholder.typicode.com/users
-    
-//    typealias Out = Swift.Result
-    
+        
     func sendRequest<T: Decodable>(url:String, method: HTTPMethod = .get, params: Parameters,  webRequestEntity: WebRequestEntities, completion: @escaping (Out<[T],Error>)-> Void){
         
         Alamofire.request(url,method: method,parameters: params).responseData { (result) in
-                                guard let data = result.value else {return}
+            guard let data = result.value else {return}
             
-         
-    
             do{
-                    let result = try JSONDecoder().decode(CommonResponse<T>.self, from: data)
-       
+                let result = try JSONDecoder().decode(CommonResponse<T>.self, from: data)
+                
                 //сохраняем в глобальные переменные то, что пришло из Web
                 switch webRequestEntity{
                 case .VKUser:
@@ -65,15 +53,14 @@ class VKAPi {
                     webVKPhotos = result.response.items as! [VKPhoto]
                 default:
                     break
-                }
+                }//switch
                 completion(.success(result.response.items))
             }catch{
-   
+                
                 completion(.failure(error))
-            }
-    }
+            }//do-catch
+        }//Alamofire.request completion
     }//func sendRequest
-    
     
     //Получение списка друзей
     func getFriendList(token: String,completion: @escaping (Out<[VKUser],Error>)-> Void) {
@@ -87,8 +74,6 @@ class VKAPi {
         sendRequest(url: requestURL, params: params, webRequestEntity: WebRequestEntities.VKUser ) {completion($0)}
                             
     }//func getFriendList
-    
-
     
     //Получение фотографий человека
     func getPhotosList(token: String, userId: Int, completion: @escaping (Out<[VKPhoto], Error>)-> Void) {

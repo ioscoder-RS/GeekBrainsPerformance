@@ -34,6 +34,7 @@ var newsViewArray = [NewsForViewController]()
 
 let cellType:[String] =
     [
+//        "SelfProfile",
         "IconUserTimeCell",
         "PostAndButton",
         "PhotoCollectionCV",
@@ -93,4 +94,12 @@ struct StrLink {
     var caption: String
     var linkDescription: String
     var photo: String
+}
+
+struct StrSelfProfile {
+    var id: Int
+    var avatarPath:     String
+    var lastName:String
+    var firstName:String
+    var fullName: String
 }

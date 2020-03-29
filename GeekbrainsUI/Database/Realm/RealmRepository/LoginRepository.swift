@@ -53,7 +53,7 @@ class LoginRepository: LoginSource {
                     loginRealm.id = login.id
                     loginRealm.firstName = login.firstName
                     loginRealm.lastName = login.lastName
-                    loginRealm.userName = String(login.firstName + " " + login.lastName)
+                loginRealm.fullName = login.fullName
                     loginRealm.avatarPath = login.avatarPath
                 realm.add(loginRealm, update: .modified)
             }

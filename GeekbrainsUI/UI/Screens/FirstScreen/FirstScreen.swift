@@ -43,7 +43,7 @@ class FirstScreen: UIViewController, FirstScreenTune {
     }
     
     @IBAction func changeUserPressed(_ sender: Any) {
-        
+        presenter?.changeUserPressed()
     }
     
     @IBAction func workOfflinePressed(_ sender: Any) {

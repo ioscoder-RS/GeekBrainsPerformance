@@ -12,7 +12,7 @@
 struct VKUser: Codable {
     var lastName:String
     var firstName:String
-    var fullname: String { return firstName + " " + lastName }
+    var fullName: String { return firstName + " " + lastName }
     var avatarPath:String
     let photo100: String
     var isOnline:Int

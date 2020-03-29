@@ -28,11 +28,6 @@ protocol FriendsPresenter{
     func getVKPhotoLikesAtIndex(indexPath: IndexPath) -> PhotoLikesRealm?
 }
 
-struct Section<T>{
-    var title: String
-    var items: [T]
-}
-
 class FriendsPresenterImplementation : FriendsPresenter {
  //   var friends = [Friend]()
     

@@ -12,7 +12,7 @@ class VKLoginRealm: Object {
     @objc dynamic var id = 0
     @objc dynamic var lastName = ""
     @objc dynamic var firstName = ""
-    @objc dynamic var userName = ""
+    @objc dynamic var fullName = ""
     @objc dynamic var avatarPath = ""
     
     override class func primaryKey() -> String? {

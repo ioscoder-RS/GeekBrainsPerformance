@@ -13,6 +13,7 @@ import WebKit
 protocol FirstScreenPresenter{
     func viewDidLoad ()
     func cleanDatabasePressed()
+    func changeUserPressed()
     func transitionToLoginController(screenName: String, navController: UINavigationController?)
 }
 
@@ -44,7 +45,7 @@ class FirstScreenPresenterImplementation: NSObject, FirstScreenPresenter{
         
         if localLogin != nil {
             var username: String
-            username = localLogin!.firstName + " " + localLogin!.lastName
+            username = localLogin!.fullName
             //выводим имя пользователя на начальный экран
             loginTune(userName: username)
         } else {return}
@@ -62,14 +63,27 @@ class FirstScreenPresenterImplementation: NSObject, FirstScreenPresenter{
     func cleanDatabasePressed() {
         let cr = CommonRepository()
         
-        showYesNoMessage(view: self.view as! UIViewController, title: "Внимание!", messagetext: "Вы действительно хотите удалить все данные из локальной БД!") { (result) in
+        showYesNoMessage(view: self.view as! UIViewController, title: "Внимание!", messagetext: "Вы действительно хотите удалить все данные из локальной БД ?!") { (result) in
             if result { //User has clicked on Ok
                 cr.deleteAllRealmTables ()
+               
             } else { //User has clicked on Cancel
                 return
             }
         }
     }//func cleanDatabasePressed()
+    
+    func changeUserPressed() {
+ 
+        showYesNoMessage(view: self.view as! UIViewController, title: "Внимание!", messagetext: "Вы действительно хотите удалить текущего пользователя ?!") { (result) in
+            if result { //User has clicked on Ok
+                self.loginDB.clearLogin()
+                self.view?.currentUser.setTitle("Войти в VK", for: .normal)
+            } else { //User has clicked on Cancel
+                return
+            }
+        }
+    }//    func changeUserPressed()
     
     func transitionToLoginController(screenName: String, navController: UINavigationController?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

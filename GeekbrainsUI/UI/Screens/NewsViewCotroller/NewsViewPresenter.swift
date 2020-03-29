@@ -19,16 +19,12 @@ protocol NewsViewPresenter {
     func getTableviewCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell
     func fetchMoreNews(tableView: UITableView, indexPaths: [IndexPath])
     func getRowHeight(tableView: UITableView, indexPath: IndexPath) -> CGFloat
-    //MARK: Для реализации через ASDK
-    func workWithNewsWebQuery(responseNews: ResponseNews)
 }
 
 /// реализация кода для TableView, который задается протоколом NewsViewPresenter
 /// протокол MoreButtonProtocol связывает класс с ячейкой PostAndButton чтобы отреагировать на нажатую в ней кнопку
 class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, ImageHeightDefined {
 
-    
-        
     private var vkAPI: VKAPi
     private weak var view: MessageView?  //класс TableView, где все отображается
     var newsRepository = NewsRepository() // массив новостей, полученный из БД
@@ -36,14 +32,16 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, Im
     
      var NewsWithSectionsAnyArray = [NewsWithSectionsAny]() //новость, разбитая внутри класса на секции
     private var sortedNewsResults = [Section<NewsWithSectionsAny>]() //массив с секциями, отображаемый в TableView
+    private var selfProfile: VKUser? //профиль текущего пользователя
+    private var previousProfileID: String = ""
     
     var customRefreshControl = UIRefreshControl() //для дозагрузки обновлений в новости
 
-
-    
     private var newsDB: NewsSource
+    private var loginDB = LoginRepository()
     
     var isFetchingMoreNews = false  //загружаем более старые новости или нет
+    var isProfileLoading = false //загружаем ли профайл пользователя
     var nextFrom: String? //с какой отметки загружать новости
     var freshestDateInt = 0
     
@@ -56,13 +54,17 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, Im
     }
     
     func viewDidLoad(){
+        //добавляем крутящееся колесико для обновления информации
         addRefreshControl()
+        //получаем профайл пользователя
+        getProfileInformation()
+        //получаем новости
         getNewsFromApiAndDB()
     }
     
     
     /// Заглушка будущей реализации, когда работаем без интернета, но новости храним в БД и забираем из БД
-    //MARK: Не используется
+    //MARK: 🙅‍♂️ Не используется
     func getNewsFromDatabase(){
         //сохраняем массив новополученных новостей в переменную
         self.newsResult = self.newsDB.getAllNews()
@@ -77,10 +79,31 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, Im
         return nil
     }
     
+    func getProfileInformation()
+    {
+        if webMode{
+            //Получаем пользователей из Web
+            imageLoadQueue.async {
+                self.vkAPI.getLogin(token: Session.shared.token, loginId: Session.shared.userId){
+                    result in
+                    switch result{
+                    case .success(let profile):
+                        self.selfProfile = profile.first
+
+                    case .failure(let error):
+                        print("we got error in NewsPresenter -> vkAPI.getLogin: \(error)")
+                    }//switch
+                    
+                }//vkAPI.getLogin completion
+            }//imageLoadQueue.async
+        } else {
+            self.selfProfile = loginDB.getLogin()
+        }//if webMode{
+    }//func getProfileInformation()
     
     /// функция первичной загрузки данных из Web
     /// в настоящее время сохранение в БД не реализовано, но заглушки расставлены
-    /// - Parameter from: пока не используется, заглушка для возможности вызова из различных мест
+    /// - Parameter from: 🙅‍♂️ пока не используется, заглушка для возможности вызова из различных мест
     func  getNewsFromApiAndDB(from: String? = nil){
         if webMode{
             //Получаем значение nextFrom
@@ -101,22 +124,17 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, Im
             }//imageLoadQueue.async
         }// if webMode{
         else
-            //MARK: не используется. Не тестировалось
+            //MARK: 🙅‍♂️ не используется. Не тестировалось
         {
             self.getNewsFromDatabase()
         }
     }//func  getGroupsFromApiAndDB()
     
+    /// Функция разбивает структуру новостей на подструктуры-секции
     func makeSections(){
-        
         let localNewsResult = newsResult
         let newsResultcount = localNewsResult.count
-        
-        if debugPrefetchMode{
-        print("📮newsResultCount = \(newsResultcount)")
-        print("✉️ число сообщений \(self.numberOfSections())")
-        }
-        
+             
         if newsResultcount > 0{
             // размножаем новость по количеству типов ячеек
             for i in 0 ... newsResultcount - 1 { //цикл по кол-ву новостей
@@ -124,6 +142,44 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, Im
             }// for i
         }//if
     }//func makeSections(){
+    
+    /// Функция добавляет в tableView запись о профиле пользователя
+    /// Вначале удаляет предыдущую запись о профиле, тк в ключ (дата+пользователь)  входит текущая дата
+    /// это нужно для того, чтобы пользовательский профиль всегда был наверху
+    /// - Parameter profile: структура профиля пользователя
+    func prepareProfileForView(profile: VKUser){
+        if profile == nil {return}
+        
+        guard self.isProfileLoading == false else {return}
+        
+        self.isProfileLoading = true
+        
+        //удаляем пред. запись о профиле
+  //      NewsWithSectionsAnyArray = NewsWithSectionsAnyArray.filter{$0.newsUniqID != self.previousProfileID}
+        NewsWithSectionsAnyArray.removeAll(where: {$0.newsUniqID == self.previousProfileID})
+        
+        
+        let unixTime = NSDate().timeIntervalSince1970 + 1000 //запас ?
+        let newsUniqID = String(Int(unixTime)) + "-" + profile.fullName
+        
+        NewsWithSectionsAnyArray.append(
+            NewsWithSectionsAny(
+                newsUniqID: newsUniqID,
+                cellType: "SelfProfile",
+                newsPart: StrSelfProfile(
+                    id: profile.id,
+                    avatarPath: profile.avatarPath,
+                    lastName: profile.lastName,
+                    firstName: profile.firstName,
+                    fullName: profile.fullName
+                )
+            )
+      
+        )
+        print(" 🛑 вставляем запись о профайле в структуру. NewsUniqID = \(newsUniqID), дата = \(Date())")
+        self.previousProfileID = newsUniqID
+         self.isProfileLoading = false
+    }
     
     /// функция сортирует массив по секциям и строкам
     func sortForTableView(){
@@ -135,19 +191,24 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, Im
     /// Функциия берет распарсенную новость из Web, преобразовывает и отображает
     /// - Parameter responseNews: распарсенный запрос новости из VKApi.getNewsFeed
     func workWithNewsWebQuery(responseNews: ResponseNews){
-          
-          //приводим результат с сервера к виду, с которым будем работать в этом классе
-          self.newsDB.createNewsForView(sourceNews: responseNews)
-          //сохраняем массив новополученных новостей в переменную
-          self.newsResult = self.newsDB.getAllNews()
-          //разбиваем полученный результат на части, превращаем в секции
-          self.makeSections()
-          // сортируем данные и группируем по секциям
-          self.sortForTableView()
-          //сохраняем nextFrom
-          self.nextFrom = responseNews.nextFrom
-          //перерисовка контроллера
-          self.view?.updateTable()
+        
+        //приводим результат с сервера к виду, с которым будем работать в этом классе
+        self.newsDB.createNewsForView(sourceNews: responseNews)
+        //сохраняем массив новополученных новостей в переменную
+        self.newsResult = self.newsDB.getAllNews()
+        //разбиваем полученный результат на части, превращаем в секции
+        self.makeSections()
+        //добавляем запись о профиле - она должна быть всегда вверху
+        if !isProfileLoading{
+        self.prepareProfileForView(profile: self.selfProfile!)
+        }
+        // сортируем данные и группируем по секциям
+        self.sortForTableView()
+        //сохраняем nextFrom
+        self.nextFrom = responseNews.nextFrom
+        
+        //перерисовка контроллера
+        self.view?.updateTable()
       }
 
     
@@ -158,16 +219,17 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, Im
       func fetchMoreNews(tableView: UITableView, indexPaths: [IndexPath]) {
           let maxRow = indexPaths.map({ $0.section }).max()
           
-          guard !isFetchingMoreNews else {
-              if debugPrefetchMode {  print("🙅‍♂️ Флаг не дал запустить запрос ")    }
-              return
-          }
           guard   maxRow != nil,
               sortedNewsResults.count  <= maxRow! + 3  else { return }
-          
+        
+        guard !isFetchingMoreNews else {
+            if debugPrefetchMode {  print("🙅‍♂️ Флаг не дал запустить запрос ")    }
+            return
+        }
+          //выставляем флаг загрузки новостей
+        //пока флаг включен - новости не грузим, иначе вовремя массового скроллинга будет коллапс загрузок новостей
           self.isFetchingMoreNews = true
-          if debugPrefetchMode {  print("✅ isFetchingMoreNews = \(self.isFetchingMoreNews), дата = \(Date())")  }
-          if debugPrefetchMode {  print("запрос стартовал")   }
+
           imageLoadQueue.async {
               self.vkAPI.getNewsList(token: Session.shared.token, userId: Session.shared.userId, nextFrom: self.nextFrom, startTime: nil, version: Session.shared.version) { [weak self] result in
                   guard let self = self else { return }
@@ -176,13 +238,13 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, Im
                       if debugPrefetchMode {  print("🏁 completion success: \(Date())")   }
                       
                       //сохраняем запрос, приводим к формату, разбиваем на секции, добавляем к текущему массиву и отображаем в TableView
+                    if debugPrefetchMode {  print(" ✅ isFetchingMoreNews = \(self.isFetchingMoreNews), дата = \(Date())")  }
                       self.workWithNewsWebQuery(responseNews: posts)
-                      
+                      //сбрасываем флаг загрузки новостей
                       self.isFetchingMoreNews = false
-                      if debugPrefetchMode {  print(" 🛑 isFetchingMoreNews = \(self.isFetchingMoreNews), дата = \(Date())")  }
+    
                   case .failure(let error):
                       self.isFetchingMoreNews = false
-                      if debugPrefetchMode {  print("  isFetchingMoreNews = \(self.isFetchingMoreNews), дата = \(Date())")    }
                       print(error)
                   }//switch result
               }// completion

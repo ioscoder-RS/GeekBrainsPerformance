@@ -44,6 +44,6 @@ class VKService {
         let appVersion = UIDevice.current.systemVersion
         let nsAppVersion = NSString(string: appVersion)
         Session.shared.appVersion = nsAppVersion.doubleValue
-    }
-}
+    }//func setSingleton
+}//class VKService 
 

@@ -99,6 +99,8 @@ extension NewsViewPresenterImplementation {
         }// for ii
     }// func sliceAndAppendNews()
     
+
+    
     /// Функция заполняет ячейку содержимым, в зависимости от типа ячейки
     /// - Parameters:
     ///   - tableView: таблица из TableViewController
@@ -174,10 +176,20 @@ extension NewsViewPresenterImplementation {
         case "Link":
             let cell = tableView.dequeueReusableCell(withIdentifier: "linkCell", for: indexPath) as! LinkCell
             let localStruct = currentNews.newsPart as! StrLink
-
+            
             if localStruct.url != ""{
                 cell.renderCell (strLink: localStruct)
             }
+            currentCell = cell
+            
+        //профиль. Иконка + текстовое поле
+        case "SelfProfile":
+            let cell = tableView.dequeueReusableCell(withIdentifier: "selfProfile", for: indexPath) as! SelfProfile
+            let localStruct = currentNews.newsPart as! StrSelfProfile
+            cell.renderCell(
+                avatarPath: localStruct.avatarPath
+            )
+            
             currentCell = cell
             
         default:
