@@ -23,7 +23,7 @@ class LoginPresenterImplementation: NSObject, LoginPresenter{
     private let vkSecret = "7281379"
     
     private var vkAPI: VKAPi
-    var currentLogin: VKLogin?
+    var currentLogin: VKUser?
     
     init (view: VKLoginController, loginDB: LoginSource) {
        
@@ -62,13 +62,13 @@ class LoginPresenterImplementation: NSObject, LoginPresenter{
         }//completion getCurrentLoginFromWeb
     }//func getLoginFromWebAndSave()
     
-    func getCurrentLoginFromWeb(token:String, id: String, completion: @escaping (Out<VKLogin,Error>)-> Void){
+    func getCurrentLoginFromWeb(token:String, id: String, completion: @escaping (Out<VKUser,Error>)-> Void){
         
         vkAPI.getLogin(token: token, loginId: id ){  result in
             switch result {
             case .success(let webLogin): //логин VKLogin из Web в виде массива
                 let localLogin = webLogin.first!
-                print("Успешно получен логин: \(localLogin.id)")
+ //               print("Успешно получен логин: \(localLogin)")
                 completion(.success(localLogin))
 
             case .failure(let error):
@@ -79,10 +79,10 @@ class LoginPresenterImplementation: NSObject, LoginPresenter{
     }
     
 
-    func saveLoginToDB(oneLogin: VKLogin){
+    func saveLoginToDB(oneLogin: VKUser){
         do{
              try self.loginDB.addLogin(login: oneLogin)
-             print("Успешно сохранен логин: \(oneLogin.id) \(oneLogin.firstName)")
+//             print("Успешно сохранен логин: \(oneLogin.id) \(oneLogin.firstName)")
          }catch {
              print("we got error in database.getLogin(): \(error)")
          }

@@ -74,28 +74,6 @@ class VKAPi {
     }
     }//func sendRequest
     
-    func sendRequestNoCount<T: Decodable>(url:String, method: HTTPMethod = .get, params: Parameters,  webRequestEntity: WebRequestEntities, completion: @escaping (Out<[T],Error>)-> Void){
-         
-         Alamofire.request(url,method: method,parameters: params).responseData { (result) in
-                                 guard let data = result.value else {return}
-             
-          
-             do{
-                     let resultJ = try JSONDecoder().decode(CommonResponseNoCount<T>.self, from: data)
-        
-                 //сохраняем в глобальные переменные то, что пришло из Web
-                 switch webRequestEntity{
-                 case .VKLogin:
-                    webVKLogin = resultJ.response.items as! [VKLogin]
-                 default:
-                    break                 }
-                completion(.success(resultJ.response.items))
-             }catch{
-    
-                 completion(.failure(error))
-             }
-     }
-     }//func sendRequest
     
     //Получение списка друзей
     func getFriendList(token: String,completion: @escaping (Out<[VKUser],Error>)-> Void) {
@@ -110,18 +88,7 @@ class VKAPi {
                             
     }//func getFriendList
     
-    //получение залогиненного пользователя
-    func getLogin(token: String, loginId: String, completion: @escaping (Out<[VKLogin],Error>)-> Void) {
-    
-        let requestURL = vkURL + "users.get"
-        let params = ["v": "5.103",
-                      "access_token":token,
-                      "order":"name",
-                      "fields":"photo_50,city,verified"]
 
-        sendRequestNoCount(url: requestURL, params: params, webRequestEntity: WebRequestEntities.VKLogin ) {completion($0)}
-                            
-    }//func getFriendList
     
     //Получение фотографий человека
     func getPhotosList(token: String, userId: Int, completion: @escaping (Out<[VKPhoto], Error>)-> Void) {
@@ -182,10 +149,6 @@ class VKAPi {
                            "start_time": startTime ?? "",
                            "v": version]
              
- 
-         //Делаем остановку на дозагрузку, как в нативном VK-клиенте. Защита при одновременном срабатывании методов дозагрузки и обновления.
-  //       Alamofire.SessionManager.default.session.getAllTasks { tasks in tasks.forEach{ $0.cancel()} }
-         
          Alamofire.request(requestURL,
                            method: .get,
                            parameters: params as Parameters)
@@ -196,7 +159,6 @@ class VKAPi {
  //                  print(String(decoding: data, as: UTF8.self))
 
                     let result = try JSONDecoder().decode(CommonResponseNews.self, from: data)
-            //        if result.response.items.filter(<#T##isIncluded: (NewsVK) throws -> Bool##(NewsVK) throws -> Bool#>)
                      completion(.success(result.response))
                     
                  } catch {
@@ -204,8 +166,32 @@ class VKAPi {
                      completion(.failure(error))
                  }
          }
-     }
+     }//func getNewsList
     
+    //получение залогиненного пользователя
+    func getLogin(token: String, loginId: String, completion: @escaping (Out<[VKUser],Error>)-> Void) {
+        
+        let requestURL = vkURL + "users.get"
+        let params = ["v": "5.103",
+                      "access_token":token,
+                      "order":"name",
+                      "fields":"photo_50,photo_100,city,verified, online"]
+        
+        Alamofire.request(requestURL,method: .get,parameters: params).responseData { (result) in
+            guard let data = result.value else {return}
+            
+ //           print(String(decoding: data, as: UTF8.self))
+            do{
+                let resultJ = try JSONDecoder().decode(LoginResponse.self, from: data)
+                
+                completion(.success(resultJ.response))
+            }catch{
+                
+                completion(.failure(error))
+            }
+            
+        }
+    }//func getLogin
 }//class VKAPi
 
 

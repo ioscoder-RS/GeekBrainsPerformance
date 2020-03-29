@@ -20,14 +20,7 @@ class VKLoginRealm: Object {
     }
     
 
-    func toModel() -> VKLogin{
-        return VKLogin(id: id,
-                       firstName: firstName,
-                       lastName: lastName,
-                       isClosed: true,
-                       canAccessClosed: true,
-                       city: nil,
-                       avatarPath: avatarPath,
-                       verified: 1)
+    func toModel() -> VKUser{
+        return VKUser(lastName: lastName, firstName: firstName, avatarPath: avatarPath, photo100: "", isOnline: 0, id: id, isClosed: nil, canAccessClosed: nil, deactivated: nil)
     }
 }//class VKUserRealm

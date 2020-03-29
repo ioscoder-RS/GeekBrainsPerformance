@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
 
 class VKService {
     
@@ -33,5 +35,15 @@ class VKService {
         self.request = URLRequest(url: urlComponents.url!)
     }
 
+    func setSingleton(token: String, userId: String, version: String)  {
+        Session.shared.token = token
+        Session.shared.userId = userId
+        Session.shared.version = version
+        
+        //заполнение версии ПО пользовательского клиента
+        let appVersion = UIDevice.current.systemVersion
+        let nsAppVersion = NSString(string: appVersion)
+        Session.shared.appVersion = nsAppVersion.doubleValue
+    }
 }
 

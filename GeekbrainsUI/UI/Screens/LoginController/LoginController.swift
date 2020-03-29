@@ -21,13 +21,6 @@ class VKLoginController: UIViewController {
         webView.load(vkService.request!)
     }//override func viewDidLoad()
     
-    private func transitionToTabBar() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "MainTab")
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overFullScreen
-        self.navigationController?.pushViewController(vc, animated: false)
-    }
     
 }// class VKLoginController: UIViewController
 
@@ -37,9 +30,7 @@ extension VKLoginController: WKNavigationDelegate {
     func webView(_ webView: WKWebView,
                  didFailProvisionalNavigation navigation: WKNavigation!,
                  withError error: Error) {
-        
         if debugMode == 1 {print(error)}
-        
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
@@ -70,20 +61,11 @@ extension VKLoginController: WKNavigationDelegate {
         }
         if debugMode == 1 {print(params)}
         
-        Session.shared.token = params["access_token"]!
-        Session.shared.userId = params["user_id"] ?? "0"
-        Session.shared.version = "5.103"
-        
-        //заполнение версии ПО пользовательского клиента
-        let appVersion = UIDevice.current.systemVersion
-        let nsAppVersion = NSString(string: appVersion)
-        Session.shared.appVersion = nsAppVersion.doubleValue
+        vkService.setSingleton(token: params["access_token"]!, userId: params["user_id"] ?? "0", version: "5.103")
+
         
         //реализация UserDefaults
         UserDefaults.standard.set(params["access_token"], forKey: "access_token")
-
-        //Получение групп по поисковому запросу"
-        //    vkAPI.searchGroups(token: Session.shared.token, query: "любовь")
         
         decisionHandler(.cancel)
      

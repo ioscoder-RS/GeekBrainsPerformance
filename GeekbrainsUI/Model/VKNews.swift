@@ -121,7 +121,8 @@ struct LinkPhoto: Codable {
 
 // MARK: - AttachmentPhoto
 struct AttachmentPhoto: Codable {
-    let id, albumID, ownerID, userID: Int
+    let id, albumID, ownerID: Int
+    let userID: Int?
     let sizes: [Video]
     let text: String?
     let date: Int?

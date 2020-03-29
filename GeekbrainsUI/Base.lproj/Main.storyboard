@@ -86,6 +86,13 @@
                                     <action selector="workOfflinePressed:" destination="0ui-KR-yaR" eventType="touchUpInside" id="w1X-0v-tHO"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VK logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="P2z-3h-85K">
+                                <rect key="frame" x="5" y="93" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="P2z-3h-85K" secondAttribute="height" multiplier="1:1" id="5yt-0n-Jpq"/>
+                                    <constraint firstAttribute="width" constant="50" id="lCr-Ob-M7w"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -94,8 +101,10 @@
                             <constraint firstItem="pV6-NN-4pJ" firstAttribute="top" secondItem="IPo-aZ-gkT" secondAttribute="bottom" constant="10" id="U4f-uq-RsK"/>
                             <constraint firstItem="b48-ry-dSP" firstAttribute="centerX" secondItem="PcH-01-17o" secondAttribute="centerX" id="V0N-eO-KfD"/>
                             <constraint firstItem="IPo-aZ-gkT" firstAttribute="centerY" secondItem="PcH-01-17o" secondAttribute="centerY" id="dEp-4t-hAs"/>
+                            <constraint firstItem="P2z-3h-85K" firstAttribute="leading" secondItem="PcH-01-17o" secondAttribute="leading" constant="5" id="ebS-gy-YFk"/>
                             <constraint firstItem="jPC-6a-Wm8" firstAttribute="centerX" secondItem="PcH-01-17o" secondAttribute="centerX" id="jTn-ay-4Kp"/>
                             <constraint firstItem="IPo-aZ-gkT" firstAttribute="centerX" secondItem="PcH-01-17o" secondAttribute="centerX" id="pXf-D2-cIl"/>
+                            <constraint firstItem="P2z-3h-85K" firstAttribute="top" secondItem="PcH-01-17o" secondAttribute="top" constant="5" id="ptk-45-Uaf"/>
                             <constraint firstItem="b48-ry-dSP" firstAttribute="top" secondItem="jPC-6a-Wm8" secondAttribute="bottom" constant="10" id="tV4-5Y-N4G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PcH-01-17o"/>
@@ -105,7 +114,7 @@
                         <outlet property="changeUser" destination="pV6-NN-4pJ" id="Fv6-Zj-QAC"/>
                         <outlet property="cleanDatabase" destination="b48-ry-dSP" id="522-wo-KgM"/>
                         <outlet property="currentUser" destination="IPo-aZ-gkT" id="4xR-XQ-5WI"/>
-                        <outlet property="workOfflie" destination="jPC-6a-Wm8" id="olh-hM-grK"/>
+                        <outlet property="workOffline" destination="jPC-6a-Wm8" id="olh-hM-grK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVL-6O-3Yp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
