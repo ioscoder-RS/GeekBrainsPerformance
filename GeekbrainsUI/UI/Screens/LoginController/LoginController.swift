@@ -3,89 +3,24 @@ import Alamofire
 import WebKit
 
 
-
-
 class VKLoginController: UIViewController {
-    
-    let VKSecret = "7281379"
-   
+       
     var presenter : LoginPresenter?
     var configurator : LoginConfigurator?
-    
+    let vkService = VKService()
 
     @IBOutlet weak var webView: WKWebView!{
         didSet{
             webView.navigationDelegate = self
-            self.view.addSubview(webView)
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
- 
-        doWebConnect{
-            result in
-            switch result {
-             case .success(let loadResult):
- //               print("Success in doWebConnect()")
-                
-                self.saveUserDefaults()
-                
-                self.saveSingleton()
-                
-
-            case .failure(let error):
-                print("Error in doWebConnect(): \(error)")
-            }//switch
-    
-        }//completion doWebConnect
-         
+        webView.load(vkService.request!)
     }//override func viewDidLoad()
     
-    //params:[String:String]
-    func saveSingleton(){
-        
-    }
-    
-    func saveUserDefaults(){
-    }
-    
-    
-    private func transitionToTabBar() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "MainTab")
-        vc.modalPresentationStyle = .custom
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    private func doWebConnect(completion: @escaping (Out<WKNavigation?,Error>)-> Void){
-        
-        
-              var urlComponent = URLComponents()
-              urlComponent.scheme = "https"
-              urlComponent.host = "oauth.vk.com"
-              urlComponent.path = "/authorize"
-              urlComponent.queryItems = [URLQueryItem(name: "client_id", value: VKSecret),
-                                         URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/authorize/blank.html"),
-                                         URLQueryItem(name: "display", value: "mobile"),
-                                         URLQueryItem(name: "scope", value: "336918"),
-                                         URLQueryItem(name: "response_type", value: "token"),
-                                         URLQueryItem(name: "v", value: "5.103")
-              ]
-              
-              //информирует, что пользователь переходит на другую страницу, напр. с токеном
- 
-      
-            let request = try URLRequest(url: urlComponent.url!)
-          do {
-              let loadResult = try webView.load(request)
-            completion(.success(loadResult))
-        }catch{
-            completion(.failure(error))
-        }
-    }
 }// class VKLoginController: UIViewController
 
 
@@ -94,9 +29,7 @@ extension VKLoginController: WKNavigationDelegate {
     func webView(_ webView: WKWebView,
                  didFailProvisionalNavigation navigation: WKNavigation!,
                  withError error: Error) {
-        
         if debugMode == 1 {print(error)}
-        
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
@@ -105,7 +38,6 @@ extension VKLoginController: WKNavigationDelegate {
             if let response = navigationResponse.response as? HTTPURLResponse {
                 print("response description = \(response.description)")
                 print("response.statusCode = \(response.statusCode)")
-                
             }
         }
         
@@ -128,17 +60,11 @@ extension VKLoginController: WKNavigationDelegate {
         }
         if debugMode == 1 {print(params)}
         
-        Session.shared.token = params["access_token"]!
-        Session.shared.userId = params["user_id"] ?? "0"
-        Session.shared.version = "5.103"
-        
-        //получаем запись о пользователе с сервера
+        vkService.setSingleton(token: params["access_token"]!, userId: params["user_id"] ?? "0", version: "5.103")
+
         
         //реализация UserDefaults
         UserDefaults.standard.set(params["access_token"], forKey: "access_token")
-
-        //Получение групп по поисковому запросу"
-        //    vkAPI.searchGroups(token: Session.shared.token, query: "любовь")
         
         decisionHandler(.cancel)
      

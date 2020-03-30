@@ -9,10 +9,7 @@
 import UIKit
 import Kingfisher
 
-struct Section<T>{
-    var title: String
-    var items: [T]
-}
+
 
 protocol FriendsListView: class{
     func updateTable()
@@ -22,7 +19,7 @@ class FriendList: UITableViewController, UINavigationControllerDelegate {
     
     
     
-    @IBOutlet weak var logout: UIBarButtonItem!
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var presenter: FriendsPresenter?
@@ -109,41 +106,4 @@ extension FriendList: UISearchBarDelegate {
     
 }//class FriendList
 
-extension FriendList {
-    @IBAction func logoutPressed(_ sender: Any)
-    {
-        Session.shared.webView.configuration.websiteDataStore.httpCookieStore.getAllCookies
-        {
-                [weak self] cookies in cookies.forEach
-                {
-                        Session.shared.webView.configuration.websiteDataStore.httpCookieStore.delete($0)
-                }//forEach
-        }//completion getAllCookies
-        
-  
-        var window: UIWindow?
-        
-        window = UIWindow(frame: CGRect(x:0,
-                                        y: 0,
-                                        width: UIScreen.main.bounds.width,
-                                        height: UIScreen.main.bounds.height))
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-         let vc = storyboard.instantiateViewController(identifier: "FirstScreen")
-        window?.rootViewController = vc
-        window?.makeKeyAndVisible()
-        
-        
-        /* работает
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "FirstScreen")
-        */
-        
 
-//    self.navigationController?.dismiss(animated: true, completion: nil)
-           //self.navigationController?.pushViewController(vc, animated: true)
-        // vc.navigationController?.popToRootViewController(animated: true)
-  //      vc.navigationController?.navigationController?.popViewController(animated: true)
-    //    vc.navigationController?.navigationController?.popToRootViewController(animated: true)
-
-    }//@IBAction func logoutPressed(_ sender: Any)
-}//extension FriendList

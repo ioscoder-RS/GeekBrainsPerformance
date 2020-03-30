@@ -12,6 +12,7 @@ pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Firebase/Crashlytics'
 pod "PromiseKit", "~> 6.8"
+pod 'SwiftyJSON'
 
   # Pods for GeekbrainsUI
 

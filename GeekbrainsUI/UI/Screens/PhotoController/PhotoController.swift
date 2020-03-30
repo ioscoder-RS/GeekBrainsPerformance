@@ -13,15 +13,14 @@ class PhotoController: UICollectionViewController, PhotoListView,  UICollectionV
     
     var presenter: FriendsPresenter?
     var configurator: PhotosConfigurator?
+    var collection: UICollectionView! = nil
     
     var tmpVKUserRealm: VKUserRealm? //текущий элемент Друг типа структура, на котором стоим
-    var tmpFriend: Friend?
-    //   var viewClicked: ((UIView)->())? = nil
-    //   var photoArray: [VKPhoto]?
+
     
     private var selectedFrame: CGRect? = .zero
     var customInteractor: CustomInteractor?
-    var tmpImage: UIImage? // текущая картинка, на которой стоим
+    var tmpImage: String? // URL текущей картинки, на которой стоим
     
     
     override func viewDidLoad() {
@@ -30,37 +29,45 @@ class PhotoController: UICollectionViewController, PhotoListView,  UICollectionV
             print ("error. tmpFriend is not initialised!")
             return
         }
-        self.tmpFriend = convertFriend(user: tmpVKUserRealm.toModel())
-        //       configurator?.configure(view: self, VKUserRealm: tmpVKUserRealm )
         
         self.navigationController?.delegate = self
         
+        let myCompositionalLayout = MyCompositionalLayout()
+        
+        //устанавливаем layout
+        if ((presenter?.getPhotoControllerCount() ?? 1 ) > 6) &&
+            (Session.shared.appVersion > 13.0) {
+            collectionView.collectionViewLayout = myCompositionalLayout.createBigLeftAllOtherRoundLayout()
+         } else
+         {
+            collectionView.collectionViewLayout = CustomCollectionViewLayout()
+        }
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.getPhotoControllerCount() ?? 1
+        let count =  (presenter?.getPhotoControllerCount() ?? 1 )
+        return count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
-        let defaultUsername = tmpFriend!.userName
+        guard let defaultUsername = tmpVKUserRealm?.userName else {return cell}
         
         guard let model = presenter?.getVKPhotoAtIndex(indexPath: indexPath) else {return cell}
         
         cell.renderCell(model: model, username: defaultUsername)
         
-        tmpImage = cell.photo.image
         return cell
     }
     
-    //вызывает экран MusicPlayerViewController
+    //вызывает экран FriendsPhotoViewController
     //запоминает выбранную (песню = экземпляр структуры) и фрейм
     override  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //       self.selectedSong = songs[indexPath.row]
+        
         let theAttributes:UICollectionViewLayoutAttributes! = collectionView.layoutAttributesForItem(at: indexPath)
         selectedFrame = collectionView.convert(theAttributes.frame, to: collectionView.superview)
-   //     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
+
         
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -69,13 +76,18 @@ class PhotoController: UICollectionViewController, PhotoListView,  UICollectionV
         guard let localSizes = presenter?.getVKPhotoSizesAtIndex(indexPath: indexPath) else {return}
         let localLikes = presenter?.getVKPhotoLikesAtIndex(indexPath: indexPath)
         
+
+        
         //передаем в след. ViewController ссылку на большую картинку
         //которая хранится в массиве sizes с типом X
         let urlToBe = localSizes.filter("type == %@","x")[0].url
-        viewController.friend = tmpFriend
+        viewController.tmpVKUserRealm = tmpVKUserRealm
         viewController.imageURL = urlToBe
         viewController.likeCount = localLikes?.count
         viewController.userLiked = localLikes?.userLikes
+        
+        //передаем в анимацию  наш URL
+        self.tmpImage = urlToBe
         
         self.navigationController?.pushViewController(viewController, animated: true)
         
@@ -92,9 +104,9 @@ class PhotoController: UICollectionViewController, PhotoListView,  UICollectionV
         switch operation {
         case .push:
             self.customInteractor = CustomInteractor(attachTo: toVC)
-            return CustomAnimator(duration: TimeInterval(UINavigationController.hideShowBarDuration), isPresenting: true, originFrame: frame, image: tmpimage)
+            return CustomAnimator(duration: TimeInterval(UINavigationController.hideShowBarDuration), isPresenting: true, originFrame: frame, imageURL: tmpimage)
         default:
-            return CustomAnimator(duration: TimeInterval(UINavigationController.hideShowBarDuration), isPresenting: false, originFrame: frame, image: tmpimage)
+            return CustomAnimator(duration: TimeInterval(UINavigationController.hideShowBarDuration), isPresenting: false, originFrame: frame, imageURL: tmpimage)
         }
     }//func navigationController(_ navigationController: UINavigationController, animationControllerFor operation:
     

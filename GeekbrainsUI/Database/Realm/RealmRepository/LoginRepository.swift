@@ -9,8 +9,8 @@
 import RealmSwift
 
 protocol LoginSource{
-    func getLogin() -> VKLogin?
-    func addLogin(login:VKLogin)
+    func getLogin() -> VKUser?
+    func addLogin(login:VKUser)
     func clearLogin()
 }
 
@@ -21,10 +21,10 @@ class LoginRepository: LoginSource {
     
     //MARK: возвращает текущий login
     //в таблице всегда одна запись или ничего
-    func getLogin() -> VKLogin? {
+    func getLogin() -> VKUser? {
         
         var loginRealm: VKLoginRealm?
-        var login : VKLogin?
+        var login : VKUser?
         
         let realm = try! Realm()
         
@@ -40,7 +40,7 @@ class LoginRepository: LoginSource {
         
     }
     
-    func addLogin(login: VKLogin) {
+    func addLogin(login: VKUser) {
        
         //вставляем запись о логине только в пустую таблицу
         //если таблица не пустая - неважно почему - не вставляем, это - ошибка
@@ -53,7 +53,7 @@ class LoginRepository: LoginSource {
                     loginRealm.id = login.id
                     loginRealm.firstName = login.firstName
                     loginRealm.lastName = login.lastName
-                    loginRealm.userName = String(login.firstName + " " + login.lastName)
+                loginRealm.fullName = login.fullName
                     loginRealm.avatarPath = login.avatarPath
                 realm.add(loginRealm, update: .modified)
             }

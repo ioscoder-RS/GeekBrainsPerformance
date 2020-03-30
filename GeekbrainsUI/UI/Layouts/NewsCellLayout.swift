@@ -32,8 +32,8 @@ class NewsCellLayout: UICollectionViewLayout {
         guard photoCounter > 0 else { return }
         
         // Необходимое количество строк в нашем случае всегда = 1
-        let numOfRows = 1
-        cellHeight = collectionView.frame.height
+        let numOfRows = ceil(CGFloat(photoCounter) / CGFloat(maxColumns))
+        cellHeight = collectionView.frame.height/numOfRows
         cellWidth = collectionView.frame.width / CGFloat(photoCounter)
         
         var lastX: CGFloat = 0

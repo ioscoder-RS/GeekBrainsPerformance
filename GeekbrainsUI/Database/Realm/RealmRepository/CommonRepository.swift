@@ -9,6 +9,13 @@
 
 import RealmSwift
 
+enum VKObjects{
+    case VKUser
+    case VKGroup
+    case VKPhoto
+    case VKLogin
+}
+
 class CommonRepository {
     
     func getAllfromTable<T: Object> (vkObject: VKObjects) throws -> Results<T>{

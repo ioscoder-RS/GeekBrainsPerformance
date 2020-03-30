@@ -12,30 +12,28 @@ import Kingfisher
 class FriendsPhotoViewController : UIViewController {
     
     @IBOutlet weak var friendPhotolikeButton: LikeButton!
-    @IBOutlet weak var username: UILabel!
     @IBOutlet weak var friendPhoto: UIImageView!
     
-    
-    
-    public var friend : Friend?
+    public var tmpVKUserRealm: VKUserRealm?
     public var imageURL: String?
     public var likeCount: Int?
     public var userLiked:Int?
+      var imageLoadQueue = DispatchQueue(label: "GeekbrainsUI.images.posts", attributes: .concurrent)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         guard let imageURL = self.imageURL else {return}
     
-        if let friend = self.friend {
+        if self.tmpVKUserRealm != nil {
             guard let url = URL(string: imageURL ) else {return}
-  //          print(url)
-            friendPhoto.kf.setImage(with: url)
-            username.text = friend.userName
+            imageLoadQueue.async{
+                self.friendPhoto.kf.setImage(with: url)
+            }
+    
             friendPhotolikeButton.setLikeCount(likeCount: self.likeCount ?? 0, userLiked: self.userLiked ?? 0)
             
             }
-        
     }
     
     @IBAction func likeButtonPressed(_ sender: Any) {
