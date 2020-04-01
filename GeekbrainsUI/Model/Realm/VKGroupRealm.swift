@@ -15,10 +15,13 @@ class VKGroupRealm: Object {
     @objc dynamic var avatarPath = ""
     @objc dynamic var isClosed = 0
     @objc dynamic var type = ""
+    @objc dynamic var userId = 0
+    @objc dynamic  var compoundKey: String = "-"
     
-    override class func primaryKey() -> String? {
-        return "id"
+    public override static func primaryKey() -> String? {
+        return "compoundKey"
     }
+
     
     //создание индекса
     override class func indexedProperties() -> [String] {

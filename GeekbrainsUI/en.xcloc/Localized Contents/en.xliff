@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="GeekbrainsUI/Base.lproj/Main.storyboard" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.3.1" build-num="11C504"/>
+    </header>
+    <body>
+      <trans-unit id="0th-qp-WGI.placeholder" xml:space="preserve">
+        <source>Введите пароль</source>
+        <target>Введите пароль</target>
+        <note>Class = "UITextField"; placeholder = "Введите пароль"; ObjectID = "0th-qp-WGI";</note>
+      </trans-unit>
+      <trans-unit id="1U4-Vi-DQ0.title" xml:space="preserve">
+        <source>Друзья пользователей</source>
+        <target>Друзья пользователей</target>
+        <note>Class = "UITabBarItem"; title = "Друзья пользователей"; ObjectID = "1U4-Vi-DQ0";</note>
+      </trans-unit>
+      <trans-unit id="3A2-O1-dIs.title" xml:space="preserve">
+        <source>Друзья</source>
+        <target>Друзья</target>
+        <note>Class = "UINavigationController"; title = "Друзья"; ObjectID = "3A2-O1-dIs";</note>
+      </trans-unit>
+      <trans-unit id="6VL-fk-Sj1.text" xml:space="preserve">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "6VL-fk-Sj1";</note>
+      </trans-unit>
+      <trans-unit id="7DK-ip-oDp.text" xml:space="preserve">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "7DK-ip-oDp";</note>
+      </trans-unit>
+      <trans-unit id="8Mc-q1-Bew.title" xml:space="preserve">
+        <source>Фотографии пользователя (Collection View)</source>
+        <target>Фотографии пользователя (Collection View)</target>
+        <note>Class = "UICollectionViewController"; title = "Фотографии пользователя (Collection View)"; ObjectID = "8Mc-q1-Bew";</note>
+      </trans-unit>
+      <trans-unit id="97b-8T-w9P.text" xml:space="preserve">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "97b-8T-w9P";</note>
+      </trans-unit>
+      <trans-unit id="AvR-Ff-eBu.title" xml:space="preserve">
+        <source>Группы (Nav Controller)</source>
+        <target>Группы (Nav Controller)</target>
+        <note>Class = "UINavigationController"; title = "Группы (Nav Controller)"; ObjectID = "AvR-Ff-eBu";</note>
+      </trans-unit>
+      <trans-unit id="Bh9-i5-cWh.title" xml:space="preserve">
+        <source>Группы пользователя</source>
+        <target>Группы пользователя</target>
+        <note>Class = "UITableViewController"; title = "Группы пользователя"; ObjectID = "Bh9-i5-cWh";</note>
+      </trans-unit>
+      <trans-unit id="C6n-2n-DCs.title" xml:space="preserve">
+        <source>Лента новостей старая</source>
+        <target>Лента новостей старая</target>
+        <note>Class = "UITableViewController"; title = "Лента новостей старая"; ObjectID = "C6n-2n-DCs";</note>
+      </trans-unit>
+      <trans-unit id="EXf-rM-U8x.title" xml:space="preserve">
+        <source>Item</source>
+        <target>Item</target>
+        <note>Class = "UITabBarItem"; title = "Item"; ObjectID = "EXf-rM-U8x";</note>
+      </trans-unit>
+      <trans-unit id="FJu-3U-ATA.title" xml:space="preserve">
+        <source>toGroupDetail</source>
+        <target>toGroupDetail</target>
+        <note>Class = "UIBarButtonItem"; title = "toGroupDetail"; ObjectID = "FJu-3U-ATA";</note>
+      </trans-unit>
+      <trans-unit id="HRp-x5-Wqj.title" xml:space="preserve">
+        <source>Новости</source>
+        <target>Новости</target>
+        <note>Class = "UITabBarItem"; title = "Новости"; ObjectID = "HRp-x5-Wqj";</note>
+      </trans-unit>
+      <trans-unit id="HWh-9c-zQz.title" xml:space="preserve">
+        <source>Snow</source>
+        <target>Snow</target>
+        <note>Class = "UIBarButtonItem"; title = "Snow"; ObjectID = "HWh-9c-zQz";</note>
+      </trans-unit>
+      <trans-unit id="Hwz-Uc-Ktx.title" xml:space="preserve">
+        <source>Новости</source>
+        <target>Новости</target>
+        <note>Class = "UITabBarItem"; title = "Новости"; ObjectID = "Hwz-Uc-Ktx";</note>
+      </trans-unit>
+      <trans-unit id="IPo-aZ-gkT.normalTitle" xml:space="preserve">
+        <source>Button</source>
+        <target>Button</target>
+        <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "IPo-aZ-gkT";</note>
+      </trans-unit>
+      <trans-unit id="K8S-aY-bmn.normalTitle" xml:space="preserve">
+        <source>Войти</source>
+        <target>Войти</target>
+        <note>Class = "UIButton"; normalTitle = "Войти"; ObjectID = "K8S-aY-bmn";</note>
+      </trans-unit>
+      <trans-unit id="Lg7-Ws-Epx.text" xml:space="preserve">
+        <source>Авторизация</source>
+        <target>Авторизация</target>
+        <note>Class = "UILabel"; text = "Авторизация"; ObjectID = "Lg7-Ws-Epx";</note>
+      </trans-unit>
+      <trans-unit id="Lsg-TI-y2I.title" xml:space="preserve">
+        <source>На экран "Группы"</source>
+        <target>На экран "Группы"</target>
+        <note>Class = "UIBarButtonItem"; title = "На экран \"Группы\""; ObjectID = "Lsg-TI-y2I";</note>
+      </trans-unit>
+      <trans-unit id="Mb0-8o-Bab.title" xml:space="preserve">
+        <source>Профиль пользователя</source>
+        <target>Профиль пользователя</target>
+        <note>Class = "UIViewController"; title = "Профиль пользователя"; ObjectID = "Mb0-8o-Bab";</note>
+      </trans-unit>
+      <trans-unit id="NI1-Lo-c58.text" xml:space="preserve">
+        <source>Добро пожаловать уважаемый пользователь:</source>
+        <target>Добро пожаловать уважаемый пользователь:</target>
+        <note>Class = "UILabel"; text = "Добро пожаловать уважаемый пользователь:"; ObjectID = "NI1-Lo-c58";</note>
+      </trans-unit>
+      <trans-unit id="RDh-7H-Yny.placeholder" xml:space="preserve">
+        <source>search ...</source>
+        <target>search ...</target>
+        <note>Class = "UISearchBar"; placeholder = "search ..."; ObjectID = "RDh-7H-Yny";</note>
+      </trans-unit>
+      <trans-unit id="Tyr-6z-Tfe.title" xml:space="preserve">
+        <source>Поиск групп пользователей</source>
+        <target>Поиск групп пользователей</target>
+        <note>Class = "UITableViewController"; title = "Поиск групп пользователей"; ObjectID = "Tyr-6z-Tfe";</note>
+      </trans-unit>
+      <trans-unit id="Zap-hg-3B7.title" xml:space="preserve">
+        <source>Друзья (Table View)</source>
+        <target>Друзья (Table View)</target>
+        <note>Class = "UITableViewController"; title = "Друзья (Table View)"; ObjectID = "Zap-hg-3B7";</note>
+      </trans-unit>
+      <trans-unit id="Ztt-yB-Iad.normalTitle" xml:space="preserve">
+        <source>Button</source>
+        <target>Button</target>
+        <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ztt-yB-Iad";</note>
+      </trans-unit>
+      <trans-unit id="b48-ry-dSP.normalTitle" xml:space="preserve">
+        <source>Button</source>
+        <target>Button</target>
+        <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "b48-ry-dSP";</note>
+      </trans-unit>
+      <trans-unit id="dF2-Ni-euP.normalTitle" xml:space="preserve">
+        <source>Зарегистрироваться</source>
+        <target>Зарегистрироваться</target>
+        <note>Class = "UIButton"; normalTitle = "Зарегистрироваться"; ObjectID = "dF2-Ni-euP";</note>
+      </trans-unit>
+      <trans-unit id="hhx-dU-cAO.title" xml:space="preserve">
+        <source>Фотографии пользователя</source>
+        <target>Фотографии пользователя</target>
+        <note>Class = "UINavigationItem"; title = "Фотографии пользователя"; ObjectID = "hhx-dU-cAO";</note>
+      </trans-unit>
+      <trans-unit id="jPC-6a-Wm8.normalTitle" xml:space="preserve">
+        <source>Button</source>
+        <target>Button</target>
+        <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "jPC-6a-Wm8";</note>
+      </trans-unit>
+      <trans-unit id="kEP-gg-9wD.title" xml:space="preserve">
+        <source>Профиль</source>
+        <target>Профиль</target>
+        <note>Class = "UITabBarItem"; title = "Профиль"; ObjectID = "kEP-gg-9wD";</note>
+      </trans-unit>
+      <trans-unit id="o5w-EI-Is4.title" xml:space="preserve">
+        <source>Группы пользователей</source>
+        <target>Группы пользователей</target>
+        <note>Class = "UITabBarItem"; title = "Группы пользователей"; ObjectID = "o5w-EI-Is4";</note>
+      </trans-unit>
+      <trans-unit id="pN4-w0-u2A.title" xml:space="preserve">
+        <source>NavigationToProfile</source>
+        <target>NavigationToProfile</target>
+        <note>Class = "UINavigationController"; title = "NavigationToProfile"; ObjectID = "pN4-w0-u2A";</note>
+      </trans-unit>
+      <trans-unit id="pV6-NN-4pJ.normalTitle" xml:space="preserve">
+        <source>Button</source>
+        <target>Button</target>
+        <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "pV6-NN-4pJ";</note>
+      </trans-unit>
+      <trans-unit id="q26-39-HtI.title" xml:space="preserve">
+        <source>На экран "Друзья"</source>
+        <target>На экран "Друзья"</target>
+        <note>Class = "UIBarButtonItem"; title = "На экран \"Друзья\""; ObjectID = "q26-39-HtI";</note>
+      </trans-unit>
+      <trans-unit id="rdb-IP-SEI.placeholder" xml:space="preserve">
+        <source>Введите логин</source>
+        <target>Введите логин</target>
+        <note>Class = "UITextField"; placeholder = "Введите логин"; ObjectID = "rdb-IP-SEI";</note>
+      </trans-unit>
+      <trans-unit id="uQe-Jf-Zef.normalTitle" xml:space="preserve">
+        <source>Button</source>
+        <target>Button</target>
+        <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "uQe-Jf-Zef";</note>
+      </trans-unit>
+      <trans-unit id="v2V-qQ-MIa.title" xml:space="preserve">
+        <source>Назад к экрану "Друзья"</source>
+        <target>Назад к экрану "Друзья"</target>
+        <note>Class = "UIBarButtonItem"; title = "Назад к экрану \"Друзья\""; ObjectID = "v2V-qQ-MIa";</note>
+      </trans-unit>
+      <trans-unit id="wgy-gv-Npa.title" xml:space="preserve">
+        <source>Root View Controller</source>
+        <target>Root View Controller</target>
+        <note>Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "wgy-gv-Npa";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="GeekbrainsUI/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.3.1" build-num="11C504"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>GeekbrainsUI</source>
+        <target>GeekbrainsUI</target>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="GeekbrainsUI/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.3.1" build-num="11C504"/>
+    </header>
+    <body>
+      <trans-unit id="Warning" xml:space="preserve">
+        <source>Warning</source>
+        <target>Warning</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

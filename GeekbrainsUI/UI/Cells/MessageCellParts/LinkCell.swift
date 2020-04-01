@@ -19,6 +19,7 @@ class LinkCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -36,7 +37,7 @@ class LinkCell: UITableViewCell {
         
         var localLinkCaption: String
         //заглушка для link с пустым caption и заполненным URL
-        if strLink.caption == "" {
+        if strLink.caption.isEmpty {
             localLinkCaption = strLink.title
             linkTitle.isHidden = true //чтобы две одинаковые строки не выводить
         }else

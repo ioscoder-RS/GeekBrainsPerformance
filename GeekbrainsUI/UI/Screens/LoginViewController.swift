@@ -82,7 +82,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate //для фок
     func checkLogin()-> Bool {
         guard let loginInput = Login2.text, let passwordInput = Password.text else {return false}
         
-        if (loginInput == "")||(passwordInput == "") {
+        if (loginInput.isEmpty)||(passwordInput.isEmpty) {
             return false
         } else{
             return true

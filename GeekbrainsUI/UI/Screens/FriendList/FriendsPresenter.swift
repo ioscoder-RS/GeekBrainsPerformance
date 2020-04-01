@@ -57,7 +57,7 @@ class FriendsPresenterImplementation : FriendsPresenter {
     
     func getFriendsFromDatabase(){
         do {
-            self.friendsResult = try userDB.getAllUsers()
+            self.friendsResult = try userDB.getAllUsers(userId: Int(Session.shared.userId)!)
             self.makeSortedSections()
 //            print(sortedFriendsResults)
             self.view?.updateTable()
@@ -93,7 +93,7 @@ class FriendsPresenterImplementation : FriendsPresenter {
     
     func searchFriends(name: String) {
         do {
-            self.friendsResult = name.isEmpty ? try userDB.getAllUsers() : try userDB.searchUsers(name: name)
+            self.friendsResult = name.isEmpty ? try userDB.getAllUsers(userId: Int(Session.shared.userId)!) : try userDB.searchUsers(name: name)
             makeSortedSections()
             self.view?.updateTable()
         }catch {

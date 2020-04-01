@@ -13,7 +13,7 @@ protocol FirstScreenTune: class{
     var changeUser: UIButton!  { get set }
     var workOffline: UIButton! { get set }
     var cleanDatabase: UIButton! { get set }
-    
+    var isNewUser: Bool { get set }
 }
 
 class FirstScreen: UIViewController, FirstScreenTune {
@@ -24,6 +24,7 @@ class FirstScreen: UIViewController, FirstScreenTune {
  
     var presenter: FirstScreenPresenter?
     var configurator : FirstScreenConfigurator?
+    var isNewUser: Bool = false
     
     override func viewDidLoad() {
         super .viewDidLoad()
@@ -38,11 +39,12 @@ class FirstScreen: UIViewController, FirstScreenTune {
         webMode = true //работаем с интернетом
         
         //загрузили контроллер для логина или попа
-        presenter?.transitionToLoginController(screenName: "VKLoginController", navController: self.navigationController)
+        presenter?.transitionToVKLoginController(navController: self.navigationController, isNewUser: self.isNewUser)
         
     }
     
     @IBAction func changeUserPressed(_ sender: Any) {
+        self.isNewUser = true
         presenter?.changeUserPressed()
     }
     
@@ -55,11 +57,6 @@ class FirstScreen: UIViewController, FirstScreenTune {
         presenter?.cleanDatabasePressed()
     }
     
-//    private func transitionToLoginController(screenName: String) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(identifier: screenName)
-//        vc.modalPresentationStyle = .custom
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
+
     
 }//class FirstScreen: UIViewController

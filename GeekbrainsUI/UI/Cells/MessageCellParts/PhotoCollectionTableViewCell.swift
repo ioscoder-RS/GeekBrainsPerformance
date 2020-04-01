@@ -29,6 +29,7 @@ class PhotoCollectionTableViewCell: UITableViewCell , UICollectionViewDelegate, 
         super.awakeFromNib()
         
         // Initialization code
+        
         self.newsPhotoCollectionView.register(UINib(nibName: "NewsPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "newsPhotoCell")
          
          self.newsPhotoCollectionView.delegate = self

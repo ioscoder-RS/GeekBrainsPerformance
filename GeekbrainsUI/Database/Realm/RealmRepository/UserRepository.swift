@@ -9,7 +9,7 @@
 import RealmSwift
 
 protocol FriendsSource{
-    func getAllUsers() throws -> Results<VKUserRealm>
+    func getAllUsers(userId: Int) throws -> Results<VKUserRealm>
     func getUser(id:Int, lastName: String?, avatarPath: String?) -> VKUserRealm?
     func addUsers(users:[VKUser])
     func searchUsers(name: String) throws -> Results<VKUserRealm>
@@ -19,11 +19,13 @@ class UserRepository: FriendsSource {
     
     var localCommonRepository = CommonRepository()
     
-    func getAllUsers() throws -> Results<VKUserRealm>{
+    func getAllUsers(userId: Int) throws -> Results<VKUserRealm>{
+        var filter: String
         let realm = try Realm()
         do {
+            filter = "userId == %@"
             //  return try localCommonRepository.getAllfromTable(vkObject: .VKUser) as Results<VKUserRealm>
-            return try realm.objects(VKUserRealm.self) as Results <VKUserRealm>
+            return try realm.objects(VKUserRealm.self).filter(filter, userId) as Results <VKUserRealm>
         } catch {
             throw error
         }
@@ -59,6 +61,8 @@ class UserRepository: FriendsSource {
                     userRealm.userName = String(user.firstName + " " + user.lastName)
                     userRealm.avatarPath = user.avatarPath
                     userRealm.photo100 = user.photo100
+                    userRealm.userId = Int(Session.shared.userId)!
+                    userRealm.compoundKey = String(user.id) + "-" + Session.shared.userId
                     usersToAdd.append(userRealm)
                 }
                 realm.add(usersToAdd, update: .modified)

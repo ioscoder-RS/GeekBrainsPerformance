@@ -155,7 +155,6 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, Im
         self.isProfileLoading = true
         
         //удаляем пред. запись о профиле
-  //      NewsWithSectionsAnyArray = NewsWithSectionsAnyArray.filter{$0.newsUniqID != self.previousProfileID}
         NewsWithSectionsAnyArray.removeAll(where: {$0.newsUniqID == self.previousProfileID})
         
         
@@ -176,7 +175,7 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, Im
             )
       
         )
-        print(" 🛑 вставляем запись о профайле в структуру. NewsUniqID = \(newsUniqID), дата = \(Date())")
+ //       print(" 🛑 вставляем запись о профайле в структуру. NewsUniqID = \(newsUniqID), дата = \(Date())")
         self.previousProfileID = newsUniqID
          self.isProfileLoading = false
     }
@@ -262,11 +261,11 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, Im
         case "Gif":
             let currentNews = self.getCurrentNewsAtIndexSection(indexPath: indexPath)
             let localStruct = currentNews?.newsPart as! StrGif
-            if localStruct.newsGif == "" {return 0} else { return 200}
+            if localStruct.newsGif.isEmpty {return 0} else { return 200}
         case "Link":
             let currentNews = self.getCurrentNewsAtIndexSection(indexPath: indexPath)
             let localStruct = currentNews?.newsPart as! StrLink
-            if localStruct.url == "" {return 0} else { return UITableView.automaticDimension}
+            if localStruct.url.isEmpty {return 0} else { return UITableView.automaticDimension}
         case "IconUserTimeCell":
             return Constants.iconUserTimeHeight
         //коллекшн с фото
@@ -303,10 +302,10 @@ class NewsViewPresenterImplementation: NewsViewPresenter, MoreButtonProtocol, Im
                      guard let self = self else { return }
                      switch result {
                      case .success(let posts):
-                        if posts.items.count > 0 {
+                        if !posts.items.isEmpty {
                           //сохраняем запрос, приводим к формату, разбиваем на секции, добавляем к текущему массиву и отображаем в TableView
                           self.workWithNewsWebQuery(responseNews: posts)
-                        }//if posts.items.count > 0
+                        }//!posts.items.isEmpty 
                      case .failure(let error):
                          print(error)
                      }

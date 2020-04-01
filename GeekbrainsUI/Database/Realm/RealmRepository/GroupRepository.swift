@@ -9,7 +9,7 @@
 import RealmSwift
 
 protocol GroupsSource{
-    func getAllGroups() throws -> Results<VKGroupRealm>
+    func getAllGroups(userId: Int) throws -> Results<VKGroupRealm>
     func addGroups (groups:[VKGroup])
     func searchGroups(name: String) throws -> Results<VKGroupRealm>
 }
@@ -18,10 +18,13 @@ class GroupRepository: GroupsSource {
     
     var localCommonRepository = CommonRepository()
     
-    func getAllGroups() throws -> Results<VKGroupRealm>{
+    func getAllGroups(userId: Int) throws -> Results<VKGroupRealm>{
+        var filter: String
+        
         let realm = try Realm()
         do {
-            return try realm.objects(VKGroupRealm.self) as Results <VKGroupRealm>
+            filter = "userId == %@"
+            return try realm.objects(VKGroupRealm.self).filter(filter, userId) as Results <VKGroupRealm>
             //    return try localCommonRepository.getAllfromTable(vkObject: .VKGroup) as Results<VKGroupRealm>
         } catch {
             throw error
@@ -42,6 +45,8 @@ class GroupRepository: GroupsSource {
                     groupRealm.avatarPath = group.photo100
                     groupRealm.isClosed = group.isClosed
                     groupRealm.type = group.type
+                    groupRealm.userId = Int(Session.shared.userId)!
+                    groupRealm.compoundKey = String(group.id)+"-"+Session.shared.userId
                     groupsToAdd.append(groupRealm)
                 }//groups.forEach
                 realm.add(groupsToAdd, update: .modified)

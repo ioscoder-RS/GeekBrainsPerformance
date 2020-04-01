@@ -17,10 +17,14 @@ class VKUserRealm: Object {
     @objc dynamic var photo100 = ""
     @objc dynamic var deactivated: String?
     @objc dynamic var isOnline = 0
+    @objc dynamic var userId = 0
+    @objc dynamic var compoundKey: String = "-"
+ 
     
-    override class func primaryKey() -> String? {
-        return "id"
+    public override static func primaryKey() -> String? {
+        return "compoundKey"
     }
+
     
     //создание индекса
     override class func indexedProperties() -> [String] {

@@ -1,0 +1,114 @@
+
+/* Class = "UITextField"; placeholder = "Введите пароль"; ObjectID = "0th-qp-WGI"; */
+"0th-qp-WGI.placeholder" = "Введите пароль";
+
+/* Class = "UITabBarItem"; title = "Друзья пользователей"; ObjectID = "1U4-Vi-DQ0"; */
+"1U4-Vi-DQ0.title" = "Друзья пользователей";
+
+/* Class = "UINavigationController"; title = "Друзья"; ObjectID = "3A2-O1-dIs"; */
+"3A2-O1-dIs.title" = "Друзья";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "6VL-fk-Sj1"; */
+"6VL-fk-Sj1.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7DK-ip-oDp"; */
+"7DK-ip-oDp.text" = "Label";
+
+/* Class = "UICollectionViewController"; title = "Фотографии пользователя (Collection View)"; ObjectID = "8Mc-q1-Bew"; */
+"8Mc-q1-Bew.title" = "Фотографии пользователя (Collection View)";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "97b-8T-w9P"; */
+"97b-8T-w9P.text" = "Label";
+
+/* Class = "UINavigationController"; title = "Группы (Nav Controller)"; ObjectID = "AvR-Ff-eBu"; */
+"AvR-Ff-eBu.title" = "Группы (Nav Controller)";
+
+/* Class = "UITableViewController"; title = "Группы пользователя"; ObjectID = "Bh9-i5-cWh"; */
+"Bh9-i5-cWh.title" = "Группы пользователя";
+
+/* Class = "UITableViewController"; title = "Лента новостей старая"; ObjectID = "C6n-2n-DCs"; */
+"C6n-2n-DCs.title" = "Лента новостей старая";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "EXf-rM-U8x"; */
+"EXf-rM-U8x.title" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "toGroupDetail"; ObjectID = "FJu-3U-ATA"; */
+"FJu-3U-ATA.title" = "toGroupDetail";
+
+/* Class = "UITabBarItem"; title = "Новости"; ObjectID = "HRp-x5-Wqj"; */
+"HRp-x5-Wqj.title" = "Новости";
+
+/* Class = "UIBarButtonItem"; title = "Snow"; ObjectID = "HWh-9c-zQz"; */
+"HWh-9c-zQz.title" = "Snow";
+
+/* Class = "UITabBarItem"; title = "Новости"; ObjectID = "Hwz-Uc-Ktx"; */
+"Hwz-Uc-Ktx.title" = "Новости";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "IPo-aZ-gkT"; */
+"IPo-aZ-gkT.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Войти"; ObjectID = "K8S-aY-bmn"; */
+"K8S-aY-bmn.normalTitle" = "Войти";
+
+/* Class = "UILabel"; text = "Авторизация"; ObjectID = "Lg7-Ws-Epx"; */
+"Lg7-Ws-Epx.text" = "Авторизация";
+
+/* Class = "UIBarButtonItem"; title = "На экран \"Группы\""; ObjectID = "Lsg-TI-y2I"; */
+"Lsg-TI-y2I.title" = "На экран \"Группы\"";
+
+/* Class = "UIViewController"; title = "Профиль пользователя"; ObjectID = "Mb0-8o-Bab"; */
+"Mb0-8o-Bab.title" = "Профиль пользователя";
+
+/* Class = "UILabel"; text = "Добро пожаловать уважаемый пользователь:"; ObjectID = "NI1-Lo-c58"; */
+"NI1-Lo-c58.text" = "Добро пожаловать уважаемый пользователь:";
+
+/* Class = "UISearchBar"; placeholder = "search ..."; ObjectID = "RDh-7H-Yny"; */
+"RDh-7H-Yny.placeholder" = "search ...";
+
+/* Class = "UITableViewController"; title = "Поиск групп пользователей"; ObjectID = "Tyr-6z-Tfe"; */
+"Tyr-6z-Tfe.title" = "Поиск групп пользователей";
+
+/* Class = "UITableViewController"; title = "Друзья (Table View)"; ObjectID = "Zap-hg-3B7"; */
+"Zap-hg-3B7.title" = "Друзья (Table View)";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ztt-yB-Iad"; */
+"Ztt-yB-Iad.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "b48-ry-dSP"; */
+"b48-ry-dSP.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Зарегистрироваться"; ObjectID = "dF2-Ni-euP"; */
+"dF2-Ni-euP.normalTitle" = "Зарегистрироваться";
+
+/* Class = "UINavigationItem"; title = "Фотографии пользователя"; ObjectID = "hhx-dU-cAO"; */
+"hhx-dU-cAO.title" = "Фотографии пользователя";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "jPC-6a-Wm8"; */
+"jPC-6a-Wm8.normalTitle" = "Button";
+
+/* Class = "UITabBarItem"; title = "Профиль"; ObjectID = "kEP-gg-9wD"; */
+"kEP-gg-9wD.title" = "Профиль";
+
+/* Class = "UITabBarItem"; title = "Группы пользователей"; ObjectID = "o5w-EI-Is4"; */
+"o5w-EI-Is4.title" = "Группы пользователей";
+
+/* Class = "UINavigationController"; title = "NavigationToProfile"; ObjectID = "pN4-w0-u2A"; */
+"pN4-w0-u2A.title" = "NavigationToProfile";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "pV6-NN-4pJ"; */
+"pV6-NN-4pJ.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "На экран \"Друзья\""; ObjectID = "q26-39-HtI"; */
+"q26-39-HtI.title" = "На экран \"Друзья\"";
+
+/* Class = "UITextField"; placeholder = "Введите логин"; ObjectID = "rdb-IP-SEI"; */
+"rdb-IP-SEI.placeholder" = "Введите логин";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "uQe-Jf-Zef"; */
+"uQe-Jf-Zef.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Назад к экрану \"Друзья\""; ObjectID = "v2V-qQ-MIa"; */
+"v2V-qQ-MIa.title" = "Назад к экрану \"Друзья\"";
+
+/* Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "wgy-gv-Npa"; */
+"wgy-gv-Npa.title" = "Root View Controller";

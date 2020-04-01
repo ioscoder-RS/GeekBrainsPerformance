@@ -22,7 +22,7 @@ extension NewsViewPresenterImplementation {
         
         //предотвращаем задвоение новостей
         //выходим из функции если в массиве уже есть новость с таким newsUniqID)
-        if  NewsWithSectionsAnyArray.filter ({(GroupsItems) in return Bool(GroupsItems.newsUniqID == newsUniqID )}).count > 0
+        if !NewsWithSectionsAnyArray.filter ({(GroupsItems) in return Bool(GroupsItems.newsUniqID == newsUniqID )}).isEmpty
         {
             return
         }
@@ -193,7 +193,6 @@ extension NewsViewPresenterImplementation {
             currentCell = cell
             
         default:
-            print("☹️ Ой")
             return UITableViewCell()
         }//switch rowType
         

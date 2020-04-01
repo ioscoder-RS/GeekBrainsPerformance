@@ -47,3 +47,4 @@ class VKService {
     }//func setSingleton
 }//class VKService 
 
+

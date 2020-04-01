@@ -7,7 +7,9 @@ class VKLoginController: UIViewController {
        
     var presenter : LoginPresenter?
     var configurator : LoginConfigurator?
+    var isNewUser: Bool = false
     let vkService = VKService()
+
 
     @IBOutlet weak var webView: WKWebView!{
         didSet{
@@ -15,8 +17,20 @@ class VKLoginController: UIViewController {
         }
     }
     
+    func removeCookies(){
+
+        webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookie in cookie.forEach {
+            self.webView.configuration.websiteDataStore.httpCookieStore.delete($0, completionHandler: nil)
+            }}
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if isNewUser{
+            removeCookies()
+        }
+        
         
         webView.load(vkService.request!)
     }//override func viewDidLoad()
@@ -32,7 +46,9 @@ extension VKLoginController: WKNavigationDelegate {
         if debugMode == 1 {print(error)}
     }
     
+
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        
         
         if debugMode == 1 {
             if let response = navigationResponse.response as? HTTPURLResponse {
@@ -43,7 +59,8 @@ extension VKLoginController: WKNavigationDelegate {
         
         guard let url = navigationResponse.response.url,
             url.path == "/blank.html",
-            let fragment = url.fragment else {
+            let fragment = url.fragment
+            else {
                 decisionHandler(.allow)
                 return
         }
@@ -61,18 +78,19 @@ extension VKLoginController: WKNavigationDelegate {
         if debugMode == 1 {print(params)}
         
         vkService.setSingleton(token: params["access_token"]!, userId: params["user_id"] ?? "0", version: "5.103")
-
+        
         
         //реализация UserDefaults
         UserDefaults.standard.set(params["access_token"], forKey: "access_token")
         
         decisionHandler(.cancel)
-     
+        
+        
         //определили класс для бэк-енд логики
         self.configurator = LoginConfiguratorImplementation()
         self.configurator?.configure(view: self)
-          
-          //получили/обновили логин из интернета
+        
+        //получили/обновили логин из интернета
         self.presenter?.getLoginFromWebAndSave()
         
         self.presenter?.transitionToTabBar()

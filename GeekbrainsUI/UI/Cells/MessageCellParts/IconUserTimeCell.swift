@@ -16,6 +16,8 @@ class IconUserTimeCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
         // Initialization code
     }
    

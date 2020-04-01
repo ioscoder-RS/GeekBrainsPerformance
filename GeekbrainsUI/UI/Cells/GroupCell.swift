@@ -45,7 +45,7 @@ class GroupCell: UITableViewCell {
         
         var groupName = model.name
         
-        if model.name == "" {
+        if model.name.isEmpty {
             groupName = model.groupName
         }
   

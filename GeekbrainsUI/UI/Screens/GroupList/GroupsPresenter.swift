@@ -43,7 +43,7 @@ class GroupPresenterImplementation: GroupsPresenter {
     
     func getGroupsFromDatabase(){
         do {
-            self.groupsResult = try groupDB.getAllGroups()
+            self.groupsResult = try groupDB.getAllGroups(userId: Int(Session.shared.userId)!)
             self.view?.updateTable()
             setupObserver()
         }catch
@@ -76,7 +76,7 @@ class GroupPresenterImplementation: GroupsPresenter {
     
     func searchGroups(name: String) {
         do {
-            self.groupsResult = name.isEmpty ? try groupDB.getAllGroups() : try groupDB.searchGroups(name: name)
+            self.groupsResult = name.isEmpty ? try groupDB.getAllGroups(userId: Int(Session.shared.userId)!) : try groupDB.searchGroups(name: name)
        
             self.view?.updateTable()
         }catch {

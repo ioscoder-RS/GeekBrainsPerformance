@@ -36,6 +36,9 @@ class NewsRepository: NewsSource {
         //например: при инициирующей загрузке его заполнили, а потом в prefetchRowsAt начали подкачивать
         newsViewArray = [NewsForViewController]()
         
+        //если новостей вообще нет - выходим
+        if sourceNews.items.isEmpty {return}
+        
         for a in 0 ... sourceNews.items.count - 1 {
             
             photoArray = [Video]()
@@ -65,7 +68,7 @@ class NewsRepository: NewsSource {
              parsedLinkIsFavorite = false
             
             let attachArray = sourceNews.items[a].attachments ?? []
-            if attachArray.count > 0{
+            if !attachArray.isEmpty{
                 for i in 0 ... attachArray.count  - 1 {
                     switch attachArray[i].type{
                     case "photo":
