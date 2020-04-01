@@ -26,6 +26,7 @@
 		9122F047241A797C00EE86C7 /* PhotoCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9122F045241A797C00EE86C7 /* PhotoCollectionTableViewCell.swift */; };
 		9122F048241A797C00EE86C7 /* PhotoCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9122F046241A797C00EE86C7 /* PhotoCollectionTableViewCell.xib */; };
 		9122F04A241A7D1600EE86C7 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9122F049241A7D1600EE86C7 /* NewsViewController.swift */; };
+		912A16672434E931007E0C62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 912A16662434E931007E0C62 /* GoogleService-Info.plist */; };
 		912B1C95242E483F00F2F415 /* CustomGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912B1C94242E483F00F2F415 /* CustomGradient.swift */; };
 		9132FDBA23B61F5D00D0689A /* FriendsPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132FDB923B61F5D00D0689A /* FriendsPhotoViewController.swift */; };
 		9132FDBD23B6323600D0689A /* CustomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132FDBC23B6323600D0689A /* CustomAnimator.swift */; };
@@ -86,7 +87,6 @@
 		91E752C723E1C6750028BEE4 /* GroupsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E752C623E1C6750028BEE4 /* GroupsPresenter.swift */; };
 		91E752C923E1D8410028BEE4 /* PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E752C823E1D8410028BEE4 /* PhotoRepository.swift */; };
 		91E752CB23E1D8AC0028BEE4 /* VKPhotosRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E752CA23E1D8AC0028BEE4 /* VKPhotosRealm.swift */; };
-		91E752CD23E951640028BEE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91E752CC23E951640028BEE4 /* GoogleService-Info.plist */; };
 		91E752CF23E998150028BEE4 /* UserFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E752CE23E998150028BEE4 /* UserFirebase.swift */; };
 		91E752D123E9A7120028BEE4 /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E752D023E9A7110028BEE4 /* FirstScreen.swift */; };
 		91E752D423E9C1430028BEE4 /* PhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E752D323E9C1430028BEE4 /* PhotoPresenter.swift */; };
@@ -132,6 +132,7 @@
 		9122F045241A797C00EE86C7 /* PhotoCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		9122F046241A797C00EE86C7 /* PhotoCollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionTableViewCell.xib; sourceTree = "<group>"; };
 		9122F049241A7D1600EE86C7 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		912A16662434E931007E0C62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		912B1C94242E483F00F2F415 /* CustomGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradient.swift; sourceTree = "<group>"; };
 		9132FDB923B61F5D00D0689A /* FriendsPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotoViewController.swift; sourceTree = "<group>"; };
 		9132FDBC23B6323600D0689A /* CustomAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimator.swift; sourceTree = "<group>"; };
@@ -197,7 +198,6 @@
 		91E752C623E1C6750028BEE4 /* GroupsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsPresenter.swift; sourceTree = "<group>"; };
 		91E752C823E1D8410028BEE4 /* PhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRepository.swift; sourceTree = "<group>"; };
 		91E752CA23E1D8AC0028BEE4 /* VKPhotosRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKPhotosRealm.swift; sourceTree = "<group>"; };
-		91E752CC23E951640028BEE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		91E752CE23E998150028BEE4 /* UserFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFirebase.swift; sourceTree = "<group>"; };
 		91E752D023E9A7110028BEE4 /* FirstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen.swift; sourceTree = "<group>"; };
 		91E752D323E9C1430028BEE4 /* PhotoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPresenter.swift; sourceTree = "<group>"; };
@@ -375,6 +375,7 @@
 		915B9DA52389B93800944194 /* GeekbrainsUI */ = {
 			isa = PBXGroup;
 			children = (
+				912A16662434E931007E0C62 /* GoogleService-Info.plist */,
 				9102818624237D2400112F54 /* Constants */,
 				91FBCCD724175C3A001DE4C2 /* CashService */,
 				91BEE24723FD5811007291E3 /* Application */,
@@ -384,7 +385,6 @@
 				9164FD3D23955A800089EE2F /* Model */,
 				915B9DA62389B93800944194 /* AppDelegate.swift */,
 				915B9DA82389B93800944194 /* SceneDelegate.swift */,
-				91E752CC23E951640028BEE4 /* GoogleService-Info.plist */,
 				915B9DAC2389B93800944194 /* Main.storyboard */,
 				915B9DAF2389B93C00944194 /* Assets.xcassets */,
 				915B9DB12389B93C00944194 /* LaunchScreen.storyboard */,
@@ -638,7 +638,6 @@
 				9102818124227C3E00112F54 /* GifCell.xib in Resources */,
 				9122F048241A797C00EE86C7 /* PhotoCollectionTableViewCell.xib in Resources */,
 				91DDCAC624326917002248DE /* Localizable.strings in Resources */,
-				91E752CD23E951640028BEE4 /* GoogleService-Info.plist in Resources */,
 				9122F044241A748600EE86C7 /* LikesRepostsComments.xib in Resources */,
 				91DDCABE2430C6E3002248DE /* SelfProfile.xib in Resources */,
 				9122F03C241A6F4000EE86C7 /* IconUserTimeCell.xib in Resources */,
@@ -648,6 +647,7 @@
 				915B9DB02389B93C00944194 /* Assets.xcassets in Resources */,
 				915B9DAE2389B93800944194 /* Main.storyboard in Resources */,
 				91FBCCDD24176848001DE4C2 /* NewsPhotoCollectionViewCell.xib in Resources */,
+				912A16672434E931007E0C62 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
