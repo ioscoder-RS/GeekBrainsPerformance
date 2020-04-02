@@ -37,7 +37,7 @@ class FirstScreenPresenterImplementation: NSObject, FirstScreenPresenter{
         //умолчательные значения кнопок
         view?.currentUser.setTitle("Войти в ВК", for: .normal)
         view?.changeUser.setTitle("Сменить пользователя", for: .normal)
-        view?.workOffline.setTitle("Войти через Firebase (работать оффлайн)", for: .normal)
+        view?.workOffline.setTitle("Войти через Firebase (БД оффлайн)", for: .normal)
         view?.cleanDatabase.setTitle("Очистить локальную БД", for: .normal)
         
         //переименовываем кнопку логина если у нас есть сохраненный в БД логин
