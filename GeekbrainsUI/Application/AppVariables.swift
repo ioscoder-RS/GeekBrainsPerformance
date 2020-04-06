@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 let debugMode = 0 //1 - debug on, 0 - debug off
-let debugPrefetchMode = true //true - печатает лог, falsе -  не печатает
+let debugPrefetchMode = false //true - печатает лог, falsе -  не печатает
 
 enum DatabaseType {
     case Realm

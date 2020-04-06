@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 class LinkCell: UITableViewCell {
 
    
-    @IBOutlet weak var linkPhotoConstraint: NSLayoutConstraint!
+ 
     @IBOutlet weak var linkCaption: UITextView!
     @IBOutlet weak var linkTitle: UILabel!
     @IBOutlet weak var linkPhoto: UIImageView!
@@ -53,17 +54,17 @@ class LinkCell: UITableViewCell {
         //присваиваем получекнную форматированную строку нашему   TextView
         linkCaption.attributedText = attributedString
         
-        //настраиваем фото
+        //проверяем есть ли фото, иначе - возвращаем 0 высоту
          let photo = strLink.photo
         guard photo != "" else {
-            linkPhotoConstraint.constant = 0
+            NSLayoutConstraint.activate([
+            linkPhoto.heightAnchor.constraint(equalToConstant: 0)
+            ])
             return
         }
         //берем фото с учетом кэша
-        let photoCashFunctions = PhotoCashFunctions()
-        photoCashFunctions.photo(urlString: photo)
-            .done {[weak self] image in self?.linkPhoto.image = image }
-            .catch { print($0)}
+        guard let url = URL(string: photo ) else {return}
+        linkPhoto.kf.setImage(with: url)
        
         //рендеринг видимых элементов
         let mainView = LinkCellUIView(label: linkTitle, textView: linkCaption, imageView: linkPhoto)
@@ -98,17 +99,20 @@ class LinkCellUIView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 5),
+            //т.к. картинка загрузится позже, цепляемся к верхнему краю: высота картинки + отступ
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 145),
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            label.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         NSLayoutConstraint.activate([
             textView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 5),
             textView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            textView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            textView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            textView.heightAnchor.constraint(equalToConstant: 25)
         ])
+        
+        bottomAnchor.constraint(equalTo: textView.bottomAnchor).isActive = true
     }
     
     
