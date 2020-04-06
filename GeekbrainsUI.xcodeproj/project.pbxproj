@@ -42,6 +42,7 @@
 		915B9DAE2389B93800944194 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 915B9DAC2389B93800944194 /* Main.storyboard */; };
 		915B9DB02389B93C00944194 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 915B9DAF2389B93C00944194 /* Assets.xcassets */; };
 		915B9DB32389B93C00944194 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 915B9DB12389B93C00944194 /* LaunchScreen.storyboard */; };
+		91603515243B230600A07D33 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91603514243B230600A07D33 /* GoogleService-Info.plist */; };
 		9161587F23A4F7A700F16F42 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9161587E23A4F7A700F16F42 /* CustomCollectionViewLayout.swift */; };
 		9164263423CDEF5D00BD5E79 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9164263323CDEF5D00BD5E79 /* LoginController.swift */; };
 		9164FD352393E33E0089EE2F /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9164FD342393E33E0089EE2F /* PhotoController.swift */; };
@@ -131,7 +132,6 @@
 		9122F045241A797C00EE86C7 /* PhotoCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		9122F046241A797C00EE86C7 /* PhotoCollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionTableViewCell.xib; sourceTree = "<group>"; };
 		9122F049241A7D1600EE86C7 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
-		912A168024361242007E0C62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "/Users/raskin-sa/GeekBrainsPerformance/GeekbrainsUI/GoogleService-Info.plist"; sourceTree = "<absolute>"; };
 		912B1C94242E483F00F2F415 /* CustomGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradient.swift; sourceTree = "<group>"; };
 		9132FDB923B61F5D00D0689A /* FriendsPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotoViewController.swift; sourceTree = "<group>"; };
 		9132FDBC23B6323600D0689A /* CustomAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimator.swift; sourceTree = "<group>"; };
@@ -150,6 +150,8 @@
 		915B9DAF2389B93C00944194 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		915B9DB22389B93C00944194 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		915B9DB42389B93C00944194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91603513243B226200A07D33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "/Users/raskin-sa/GeekBrainsPerformance/GeekbrainsUI/GoogleService-Info.plist"; sourceTree = "<absolute>"; };
+		91603514243B230600A07D33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9161587E23A4F7A700F16F42 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		9164263323CDEF5D00BD5E79 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		9164FD342393E33E0089EE2F /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
@@ -386,7 +388,8 @@
 				915B9DAC2389B93800944194 /* Main.storyboard */,
 				915B9DAF2389B93C00944194 /* Assets.xcassets */,
 				915B9DB12389B93C00944194 /* LaunchScreen.storyboard */,
-				912A168024361242007E0C62 /* GoogleService-Info.plist */,
+				91603513243B226200A07D33 /* GoogleService-Info.plist */,
+				91603514243B230600A07D33 /* GoogleService-Info.plist */,
 				915B9DB42389B93C00944194 /* Info.plist */,
 				91E752CE23E998150028BEE4 /* UserFirebase.swift */,
 				9102818224229DFB00112F54 /* GIF.swift */,
@@ -646,6 +649,7 @@
 				915B9DB02389B93C00944194 /* Assets.xcassets in Resources */,
 				915B9DAE2389B93800944194 /* Main.storyboard in Resources */,
 				91FBCCDD24176848001DE4C2 /* NewsPhotoCollectionViewCell.xib in Resources */,
+				91603515243B230600A07D33 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

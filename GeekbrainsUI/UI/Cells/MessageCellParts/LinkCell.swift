@@ -18,8 +18,7 @@ class LinkCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        self.translatesAutoresizingMaskIntoConstraints = false
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -66,5 +65,54 @@ class LinkCell: UITableViewCell {
             .done {[weak self] image in self?.linkPhoto.image = image }
             .catch { print($0)}
        
+        //рендеринг видимых элементов
+        let mainView = LinkCellUIView(label: linkTitle, textView: linkCaption, imageView: linkPhoto)
+        self.contentView.addSubview(mainView)
+        NSLayoutConstraint.activate([
+            mainView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            mainView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            mainView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            mainView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
+        ])
+        
+        
     }//renderCell
 }//class
+
+class LinkCellUIView: UIView {
+    init(label: UILabel, textView: UITextView, imageView: UIImageView) {
+        super.init(frame: .zero)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addSubview(label)
+        self.addSubview(textView)
+        self.addSubview(imageView)
+        
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: self.topAnchor),
+            imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 140)
+        ])
+        
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 5),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            label.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        NSLayoutConstraint.activate([
+            textView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 5),
+            textView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            textView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
